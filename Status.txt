@@ -1,4 +1,4 @@
 #This is a file that will be used to determine eac team members
 #current status. Although this file won't be used all that much 
 #it will be here. I am also using this file to test some pre jam
-#pot stuff. 
+#pot stuff. Take 2
