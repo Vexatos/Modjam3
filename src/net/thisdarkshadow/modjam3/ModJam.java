@@ -9,6 +9,7 @@ import cpw.mods.fml.common.ModMetadata;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
+import net.thisdarkshadow.modjam3.item.Items;
 import net.thisdarkshadow.modjam3.lib.Reference;
 import net.thisdarkshadow.modjam3.proxy.CommonProxy;
 
@@ -19,6 +20,11 @@ import net.thisdarkshadow.modjam3.proxy.CommonProxy;
 //goal of our mod right now.
 
 //Logo file needs to be replaced. Trololol pn made by me for now.
+
+//All text should be handled in our lang file. Don't worry about
+//how it works. Forge handles it. For now please add in the modjam3 
+//prefix to things and we will switch them out later.
+//Eg item.modjam3.ourItem.name = String
 
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION)
 @NetworkMod(clientSideRequired = true, serverSideRequired = true)
@@ -34,6 +40,7 @@ public class ModJam {
 	public void preInit(FMLPreInitializationEvent event) {
 		
 		getModInfo(event.getModMetadata());
+		new Items();
 	}
 	
 	@EventHandler
