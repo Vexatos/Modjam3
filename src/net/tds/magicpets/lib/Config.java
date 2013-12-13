@@ -1,8 +1,8 @@
 package net.tds.magicpets.lib;
 
-import java.io.File;
-
 import net.minecraftforge.common.Configuration;
+
+import java.io.File;
 
 public class Config {
 
@@ -12,8 +12,9 @@ public class Config {
 	public static boolean event;
 	
 	public static int crystalID;
-	
-	public Config(File file) {
+    public static int essenceID;
+
+    public Config(File file) {
 		
 		conf = new Configuration(file);
 		
@@ -23,6 +24,7 @@ public class Config {
 		event = conf.get(conf.CATEGORY_GENERAL, "Changing this to False will disable the event notice", true).getBoolean(true);
 		
 		crystalID = conf.get(conf.CATEGORY_ITEM, "Item ID for Summoning Crystal", 24380).getInt();
+        essenceID = conf.get(conf.CATEGORY_ITEM, "Item ID for Essences", 24381).getInt();
 		
 		conf.save();
 	}
