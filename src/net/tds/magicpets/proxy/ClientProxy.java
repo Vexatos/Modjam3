@@ -5,10 +5,12 @@ import net.minecraft.client.model.ModelPig;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ChatMessageComponent;
 import net.minecraftforge.client.MinecraftForgeClient;
+import net.minecraftforge.common.MinecraftForge;
 import net.tds.magicpets.client.render.entity.RenderBabyFireGolem;
-import net.tds.magicpets.entity.pet.EntityBabyFireGolem;
-import net.tds.magicpets.item.Items;
 import net.tds.magicpets.client.render.item.CrystalItemRenderer;
+import net.tds.magicpets.entity.pet.EntityBabyFireGolem;
+import net.tds.magicpets.event.IconEventHandler;
+import net.tds.magicpets.item.Items;
 
 ;
 ;
@@ -28,5 +30,7 @@ public class ClientProxy extends CommonProxy {
 		
 		RenderingRegistry.registerEntityRenderingHandler(EntityBabyFireGolem.class, new RenderBabyFireGolem(new ModelPig(), 1.0F));
         MinecraftForgeClient.registerItemRenderer(Items.spawnCrystal.itemID, new CrystalItemRenderer());
+
+        MinecraftForge.EVENT_BUS.register(new IconEventHandler());
 	}
 }
