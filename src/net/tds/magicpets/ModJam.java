@@ -1,5 +1,12 @@
-package net.thisdarkshadow.modjam3;
+package net.tds.magicpets;
 
+import java.util.Arrays;
+
+import net.tds.magicpets.handler.ConnectionHandler;
+import net.tds.magicpets.item.Items;
+import net.tds.magicpets.lib.Config;
+import net.tds.magicpets.lib.Reference;
+import net.tds.magicpets.proxy.CommonProxy;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -8,13 +15,6 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkRegistry;
-import net.thisdarkshadow.modjam3.handler.ConnectionHandler;
-import net.thisdarkshadow.modjam3.item.Items;
-import net.thisdarkshadow.modjam3.lib.Config;
-import net.thisdarkshadow.modjam3.lib.Reference;
-import net.thisdarkshadow.modjam3.proxy.CommonProxy;
-
-import java.util.Arrays;
 
 //99% of these commits are for dev discussion and notification.
 

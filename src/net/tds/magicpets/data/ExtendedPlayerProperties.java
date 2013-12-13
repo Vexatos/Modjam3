@@ -1,4 +1,4 @@
-package net.thisdarkshadow.modjam3.data;
+package net.tds.magicpets.data;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;

@@ -1,15 +1,15 @@
-package net.thisdarkshadow.modjam3.handler;
+package net.tds.magicpets.handler;
 
-import cpw.mods.fml.common.network.IConnectionHandler;
-import cpw.mods.fml.common.network.Player;
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.NetLoginHandler;
 import net.minecraft.network.packet.NetHandler;
 import net.minecraft.network.packet.Packet1Login;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChatMessageComponent;
-import net.thisdarkshadow.modjam3.lib.Config;
-import net.thisdarkshadow.modjam3.lib.Format;
+import net.tds.magicpets.lib.Config;
+import net.tds.magicpets.lib.Format;
+import cpw.mods.fml.common.network.IConnectionHandler;
+import cpw.mods.fml.common.network.Player;
 
 public class ConnectionHandler implements IConnectionHandler {
 

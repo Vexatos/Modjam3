@@ -1,4 +1,4 @@
-package net.thisdarkshadow.modjam3.item;
+package net.tds.magicpets.item;
 
 import net.minecraft.item.Item;
 

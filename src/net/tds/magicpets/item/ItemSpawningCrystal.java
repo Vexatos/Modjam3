@@ -1,15 +1,14 @@
-package net.thisdarkshadow.modjam3.item;
+package net.tds.magicpets.item;
 
 import java.util.List;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
-import net.thisdarkshadow.modjam3.ModJam;
-import net.thisdarkshadow.modjam3.lib.Format;
+import net.tds.magicpets.ModJam;
+import net.tds.magicpets.lib.Format;
 
 public class ItemSpawningCrystal extends ItemModjamBase {
 	

@@ -1,4 +1,4 @@
-package net.thisdarkshadow.modjam3.lib;
+package net.tds.magicpets.lib;
 
 public class Format {
 
