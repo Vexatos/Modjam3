@@ -9,6 +9,12 @@ import net.minecraft.item.ItemStack;
 
 public class ItemSpawningCrystal extends Item {
 
+	private String author;
+	private String type;
+	private String name;
+	private int expereince;
+	private int level;
+	
 	public ItemSpawningCrystal(int id) {
 		
 		super(id);
@@ -17,6 +23,8 @@ public class ItemSpawningCrystal extends Item {
 		this.setMaxStackSize(1);
 		this.setUnlocalizedName("modjam3.spawnCrystal");
 	}
+	
+	
 	
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean smt) {
 		
