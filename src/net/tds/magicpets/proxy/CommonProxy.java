@@ -13,4 +13,8 @@ public class CommonProxy {
 			Reference.logger.info(message);
 		}
 	}
+	
+	public void registerRenders() {
+		
+	}
 }
