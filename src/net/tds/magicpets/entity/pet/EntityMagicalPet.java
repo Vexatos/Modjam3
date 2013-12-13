@@ -17,12 +17,24 @@ public class EntityMagicalPet extends EntityTameable {
 	public void writeEntityToNBT(NBTTagCompound compound) {
 		
 		super.writeEntityToNBT(compound);
-		
+		compound.setString("Owner", this.getPetOwner());
+		compound.setString("Name", this.getName());
+		compound.setInteger("Level", this.getLevel());
+		compound.setInteger("Experience", this.getExperience());
 	}
 	
 	public void readEntityFromNBT(NBTTagCompound compound) {
 		
 		super.readEntityFromNBT(compound);
+		this.setOwner(compound.getString("Owner"));
+		this.setName(compound.getString("Name"));
+		this.setLevel(compound.getInteger("Level"));
+		this.setExperience(compound.getInteger("Experience"));	
+	}
+	
+	public void setOwner(String owner) {
+		
+		this.dataWatcher.updateObject(22, owner);
 	}
 	
 	public void setName(String name) {
@@ -34,9 +46,15 @@ public class EntityMagicalPet extends EntityTameable {
 		
 		this.dataWatcher.updateObject(24, level);
 	}
+	
 	public void setExperience(int experience) {
 		
 		this.dataWatcher.updateObject(25, experience);
+	}
+	
+	public String getPetOwner() {
+		
+		return this.dataWatcher.getWatchableObjectString(22);
 	}
 	
 	public String getName() {
