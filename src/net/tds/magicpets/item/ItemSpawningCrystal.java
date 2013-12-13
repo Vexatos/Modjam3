@@ -55,6 +55,11 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 			ModJam.proxy.sendChatToPlayer(player, Format.RED + "[Warning]: This is not your crystal");
 		}
 		
+		else {
+			
+			
+		}
+		
 		return stack;	
 	}
 	
