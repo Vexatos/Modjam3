@@ -9,7 +9,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
-public class ItemSpawningCrystal extends Item {
+/*
+ * For Darkhax:
+ * NBT should always have the first letter capitalized
+ * Also, when setting the NBT do not check if it has the tag, will always return false.
+ */
+public class ItemSpawningCrystal extends ItemModjamBase {
 	
 	public ItemSpawningCrystal(int id) {
 		
@@ -17,7 +22,7 @@ public class ItemSpawningCrystal extends Item {
 		this.setCreativeTab(CreativeTabs.tabMisc);
 		this.hasSubtypes = true;
 		this.setMaxStackSize(1);
-		this.setUnlocalizedName("modjam3.spawnCrystal");
+		this.setUnlocalizedName("spawnCrystal");
 	}
 	
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
@@ -27,7 +32,7 @@ public class ItemSpawningCrystal extends Item {
 			stack.setTagCompound(new NBTTagCompound());
 		}
 		
-		if (!stack.stackTagCompound.hasKey("owner")) {
+		if (!stack.getTagCompound().hasKey("Owner")) {
 			
 			setOwner(stack, player.username);
 			setType(stack, "Fire");
@@ -46,7 +51,7 @@ public class ItemSpawningCrystal extends Item {
 			stack.setTagCompound(new NBTTagCompound());
 		}
 		
-		if (stack.stackTagCompound.hasKey("owner")) {
+		if (stack.getTagCompound().hasKey("Owner")) {
 			list.add("Owner: " + getOwner(stack));
 			list.add("Type: " + getType(stack));
 			list.add("Name: " + getName(stack));
@@ -59,7 +64,7 @@ public class ItemSpawningCrystal extends Item {
 		
 		if (stack.getItem() instanceof ItemSpawningCrystal) {
 			
-			return stack.stackTagCompound.getString("owner");
+			return stack.getTagCompound().getString("Owner");
 		}
 		
 		return "Failure";
@@ -69,7 +74,7 @@ public class ItemSpawningCrystal extends Item {
 		
 		if (stack.getItem() instanceof ItemSpawningCrystal) {
 			
-			return stack.stackTagCompound.getString("type");
+			return stack.getTagCompound().getString("Type");
 		}
 		
 		return "Failure";
@@ -79,7 +84,7 @@ public class ItemSpawningCrystal extends Item {
 		
 		if (stack.getItem() instanceof ItemSpawningCrystal) {
 			
-			return stack.stackTagCompound.getString("name");
+			return stack.getTagCompound().getString("Name");
 		}
 		
 		return "Failure";
@@ -89,22 +94,26 @@ public class ItemSpawningCrystal extends Item {
 		
 		if (stack.getItem() instanceof ItemSpawningCrystal) {
 			
-			return stack.stackTagCompound.getInteger("level");
+			return stack.getTagCompound().getInteger("Level");
 		}
 		
 		return 0;
 	}
 	
+	// For Darkhax:
+	// You should return -1 if it fails
 	public static int getExperience(ItemStack stack) {
 		
 		if (stack.getItem() instanceof ItemSpawningCrystal) {
 			
-			return stack.stackTagCompound.getInteger("experience");
+			return stack.getTagCompound().getInteger("Experience");
 		}
 		
 		return 9999999;
 	}
 	
+	// For Darkhax:
+	// You should return -1 if it fails
 	public static int getMaxExperience(ItemStack stack) {
 		
 		if (stack.getItem() instanceof ItemSpawningCrystal) {
@@ -117,41 +126,41 @@ public class ItemSpawningCrystal extends Item {
 	
 	public static void setOwner(ItemStack stack, String owner) {
 
-		if (stack.getItem() instanceof ItemSpawningCrystal && stack.stackTagCompound.hasKey("owner")) {
+		if (stack.getItem() instanceof ItemSpawningCrystal) {
 			
-			stack.stackTagCompound.setString("owner", owner);
+			stack.getTagCompound().setString("Owner", owner);
 		}
 	}
 	
 	public static void setType(ItemStack stack, String type) {
 		
-		if (stack.getItem() instanceof ItemSpawningCrystal && stack.stackTagCompound.hasKey("type")) {
+		if (stack.getItem() instanceof ItemSpawningCrystal) {
 			
-			stack.stackTagCompound.setString("type", type);
+			stack.getTagCompound().setString("Type", type);
 		}
 	}
 	
 	public static void setName(ItemStack stack, String name) {
 		
-		if (stack.getItem() instanceof ItemSpawningCrystal && stack.stackTagCompound.hasKey("name")) {
+		if (stack.getItem() instanceof ItemSpawningCrystal) {
 			
-			stack.stackTagCompound.setString("name", name);
+			stack.getTagCompound().setString("Name", name);
 		}
 	}
 	
 	public static void setLevel(ItemStack stack, int level) {
 
-		if (stack.getItem() instanceof ItemSpawningCrystal && stack.stackTagCompound.hasKey("level")) {
+		if (stack.getItem() instanceof ItemSpawningCrystal) {
 			
-			stack.stackTagCompound.setInteger("level", level);
+			stack.getTagCompound().setInteger("Level", level);
 		}
 	}
 	
 	public static void setExperience(ItemStack stack, int exp) {
 		
-		if (stack.getItem() instanceof ItemSpawningCrystal && stack.stackTagCompound.hasKey("experience")) {
+		if (stack.getItem() instanceof ItemSpawningCrystal) {
 			
-			stack.stackTagCompound.setInteger("experience", exp);
+			stack.getTagCompound().setInteger("Experience", exp);
 		}
 	}
 }
