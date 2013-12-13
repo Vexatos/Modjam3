@@ -9,7 +9,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.thisdarkshadow.modjam3.ModJam;
-import net.thisdarkshadow.modjam3.lib.Color;
+import net.thisdarkshadow.modjam3.lib.Format;
 
 public class ItemSpawningCrystal extends ItemModjamBase {
 	
@@ -40,7 +40,7 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 		
 		if (!getOwner(stack).equalsIgnoreCase(player.username)) {
 			
-			ModJam.proxy.sendChatToPlayer(player, Color.RED + "[Warning]: This is not your crystal");
+			ModJam.proxy.sendChatToPlayer(player, Format.RED + "[Warning]: This is not your crystal");
 		}
 		
 		return stack;	
