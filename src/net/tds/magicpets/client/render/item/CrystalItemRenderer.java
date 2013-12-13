@@ -1,8 +1,10 @@
 package net.tds.magicpets.client.render.item;
 
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
 import net.minecraftforge.client.IItemRenderer;
 import net.tds.magicpets.client.render.RenderHelper;
+import net.tds.magicpets.event.IconEventHandler;
 
 
 /**
@@ -25,30 +27,31 @@ public class CrystalItemRenderer implements IItemRenderer {
     @Override
     public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
 
+        Icon icon = IconEventHandler.getCrystalIconFromItem(item);
+
         switch(type) {
 
             case EQUIPPED: {
 
-                RenderHelper.drawIconIn3D(item, item.getIconIndex());
+                RenderHelper.drawIconIn3D(item, icon);
                 break;
             }
 
             case EQUIPPED_FIRST_PERSON: {
 
-                RenderHelper.drawIconIn3D(item, item.getIconIndex());
+                RenderHelper.drawIconIn3D(item, icon);
                 break;
             }
 
             case INVENTORY: {
 
-                RenderHelper.renderIconInInventory(item.getIconIndex(), 1f, 1f, 1f);
+                RenderHelper.renderIconInInventory(icon, 1f, 1f, 1f);
                 break;
             }
 
-            // TODO: Find vanilla code
             case ENTITY: {
 
-                RenderHelper.drawIconIn3D(item, item.getIconIndex(), true);
+                RenderHelper.drawIconIn3D(item, icon, true);
                 break;
             }
 
