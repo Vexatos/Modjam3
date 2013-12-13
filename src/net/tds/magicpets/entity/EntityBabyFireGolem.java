@@ -1,5 +1,12 @@
 package net.tds.magicpets.entity;
 
-public class EntityBabyFireGolem {
+import net.minecraft.world.World;
+import net.tds.magicpets.entity.pet.EntityMagicalPet;
 
+public class EntityBabyFireGolem extends EntityMagicalPet {
+
+	public EntityBabyFireGolem(World world) {
+		
+		super(world);
+	}
 }
