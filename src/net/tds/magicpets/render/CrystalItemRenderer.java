@@ -18,7 +18,7 @@ public class CrystalItemRenderer implements IItemRenderer {
     @Override
     public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack item, ItemRendererHelper helper) {
 
-        return false;
+        return type == ItemRenderType.ENTITY && (helper == ItemRendererHelper.ENTITY_BOBBING || helper == ItemRendererHelper.ENTITY_ROTATION);
     }
 
     @Override
@@ -45,11 +45,11 @@ public class CrystalItemRenderer implements IItemRenderer {
             }
 
             // TODO: Find vanilla code
-//            case ENTITY: {
-//
-//                RenderHelper.drawIconIn3D(item, item.getIconIndex());
-//                break;
-//            }
+            case ENTITY: {
+
+                RenderHelper.drawIconIn3D(item, item.getIconIndex(), true);
+                break;
+            }
 
             default: {
 
