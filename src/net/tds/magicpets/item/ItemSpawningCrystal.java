@@ -30,7 +30,7 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 		
 		if (!stack.getTagCompound().hasKey("Owner")) {
 			
-			setOwner(stack, player.username + 1);
+			setOwner(stack, player.username);
 			setType(stack, "Fire");
 			setName(stack, player.username + "'s Secret");
 			setLevel(stack, 1);
