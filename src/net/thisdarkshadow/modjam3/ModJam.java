@@ -9,6 +9,8 @@ import cpw.mods.fml.common.ModMetadata;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.network.NetworkRegistry;
+import net.thisdarkshadow.modjam3.handler.ConnectionHandler;
 import net.thisdarkshadow.modjam3.item.Items;
 import net.thisdarkshadow.modjam3.lib.Config;
 import net.thisdarkshadow.modjam3.lib.Reference;
@@ -37,6 +39,7 @@ public class ModJam {
 	@EventHandler
 	public void init(FMLPreInitializationEvent event) {
 		
+		NetworkRegistry.instance().registerConnectionHandler(new ConnectionHandler());
 	}
 	
 	public void getModInfo(ModMetadata meta) {
