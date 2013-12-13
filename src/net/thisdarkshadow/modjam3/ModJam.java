@@ -26,6 +26,11 @@ import net.thisdarkshadow.modjam3.proxy.CommonProxy;
 //prefix to things and we will switch them out later.
 //Eg item.modjam3.ourItem.name = String
 
+//Current Issues
+//ItemSpawningCrystal has an issue with displaying the mods
+//nbt values in the tool tip. If you could fix that it while
+//I am sleeping/school that would be great <3
+//Also I will be on tomorrow morning but only in our irc. 
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION)
 @NetworkMod(clientSideRequired = true, serverSideRequired = true)
 public class ModJam {

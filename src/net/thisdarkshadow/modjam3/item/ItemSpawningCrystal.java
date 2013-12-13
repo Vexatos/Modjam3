@@ -41,6 +41,11 @@ public class ItemSpawningCrystal extends Item {
 	
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean smt) {
 		
+		if (!stack.hasTagCompound()) {
+			
+			stack.setTagCompound(new NBTTagCompound());
+		}
+		
 		if (stack.stackTagCompound.hasKey("owner")) {
 			list.add("Owner: " + getOwner(stack));
 			list.add("Type: " + getType(stack));
