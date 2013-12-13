@@ -1,27 +1,25 @@
 package net.tds.magicpets.enums;
 
-import net.tds.magicpets.lib.Format;
-
-
 /**
  * Author: ShadowChild.
  */
 public enum EnumElement {
 
-    FIRE("fire", Format.RED),
-    WATER("water", Format.DARK_AQUA),
-    EARTH("earth", Format.GREEN),
-    AIR("air", Format.AQUA),
-    LIGHT("light", Format.YELLOW),
-    UNDEAD("undead", Format.DARK_GRAY);
+    FIRE("fire", 0x680000),
+    WATER("water", 0x0066FF),
+    EARTH("earth", 0x333300),
+    AIR("air", 0x66CCFF),
+    LIGHT("light", 0xFFFF33),
+    UNDEAD("undead", 0x606060);
 
-    private EnumElement(String name, String colour) {
+    private EnumElement(String name, int colour) {
 
         this.name = name;
         this.colour = colour;
     }
 
-    public String name, colour;
+    public String name;
+    public int colour;
 
     public EnumElement getElement(String name) {
 
@@ -36,13 +34,13 @@ public enum EnumElement {
         return null;
     }
 
-    public String getColour(EnumElement element) {
+    public int getColour(EnumElement element) {
 
         if(element != null) {
 
             return element.colour;
         }
 
-        return null;
+        return -1;
     }
 }
