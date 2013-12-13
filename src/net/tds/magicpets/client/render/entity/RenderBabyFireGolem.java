@@ -7,6 +7,7 @@ import net.minecraft.util.ResourceLocation;
 
 public class RenderBabyFireGolem extends RenderLiving {
 
+	private static final ResourceLocation texture = new ResourceLocation("magicpets", "/textures/entity/");
 	public RenderBabyFireGolem(ModelBase par1ModelBase, float par2) {
 		
 		super(par1ModelBase, par2);
@@ -15,6 +16,6 @@ public class RenderBabyFireGolem extends RenderLiving {
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity) {
 		
-		return null;
+		return texture;
 	}
 }
