@@ -13,24 +13,8 @@ import net.thisdarkshadow.modjam3.item.Items;
 import net.thisdarkshadow.modjam3.lib.Reference;
 import net.thisdarkshadow.modjam3.proxy.CommonProxy;
 
-//99% of these commits are for shadowchild when he gets on.
+//99% of these commits are for dev discussion and notification.
 
-//Package name and mod class name have been set for lack of a
-//better package name, also we don't want to give away the main
-//goal of our mod right now.
-
-//Logo file needs to be replaced. Trololol pn made by me for now.
-
-//All text should be handled in our lang file. Don't worry about
-//how it works. Forge handles it. For now please add in the modjam3 
-//prefix to things and we will switch them out later.
-//Eg item.modjam3.ourItem.name = String
-
-//Current Issues
-//ItemSpawningCrystal has an issue with displaying the mods
-//nbt values in the tool tip. If you could fix that it while
-//I am sleeping/school that would be great <3
-//Also I will be on tomorrow morning but only in our irc. 
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION)
 @NetworkMod(clientSideRequired = true, serverSideRequired = true)
 public class ModJam {
