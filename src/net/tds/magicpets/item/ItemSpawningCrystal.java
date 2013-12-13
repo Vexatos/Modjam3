@@ -193,15 +193,4 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 
         this.element = element;
     }
-
-    @Override
-    public int getColorFromItemStack(ItemStack par1ItemStack, int par2) {
-
-        if(getElement() != null) {
-
-            return getElement().colour;
-        }
-
-        return super.getColorFromItemStack(par1ItemStack, par2);
-    }
 }

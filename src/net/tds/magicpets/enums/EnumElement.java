@@ -7,7 +7,7 @@ public enum EnumElement {
 
     FIRE("fire", 0x680000),
     WATER("water", 0x0066FF),
-    EARTH("earth", 0x333300),
+    EARTH("earth", 0x336600),
     AIR("air", 0x66CCFF),
     LIGHT("light", 0xFFFF33),
     UNDEAD("undead", 0x606060);
