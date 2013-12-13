@@ -10,6 +10,7 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import net.thisdarkshadow.modjam3.item.Items;
+import net.thisdarkshadow.modjam3.lib.Config;
 import net.thisdarkshadow.modjam3.lib.Reference;
 import net.thisdarkshadow.modjam3.proxy.CommonProxy;
 
@@ -29,6 +30,7 @@ public class ModJam {
 	public void preInit(FMLPreInitializationEvent event) {
 		
 		getModInfo(event.getModMetadata());
+		new Config(event.getSuggestedConfigurationFile());
 		new Items();
 	}
 	
