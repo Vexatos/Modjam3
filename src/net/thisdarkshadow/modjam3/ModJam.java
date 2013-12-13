@@ -18,6 +18,8 @@ import net.thisdarkshadow.modjam3.proxy.CommonProxy;
 //better package name, also we don't want to give away the main
 //goal of our mod right now.
 
+//Logo file needs to be replaced. Trololol pn made by me for now.
+
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION)
 @NetworkMod(clientSideRequired = true, serverSideRequired = true)
 public class ModJam {
