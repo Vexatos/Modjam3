@@ -1,0 +1,13 @@
+{
+    "language": {
+        "en_US": {
+            "region": "US",
+            "name": "English",
+            "bidirectional": false
+        }
+    },
+    "pack": {
+        "description": "Cannot tell you yet ;)",
+        "pack_format": 1
+    }
+}
