@@ -7,6 +7,9 @@ public class ClientProxy extends CommonProxy {
 
 	public void sendChatToPlayer(EntityPlayer player, String message) {
 		
-		player.sendChatToPlayer(new ChatMessageComponent().createFromText(message));
+		if (player.worldObj.isRemote) {
+			
+			player.sendChatToPlayer(new ChatMessageComponent().createFromText(message));		
+		}
 	}
 }
