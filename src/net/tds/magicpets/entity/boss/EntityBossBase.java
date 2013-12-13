@@ -1,4 +1,4 @@
-package net.tds.magicpets.entity;
+package net.tds.magicpets.entity.boss;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

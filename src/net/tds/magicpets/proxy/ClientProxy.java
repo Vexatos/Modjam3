@@ -6,7 +6,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ChatMessageComponent;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.tds.magicpets.client.render.entity.RenderBabyFireGolem;
-import net.tds.magicpets.entity.EntityBabyFireGolem;
+import net.tds.magicpets.entity.pet.EntityBabyFireGolem;
 import net.tds.magicpets.item.Items;
 import net.tds.magicpets.client.render.item.CrystalItemRenderer;
 
