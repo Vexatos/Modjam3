@@ -9,11 +9,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
-/*
- * For Darkhax:
- * NBT should always have the first letter capitalized
- * Also, when setting the NBT do not check if it has the tag, will always return false.
- */
 public class ItemSpawningCrystal extends ItemModjamBase {
 	
 	public ItemSpawningCrystal(int id) {
