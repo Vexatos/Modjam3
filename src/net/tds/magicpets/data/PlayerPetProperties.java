@@ -6,7 +6,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IExtendedEntityProperties;
 
-public class ExtendedPlayerProperties implements IExtendedEntityProperties {
+public class PlayerPetProperties implements IExtendedEntityProperties {
 
 	public static final String PET_PROPS = "PetProperties";
 	
@@ -14,7 +14,7 @@ public class ExtendedPlayerProperties implements IExtendedEntityProperties {
 	
 	private boolean petOut;
 	
-	public ExtendedPlayerProperties(EntityPlayer player) {
+	public PlayerPetProperties(EntityPlayer player) {
 		
 		this.player = player;
 		this.petOut = false;
@@ -22,12 +22,12 @@ public class ExtendedPlayerProperties implements IExtendedEntityProperties {
 	
 	public static final void register(EntityPlayer player) {
 		
-		player.registerExtendedProperties(ExtendedPlayerProperties.PET_PROPS, new ExtendedPlayerProperties(player));
+		player.registerExtendedProperties(PlayerPetProperties.PET_PROPS, new PlayerPetProperties(player));
 	}
 	
-	public static final ExtendedPlayerProperties get(EntityPlayer player) {
+	public static final PlayerPetProperties get(EntityPlayer player) {
 		
-		return (ExtendedPlayerProperties) player.getExtendedProperties(PET_PROPS);
+		return (PlayerPetProperties) player.getExtendedProperties(PET_PROPS);
 	}
 	
 	@Override

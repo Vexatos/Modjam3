@@ -2,6 +2,8 @@ package net.tds.magicpets;
 
 import java.util.Arrays;
 
+import net.minecraftforge.common.MinecraftForge;
+import net.tds.magicpets.event.EntityConstructionEvent;
 import net.tds.magicpets.handler.ConnectionHandler;
 import net.tds.magicpets.item.Items;
 import net.tds.magicpets.lib.Config;
@@ -34,6 +36,7 @@ public class ModJam {
 		getModInfo(event.getModMetadata());
 		new Config(event.getSuggestedConfigurationFile());
 		new Items();
+		MinecraftForge.EVENT_BUS.register(new EntityConstructionEvent());
 	}
 	
 	@EventHandler
