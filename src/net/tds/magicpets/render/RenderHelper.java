@@ -15,8 +15,13 @@ import org.lwjgl.opengl.GL12;
  */
 public class RenderHelper {
 
-    // Use ItemStack and Icon to support block icons
     public static void drawIconIn3D(ItemStack stack, Icon icon) {
+
+        drawIconIn3D(stack, icon, false);
+    }
+
+    // Use ItemStack and Icon to support block icons
+    public static void drawIconIn3D(ItemStack stack, Icon icon, boolean isEntity) {
 
         Minecraft mc = Minecraft.getMinecraft();
 
@@ -38,6 +43,11 @@ public class RenderHelper {
         GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
         GL11.glEnable(GL11.GL_TEXTURE_2D);
         GL11.glDisable(GL11.GL_BLEND);
+
+        if(isEntity) {
+
+            GL11.glTranslatef(-0.5f, -0.2f, 0f);
+        }
 
         ItemRenderer.renderItemIn2D(tessellator, icon.getMaxU(), icon.getMinV(), icon.getMinU(), icon.getMaxV(), icon.getIconWidth(), icon.getIconHeight(), 0.0625F);
 
