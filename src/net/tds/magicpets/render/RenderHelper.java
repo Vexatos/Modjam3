@@ -1,4 +1,4 @@
-package net.tds.magicpets.client.render;
+package net.tds.magicpets.render;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemRenderer;
