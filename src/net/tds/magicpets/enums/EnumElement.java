@@ -21,7 +21,7 @@ public enum EnumElement {
     public String name;
     public int colour;
 
-    public EnumElement getElement(String name) {
+    public static EnumElement getElement(String name) {
 
         for(EnumElement element : values()) {
 
@@ -34,8 +34,9 @@ public enum EnumElement {
         return null;
     }
 
-    public int getColour(EnumElement element) {
+    public static int getColour(String name) {
 
+        EnumElement element = getElement(name);
         if(element != null) {
 
             return element.colour;

@@ -1,16 +1,20 @@
 package net.tds.magicpets.item;
 
-import java.util.List;
-
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.tds.magicpets.ModJam;
+import net.tds.magicpets.enums.EnumElement;
 import net.tds.magicpets.lib.Format;
 
+import java.util.List;
+
 public class ItemSpawningCrystal extends ItemModjamBase {
+
+    public EnumElement element;
 	
 	public ItemSpawningCrystal(int id) {
 		
@@ -20,8 +24,17 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 		this.setMaxStackSize(1);
 		this.setUnlocalizedName("spawnCrystal");
 	}
-	
-	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
+
+    @Override
+    public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5) {
+
+        if(getElement() == null) {
+
+            setElement(EnumElement.FIRE);
+        }
+    }
+
+    public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
 		
 		if (!stack.hasTagCompound()) {
 		
@@ -31,7 +44,7 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 		if (!stack.getTagCompound().hasKey("Owner")) {
 			
 			setOwner(stack, player.username);
-			setType(stack, "Fire");
+			setType(stack, element.name);
 			setName(stack, player.username + "'s Secret");
 			setLevel(stack, 1);
 			setExperience(stack, 0);
@@ -74,8 +87,14 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 	public static String getType(ItemStack stack) {
 		
 		if (stack.getItem() instanceof ItemSpawningCrystal) {
-			
-			return stack.getTagCompound().getString("Type");
+
+            String type = stack.getTagCompound().getString("Type");
+            EnumElement element = EnumElement.getElement(type);
+
+            if(element != null) {
+
+                return element.name;
+            }
 		}
 		
 		return "Failure";
@@ -164,4 +183,25 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 			stack.getTagCompound().setInteger("Experience", exp);
 		}
 	}
+
+    public EnumElement getElement() {
+
+        return element;
+    }
+
+    public void setElement(EnumElement element) {
+
+        this.element = element;
+    }
+
+    @Override
+    public int getColorFromItemStack(ItemStack par1ItemStack, int par2) {
+
+        if(getElement() != null) {
+
+            return getElement().colour;
+        }
+
+        return super.getColorFromItemStack(par1ItemStack, par2);
+    }
 }
