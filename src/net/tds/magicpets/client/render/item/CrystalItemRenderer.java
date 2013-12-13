@@ -1,7 +1,8 @@
-package net.tds.magicpets.render;
+package net.tds.magicpets.client.render.item;
 
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.IItemRenderer;
+import net.tds.magicpets.client.render.RenderHelper;
 
 
 /**
