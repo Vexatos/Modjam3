@@ -9,12 +9,14 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.EntityRegistry;
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraftforge.common.MinecraftForge;
 import net.tds.magicpets.entity.EntityManager;
 import net.tds.magicpets.entity.pet.EntityBabyEatrhPet;
 import net.tds.magicpets.entity.pet.EntityBabyFirePet;
 import net.tds.magicpets.event.EntityConstructionEvent;
 import net.tds.magicpets.handler.ConnectionHandler;
+import net.tds.magicpets.handler.PlayerTracker;
 import net.tds.magicpets.item.Items;
 import net.tds.magicpets.lib.Config;
 import net.tds.magicpets.lib.Reference;
@@ -53,6 +55,7 @@ public class ModJam {
 		new Items();
 		new EntityManager(this);
 		MinecraftForge.EVENT_BUS.register(new EntityConstructionEvent());	
+		GameRegistry.registerPlayerTracker(new PlayerTracker());
 		proxy.registerRenders();
 	}
 	

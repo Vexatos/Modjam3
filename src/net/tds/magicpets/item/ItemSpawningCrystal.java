@@ -63,6 +63,29 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 		
 		else {
 			
+			if (PlayerPetProperties.get(player).isPetOut()) {
+				
+				PlayerPetProperties.get(player).setPetOut(false);
+				this.currentPet.isDead = true;
+			}
+			
+			else {
+				
+				EntityBabyFirePet entity = new EntityBabyFirePet(world);
+				entity.setOwner(getOwner(stack));
+				entity.setName(getName(stack));
+				entity.setLevel(getLevel(stack));
+				entity.setExperience(getExperience(stack));
+				entity.setLocationAndAngles(player.posX, player.posY, player.posZ, 0, 0);
+				entity.setCustomNameTag(getName(stack) + " LV: " + getLevel(stack));
+				
+				if (!world.isRemote){
+					
+					world.spawnEntityInWorld(entity);
+					this.currentPet = entity;
+					PlayerPetProperties.get(player).setPetOut(true);
+				}	
+			}	
 			
 		}
 		
@@ -204,6 +227,11 @@ public class ItemSpawningCrystal extends ItemModjamBase {
     public void setElement(EnumElement element) {
 
         this.element = element;
+    }
+    
+    public EntityMagicalPet getInstanceOfPet() {
+    	
+		return currentPet;
     }
     
     public void euthanizePet() {
