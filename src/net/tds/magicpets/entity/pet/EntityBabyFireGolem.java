@@ -8,5 +8,6 @@ public class EntityBabyFireGolem extends EntityMagicalPet {
 		
 		super(world);
 		this.noClip = false;
+		this.setSize(1.0f, 1.0f);
 	}
 }
