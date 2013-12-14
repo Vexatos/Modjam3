@@ -3,8 +3,12 @@ package net.tds.magicpets.entity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityEggInfo;
 import net.minecraft.entity.EntityList;
+import net.tds.magicpets.entity.boss.EntityFireBoss;
+import net.tds.magicpets.entity.pet.EntityBabyAirPet;
 import net.tds.magicpets.entity.pet.EntityBabyEatrhPet;
 import net.tds.magicpets.entity.pet.EntityBabyFirePet;
+import net.tds.magicpets.entity.pet.EntityBabyLightPet;
+import net.tds.magicpets.entity.pet.EntityBabyUndeadPet;
 import net.tds.magicpets.entity.pet.EntityBabyWaterPet;
 import cpw.mods.fml.common.registry.EntityRegistry;
 
@@ -15,16 +19,17 @@ public class EntityManager {
 	public EntityManager(Object mod) {
 		
 		this.mod = mod;
-		
+
 		//pets
-		registerEntity(EntityBabyFirePet.class, "baby.fireGolem", 1, 0xF03330);
-		registerEntity(EntityBabyEatrhPet.class, "baby.earthTurtle", 2, 0x298A17);
-		registerEntity(EntityBabyWaterPet.class, "baby.waterfish", 3, 0x2EAADB);
-		//4
-		//5
-		//6
+		registerEntity(EntityBabyAirPet.class, "baby.airPet", 0, 0x66CCFF);
+		registerEntity(EntityBabyEatrhPet.class, "baby.earthPet", 1, 0x336600);
+		registerEntity(EntityBabyFirePet.class, "baby.firePet", 2, 0x680000);
+		registerEntity(EntityBabyLightPet.class, "baby.lightPet", 3, 0xFFFF33);
+		registerEntity(EntityBabyUndeadPet.class, "baby.undeadPet", 4, 0x606060);
+		registerEntity(EntityBabyWaterPet.class, "baby.waterPet", 5, 0x0066FF);
 		
 		//elementals
+		registerEntity(EntityFireBoss.class, "boss.firePet", 52, 0x680000);
 	}
 	
 	public void registerEntity(Class<? extends Entity> entity, String name, int id, int color) {
