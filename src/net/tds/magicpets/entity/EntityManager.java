@@ -21,21 +21,30 @@ public class EntityManager {
 		this.mod = mod;
 
 		//pets
-		registerEntity(EntityBabyAirPet.class, "baby.airPet", 0, 0x66CCFF);
-		registerEntity(EntityBabyEatrhPet.class, "baby.earthPet", 1, 0x336600);
-		registerEntity(EntityBabyFirePet.class, "baby.firePet", 2, 0x680000);
-		registerEntity(EntityBabyLightPet.class, "baby.lightPet", 3, 0xFFFF33);
-		registerEntity(EntityBabyUndeadPet.class, "baby.undeadPet", 4, 0x606060);
-		registerEntity(EntityBabyWaterPet.class, "baby.waterPet", 5, 0x0066FF);
+		registerEntity(EntityBabyAirPet.class, "baby.airPet", 300, 0x66CCFF, false);
+		registerEntity(EntityBabyEatrhPet.class, "baby.earthPet", 301, 0x336600, false);
+		registerEntity(EntityBabyFirePet.class, "baby.firePet", 302, 0x680000, false);
+		registerEntity(EntityBabyLightPet.class, "baby.lightPet", 303, 0xFFFF33, false);
+		registerEntity(EntityBabyUndeadPet.class, "baby.undeadPet", 304, 0x606060, false);
+		registerEntity(EntityBabyWaterPet.class, "baby.waterPet", 305, 0x0066FF, false);
 		
 		//elementals
-		registerEntity(EntityFireBoss.class, "boss.firePet", 52, 0x680000);
+		registerEntity(EntityFireBoss.class, "boss.firePet", 352, 0x680000, true);
 	}
 	
-	public void registerEntity(Class<? extends Entity> entity, String name, int id, int color) {
+	public void registerEntity(Class<? extends Entity> entity, String name, int id, int color, boolean boss) {
 		
 		EntityRegistry.registerModEntity(entity, name, id, this.mod, 30, 5, true);
 		EntityList.IDtoClassMapping.put(id, entity);
-		EntityList.entityEggs.put(id, new EntityEggInfo(id, 0x947216, color));
+		
+		if(boss) {
+			
+			EntityList.entityEggs.put(id, new EntityEggInfo(id, 0xCBD0D1, color));
+		}
+		
+		else {
+			
+			EntityList.entityEggs.put(id, new EntityEggInfo(id, 0x947216, color));
+		}
 	}
 }
