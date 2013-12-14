@@ -23,11 +23,11 @@ public class RenderBabyFireGolem extends RenderLiving {
 	
 	public void renderGolem(EntityBabyFireGolem golem, double par2, double par3, double par4, float par5, float par6) {
 		
-		super.doRenderLiving(golem, par2, par4, par5, par6, par6);
+		super.doRenderLiving(golem, par2, 4, par5, par5, par6);
 	}
 	
 	public void doRender(Entity entity, double par2, double par3, double par4, float par5, float par6) {
 		
-		super.doRender((EntityBabyFireGolem) entity, par2, par3, par4, par5, par6);
+		this.renderGolem((EntityBabyFireGolem) entity, par2, par3, par4, par5, par6);
 	}
 }
