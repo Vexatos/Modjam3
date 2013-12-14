@@ -14,6 +14,11 @@ import net.minecraft.world.World;
 
 public class EntityMagicalPet extends EntityTameable {
 	
+	public static int dataOwner = 25;
+	public static int dataName = 26;
+	public static int dataLevel = 27;
+	public static int dataExperience = 28;
+	
 	public EntityMagicalPet(World world) {
 		
 		super(world);
@@ -39,10 +44,10 @@ public class EntityMagicalPet extends EntityTameable {
 	protected void entityInit() {
 		
 		super.entityInit();
-		this.dataWatcher.addObject(22, "");
-		this.dataWatcher.addObject(23, "");
-		this.dataWatcher.addObject(24, 0);
-		this.dataWatcher.addObject(25, 0);
+		this.dataWatcher.addObject(dataOwner, "");
+		this.dataWatcher.addObject(dataName, "");
+		this.dataWatcher.addObject(dataLevel, 0);
+		this.dataWatcher.addObject(dataExperience, 0);
 	}
 	
 	public void writeEntityToNBT(NBTTagCompound compound) {
@@ -72,42 +77,42 @@ public class EntityMagicalPet extends EntityTameable {
 	
 	public void setOwner(String owner) {
 		
-		this.dataWatcher.updateObject(22, owner);
+		this.dataWatcher.updateObject(dataOwner, owner);
 	}
 	
 	public void setName(String name) {
 		
-		this.dataWatcher.updateObject(23, name);
+		this.dataWatcher.updateObject(dataName, name);
 	}
 	
 	public void setLevel(int level) {
 		
-		this.dataWatcher.updateObject(24, level);
+		this.dataWatcher.updateObject(dataLevel, level);
 	}
 	
 	public void setExperience(int experience) {
 		
-		this.dataWatcher.updateObject(25, experience);
+		this.dataWatcher.updateObject(dataExperience, experience);
 	}
 	
 	public String getPetOwner() {
 		
-		return this.dataWatcher.getWatchableObjectString(22);
+		return this.dataWatcher.getWatchableObjectString(dataOwner);
 	}
 	
 	public String getName() {
 		
-		return this.dataWatcher.getWatchableObjectString(23);
+		return this.dataWatcher.getWatchableObjectString(dataName);
 	}
 	
 	public int getLevel() {
 		
-		return this.dataWatcher.getWatchableObjectInt(24);
+		return this.dataWatcher.getWatchableObjectInt(dataLevel);
 	}
 	
 	public int getExperience() {
 		
-		return this.dataWatcher.getWatchableObjectInt(25);
+		return this.dataWatcher.getWatchableObjectInt(dataExperience);
 	}
 
 	@Override
