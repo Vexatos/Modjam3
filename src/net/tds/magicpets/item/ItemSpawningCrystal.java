@@ -10,6 +10,7 @@ import net.tds.magicpets.ModJam;
 import net.tds.magicpets.data.PlayerPetProperties;
 import net.tds.magicpets.entity.pet.EntityBabyEarthTurtle;
 import net.tds.magicpets.entity.pet.EntityBabyFireGolem;
+import net.tds.magicpets.entity.pet.EntityMagicalPet;
 import net.tds.magicpets.enums.EnumElement;
 import net.tds.magicpets.lib.Format;
 
@@ -18,6 +19,8 @@ import java.util.List;
 public class ItemSpawningCrystal extends ItemModjamBase {
 
     public EnumElement element;
+    
+    protected EntityMagicalPet currentPet;
 	
 	public ItemSpawningCrystal(int id) {
 		
@@ -62,6 +65,8 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 			
 			if (PlayerPetProperties.get(player).isPetOut()) {
 				
+				PlayerPetProperties.get(player).setPetOut(false);
+				this.currentPet.isDead = true;
 			}
 			
 			else {
@@ -77,6 +82,8 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 				if (!world.isRemote){
 					
 					world.spawnEntityInWorld(entity);
+					this.currentPet = entity;
+					PlayerPetProperties.get(player).setPetOut(true);
 				}	
 			}	
 		}
