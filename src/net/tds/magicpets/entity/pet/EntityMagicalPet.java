@@ -29,6 +29,15 @@ public class EntityMagicalPet extends EntityTameable {
 		this.setTamed(true);
 	}
 	
+	protected void entityInit() {
+		
+		super.entityInit();
+		this.dataWatcher.addObject(22, "");
+		this.dataWatcher.addObject(23, "");
+		this.dataWatcher.addObject(24, 0);
+		this.dataWatcher.addObject(25, 0);
+	}
+	
 	public void writeEntityToNBT(NBTTagCompound compound) {
 		
 		super.writeEntityToNBT(compound);
