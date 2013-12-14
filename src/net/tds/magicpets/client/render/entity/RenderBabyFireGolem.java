@@ -6,6 +6,7 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
+import net.tds.magicpets.ModJam;
 import net.tds.magicpets.client.model.ModelBabyFireGolem;
 import net.tds.magicpets.entity.pet.EntityBabyFireGolem;
 
@@ -14,6 +15,8 @@ public class RenderBabyFireGolem extends RenderLiving {
 	private static final ResourceLocation texture = new ResourceLocation("magicpets", "textures/entity/fireElement.png");
 	
 	private final ModelBabyFireGolem modelGolem;
+	
+	private double height = 0.0d;
 	
 	public RenderBabyFireGolem(ModelBase par1ModelBase, float par2) {
 		
@@ -29,8 +32,25 @@ public class RenderBabyFireGolem extends RenderLiving {
 	
 	public void renderGolem(EntityBabyFireGolem golem, double par2, double par3, double par4, float par5, float par6) {
 		
+		if(height != 0.4d){
+			
+			height = height + 0.01d;
+		}
+		
+		else {
+			
+			if(height <= 0.4d) {
+			
+				height = height - 0.01d;
+			}
+		}
+		
+		if (height >= 0.4) {
+			height = height - 0.01d;
+		}
 
-		super.doRenderLiving(golem, par2, par3 + 0.3, par4, par5, par6);
+		System.out.println(height);
+		super.doRenderLiving(golem, par2, par3 + height, par4, par5, par6);
 	}
 	
 	public void doRender(Entity entity, double par2, double par3, double par4, float par5, float par6) {
