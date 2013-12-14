@@ -227,4 +227,9 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 
         this.element = element;
     }
+    
+    public void euthanizePet() {
+    	
+    	this.currentPet.setDead();
+    }
 }

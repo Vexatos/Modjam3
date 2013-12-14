@@ -50,6 +50,16 @@ public class EntityMagicalPet extends EntityTameable {
 		this.dataWatcher.addObject(dataExperience, 0);
 	}
 	
+	public void onLivingUpdate() {
+
+		if (!this.worldObj.playerEntities.contains(getPetOwner())) {
+			
+			this.setDead();
+		}
+		
+		super.onLivingUpdate();
+	}
+	
 	public void writeEntityToNBT(NBTTagCompound compound) {
 		
 		super.writeEntityToNBT(compound);
