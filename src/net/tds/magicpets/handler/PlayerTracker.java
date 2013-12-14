@@ -1,8 +1,11 @@
 package net.tds.magicpets.handler;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.tds.magicpets.data.PlayerPetProperties;
+import net.tds.magicpets.entity.pet.EntityMagicalPet;
 import net.tds.magicpets.item.ItemSpawningCrystal;
 import net.tds.magicpets.item.Items;
 import cpw.mods.fml.common.IPlayerTracker;
@@ -32,7 +35,7 @@ public class PlayerTracker implements IPlayerTracker {
 	public void onPlayerRespawn(EntityPlayer player) {
 
 	}
-	
+
 	public void getCrystalAndDespawn(EntityPlayer player) {
 		
 		for(int i = 0; i < player.inventory.mainInventory.length; i++) {
@@ -43,8 +46,9 @@ public class PlayerTracker implements IPlayerTracker {
 				
 				if (crystal.getInstanceOfPet() != null) {
 
-					crystal.getInstanceOfPet().setLocationAndAngles(0, 0, 0, 0, 0);
-					crystal.getInstanceOfPet().attackEntityFrom(DamageSource.magic, 9999);
+					EntityMagicalPet pet = crystal.getInstanceOfPet();
+					pet.addPotionEffect(new PotionEffect(Potion.harm.id, 100, 100, false));
+					pet.setDead();
 					PlayerPetProperties.get(player).setPetOut(false);
 				}
 			}
