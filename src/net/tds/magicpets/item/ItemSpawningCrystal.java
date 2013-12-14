@@ -36,7 +36,7 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 
         if(getElement() == null) {
 
-            setElement(EnumElement.FIRE);
+            setElement(EnumElement.AIR);
         }
     }
 
@@ -63,29 +63,7 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 		
 		else {
 			
-			if (PlayerPetProperties.get(player).isPetOut()) {
-				
-				PlayerPetProperties.get(player).setPetOut(false);
-				this.currentPet.isDead = true;
-			}
 			
-			else {
-				
-				EntityBabyFireGolem entity = new EntityBabyFireGolem(world);
-				entity.setOwner(getOwner(stack));
-				entity.setName(getName(stack));
-				entity.setLevel(getLevel(stack));
-				entity.setExperience(getExperience(stack));
-				entity.setLocationAndAngles(player.posX, player.posY, player.posZ, 0, 0);
-				entity.setCustomNameTag(getName(stack) + " LV: " + getLevel(stack));
-				
-				if (!world.isRemote){
-					
-					world.spawnEntityInWorld(entity);
-					this.currentPet = entity;
-					PlayerPetProperties.get(player).setPetOut(true);
-				}	
-			}	
 		}
 		
 		return stack;	

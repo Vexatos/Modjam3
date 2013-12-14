@@ -8,6 +8,6 @@ public class EntityBabyWaterFish extends EntityMagicalPet{
 		
 		super(world);
 		this.setSize(1.0f, 2.0f);
-		this.noClip = true;
+		this.noClip = false;
 	}
 }
