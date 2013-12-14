@@ -36,7 +36,7 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 
         if(getElement() == null) {
 
-            setElement(EnumElement.AIR);
+            setElement(EnumElement.WATER);
         }
     }
 
