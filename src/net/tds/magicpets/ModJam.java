@@ -1,16 +1,5 @@
 package net.tds.magicpets;
 
-import java.util.Arrays;
-
-import net.minecraftforge.common.MinecraftForge;
-import net.tds.magicpets.entity.pet.EntityBabyEarthTurtle;
-import net.tds.magicpets.entity.pet.EntityBabyFireGolem;
-import net.tds.magicpets.event.EntityConstructionEvent;
-import net.tds.magicpets.handler.ConnectionHandler;
-import net.tds.magicpets.item.Items;
-import net.tds.magicpets.lib.Config;
-import net.tds.magicpets.lib.Reference;
-import net.tds.magicpets.proxy.CommonProxy;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -20,6 +9,18 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.EntityRegistry;
+import net.minecraftforge.common.MinecraftForge;
+import net.tds.magicpets.entity.pet.EntityBabyEarthTurtle;
+import net.tds.magicpets.entity.pet.EntityBabyFireGolem;
+import net.tds.magicpets.event.EntityConstructionEvent;
+import net.tds.magicpets.handler.ConnectionHandler;
+import net.tds.magicpets.item.Items;
+import net.tds.magicpets.lib.Config;
+import net.tds.magicpets.lib.Reference;
+import net.tds.magicpets.packet.PacketHandler;
+import net.tds.magicpets.proxy.CommonProxy;
+
+import java.util.Arrays;
 
 //99% of these commits are for dev discussion and notification.
 
@@ -34,7 +35,7 @@ import cpw.mods.fml.common.registry.EntityRegistry;
 //We need to work on the data sync. More info on skype.
 
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION)
-@NetworkMod(clientSideRequired = true, serverSideRequired = true)
+@NetworkMod(clientSideRequired = true, serverSideRequired = true, channels = "maigcpets", packetHandler = PacketHandler.class)
 public class ModJam {
 	
 	@SidedProxy(serverSide = Reference.PROXY_SERVER, clientSide = Reference.PROXY_CLIENT)
