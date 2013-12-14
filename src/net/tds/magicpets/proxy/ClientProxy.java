@@ -32,8 +32,8 @@ public class ClientProxy extends CommonProxy {
 	
 	public void registerRenders() {
 		
-		RenderingRegistry.registerEntityRenderingHandler(EntityBabyFireGolem.class, new RenderBabyFireGolem(new ModelBabyFireGolem(), 1.0F));
-		RenderingRegistry.registerEntityRenderingHandler(EntityBabyEarthTurtle.class, new RenderBabyEarthTurtle(new ModelBabyEarthTurtle(), 1.0F));
+		RenderingRegistry.registerEntityRenderingHandler(EntityBabyFireGolem.class, new RenderBabyFireGolem(new ModelBabyFireGolem(), 1.4F));
+		RenderingRegistry.registerEntityRenderingHandler(EntityBabyEarthTurtle.class, new RenderBabyEarthTurtle(new ModelBabyEarthTurtle(), 1.4F));
 		
 		MinecraftForgeClient.registerItemRenderer(Items.spawnCrystal.itemID, new CrystalItemRenderer());
 
