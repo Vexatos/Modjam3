@@ -17,6 +17,6 @@ public class Items {
     private void init() {
 
         spawnCrystal = new ItemSpawningCrystal(Config.crystalID).setTextureName("quartz");
-        essence = new ItemEssence(Config.essenceID);
+        essence = new ItemEssence(Config.essenceID).setTextureName("magicpets:essence");
     }
 }
