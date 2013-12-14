@@ -20,6 +20,7 @@ public class ConnectionHandler implements IConnectionHandler {
 		//mod before the jam ends. 
 		
 		if (Config.event) {
+			
 			String message1 = "<EVENT>: There is currently an event for this mod. Join either #Modjam or #ThisDarkShadow on ";
 			String message2 = " esper.net and send a special command to the user named Umbreon you will be added to the list of";
 			String message3 = " users who will get a special cape. This event is only around for the duration of modjam!";

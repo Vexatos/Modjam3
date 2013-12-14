@@ -9,6 +9,7 @@ import net.minecraft.entity.ai.EntityAIOwnerHurtByTarget;
 import net.minecraft.entity.ai.EntityAIOwnerHurtTarget;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.passive.EntityTameable;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
@@ -51,11 +52,6 @@ public class EntityMagicalPet extends EntityTameable {
 	}
 	
 	public void onLivingUpdate() {
-		
-		if (!this.worldObj.playerEntities.toString().contains(getPetOwner())) {
-			
-			this.setDead();
-		}
 		
 		super.onLivingUpdate();
 	}

@@ -23,6 +23,11 @@ import cpw.mods.fml.common.registry.EntityRegistry;
 
 //99% of these commits are for dev discussion and notification.
 
+//I edited the image thing. Crashes everywhere if a null crystal was shown.
+
+//We need a way for the mob do instantly die when its owner goes offline.
+
+//We need to........
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION)
 @NetworkMod(clientSideRequired = true, serverSideRequired = true)
 public class ModJam {
