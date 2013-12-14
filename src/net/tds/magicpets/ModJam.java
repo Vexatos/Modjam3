@@ -10,6 +10,7 @@ import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import net.minecraftforge.common.MinecraftForge;
+import net.tds.magicpets.entity.EntityManager;
 import net.tds.magicpets.entity.pet.EntityBabyEarthTurtle;
 import net.tds.magicpets.entity.pet.EntityBabyFireGolem;
 import net.tds.magicpets.event.EntityConstructionEvent;
@@ -50,10 +51,8 @@ public class ModJam {
 		getModInfo(event.getModMetadata());
 		new Config(event.getSuggestedConfigurationFile());
 		new Items();
-		MinecraftForge.EVENT_BUS.register(new EntityConstructionEvent());
-		
-		EntityRegistry.registerModEntity(EntityBabyFireGolem.class, "golem", 4, this, 30, 5, true);
-		EntityRegistry.registerModEntity(EntityBabyEarthTurtle.class, "turtle", 5, this, 30, 5, true);
+		new EntityManager(this);
+		MinecraftForge.EVENT_BUS.register(new EntityConstructionEvent());	
 		proxy.registerRenders();
 	}
 	
