@@ -2,7 +2,6 @@ package net.tds.magicpets.item;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -59,11 +58,12 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 		
 		else {
 			
-			EntityZombie entity = new EntityZombie(world);
-
-			entity.posX = player.posX;
-			entity.posY = player.posY;
-			entity.posZ = player.posZ;
+			EntityBabyFireGolem entity = new EntityBabyFireGolem(world);
+			entity.setOwner(getOwner(stack));
+			entity.setName(getName(stack));
+			entity.setLevel(getLevel(stack));
+			entity.setExperience(getExperience(stack));
+			entity.setLocationAndAngles(player.posX, player.posY, player.posZ, 0, 0);
 			world.spawnEntityInWorld(entity);
 		}
 		
