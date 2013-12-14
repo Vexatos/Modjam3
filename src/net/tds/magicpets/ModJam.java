@@ -27,7 +27,12 @@ import cpw.mods.fml.common.registry.EntityRegistry;
 
 //We need a way for the mob do instantly die when its owner goes offline.
 
-//We need to........
+//Generate particles method in the fire pet causes server crash.
+
+//Fire Pet generating a 50% to many particles.
+
+//We need to work on the data sync. More info on skype.
+
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION)
 @NetworkMod(clientSideRequired = true, serverSideRequired = true)
 public class ModJam {

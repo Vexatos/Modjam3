@@ -16,9 +16,6 @@ import net.tds.magicpets.entity.pet.EntityBabyFireGolem;
 import net.tds.magicpets.event.IconEventHandler;
 import net.tds.magicpets.item.Items;
 
-;
-;
-;
 
 public class ClientProxy extends CommonProxy {
 
