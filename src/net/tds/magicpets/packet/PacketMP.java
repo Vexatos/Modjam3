@@ -10,5 +10,10 @@ import net.minecraft.network.packet.Packet250CustomPayload;
  */
 public abstract class PacketMP extends Packet250CustomPayload {
 
+    public PacketMP(byte[] data) {
+
+        super("magicpets", data);
+    }
+
     public abstract void execute(INetworkManager manager, Player player);
 }
