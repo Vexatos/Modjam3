@@ -7,6 +7,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.tds.magicpets.ModJam;
+import net.tds.magicpets.data.PlayerPetProperties;
 import net.tds.magicpets.entity.pet.EntityBabyEarthTurtle;
 import net.tds.magicpets.entity.pet.EntityBabyFireGolem;
 import net.tds.magicpets.enums.EnumElement;
@@ -59,18 +60,25 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 		
 		else {
 			
-			EntityBabyFireGolem entity = new EntityBabyFireGolem(world);
-			entity.setOwner(getOwner(stack));
-			entity.setName(getName(stack));
-			entity.setLevel(getLevel(stack));
-			entity.setExperience(getExperience(stack));
-			entity.setLocationAndAngles(player.posX, player.posY, player.posZ, 0, 0);
-			entity.setCustomNameTag(getName(stack) + " LV: " + getLevel(stack));
-			
-			if (!world.isRemote){
+			if (PlayerPetProperties.get(player).isPetOut()) {
 				
-				world.spawnEntityInWorld(entity);
-			}		
+			}
+			
+			else {
+				
+				EntityBabyFireGolem entity = new EntityBabyFireGolem(world);
+				entity.setOwner(getOwner(stack));
+				entity.setName(getName(stack));
+				entity.setLevel(getLevel(stack));
+				entity.setExperience(getExperience(stack));
+				entity.setLocationAndAngles(player.posX, player.posY, player.posZ, 0, 0);
+				entity.setCustomNameTag(getName(stack) + " LV: " + getLevel(stack));
+				
+				if (!world.isRemote){
+					
+					world.spawnEntityInWorld(entity);
+				}	
+			}	
 		}
 		
 		return stack;	

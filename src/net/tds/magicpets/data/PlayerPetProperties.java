@@ -5,6 +5,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IExtendedEntityProperties;
+import net.tds.magicpets.entity.pet.EntityMagicalPet;
 
 public class PlayerPetProperties implements IExtendedEntityProperties {
 
@@ -17,7 +18,7 @@ public class PlayerPetProperties implements IExtendedEntityProperties {
 	public PlayerPetProperties(EntityPlayer player) {
 		
 		this.player = player;
-		this.petOut = false;
+		this.petOut = false;	
 	}
 	
 	public static final void register(EntityPlayer player) {
