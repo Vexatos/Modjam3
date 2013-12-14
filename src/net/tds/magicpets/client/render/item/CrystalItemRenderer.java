@@ -29,38 +29,38 @@ public class CrystalItemRenderer implements IItemRenderer {
 
         Icon icon = IconEventHandler.getCrystalIconFromItem(item);
 
-        switch(type) {
+        if(icon != null) {
 
-            case EQUIPPED: {
+            switch(type) {
 
-                RenderHelper.drawIconIn3D(item, icon);
-                break;
-            }
+                case EQUIPPED: {
 
-            case EQUIPPED_FIRST_PERSON: {
+                    RenderHelper.drawIconIn3D(item, icon);
+                    break;
+                }
 
-                RenderHelper.drawIconIn3D(item, icon);
-                break;
-            }
+                case EQUIPPED_FIRST_PERSON: {
 
-            case INVENTORY: {
-            	
-            	if (icon != null) {
-            		
-            		RenderHelper.renderIconInInventory(icon, 1f, 1f, 1f);
-            	}
-                break;
-            }
+                    RenderHelper.drawIconIn3D(item, icon);
+                    break;
+                }
 
-            case ENTITY: {
+                case INVENTORY: {
 
-                RenderHelper.drawIconIn3D(item, icon, true);
-                break;
-            }
+                    RenderHelper.renderIconInInventory(icon, 1f, 1f, 1f);
+                    break;
+                }
 
-            default: {
+                case ENTITY: {
 
-                break;
+                    RenderHelper.drawIconIn3D(item, icon, true);
+                    break;
+                }
+
+                default: {
+
+                    break;
+                }
             }
         }
     }
