@@ -7,5 +7,6 @@ public class EntityBabyFireGolem extends EntityMagicalPet {
 	public EntityBabyFireGolem(World world) {
 		
 		super(world);
+		this.noClip = false;
 	}
 }

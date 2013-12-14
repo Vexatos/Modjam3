@@ -3,6 +3,7 @@ package net.tds.magicpets;
 import java.util.Arrays;
 
 import net.minecraftforge.common.MinecraftForge;
+import net.tds.magicpets.entity.pet.EntityBabyEarthTurtle;
 import net.tds.magicpets.entity.pet.EntityBabyFireGolem;
 import net.tds.magicpets.event.EntityConstructionEvent;
 import net.tds.magicpets.handler.ConnectionHandler;
@@ -39,7 +40,9 @@ public class ModJam {
 		new Config(event.getSuggestedConfigurationFile());
 		new Items();
 		MinecraftForge.EVENT_BUS.register(new EntityConstructionEvent());
+		
 		EntityRegistry.registerModEntity(EntityBabyFireGolem.class, "golem", 4, this, 30, 5, true);
+		EntityRegistry.registerModEntity(EntityBabyEarthTurtle.class, "turtle", 5, this, 30, 5, true);
 		proxy.registerRenders();
 	}
 	
