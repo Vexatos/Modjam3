@@ -28,6 +28,7 @@ public class EntityMagicalPet extends EntityTameable {
 		this.setSize(1.0F, 1.0F);
 		this.noClip = true;
 		this.experienceValue = 0;
+		this.ignoreFrustumCheck = true;
 		this.getNavigator().setCanSwim(true);
 		this.tasks.addTask(1, new EntityAISwimming(this));
 		this.tasks.addTask(2, this.aiSit);
