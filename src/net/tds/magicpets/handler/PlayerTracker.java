@@ -1,6 +1,7 @@
 package net.tds.magicpets.handler;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.DamageSource;
 import net.tds.magicpets.data.PlayerPetProperties;
 import net.tds.magicpets.item.ItemSpawningCrystal;
 import net.tds.magicpets.item.Items;
@@ -36,15 +37,15 @@ public class PlayerTracker implements IPlayerTracker {
 		
 		for(int i = 0; i < player.inventory.mainInventory.length; i++) {
 			
-			if (player.inventory.mainInventory[i].getItem() instanceof ItemSpawningCrystal) {
+			if (player.inventory.mainInventory[i] != null && player.inventory.mainInventory[i].getItem()  instanceof ItemSpawningCrystal) {
 				
 				ItemSpawningCrystal crystal = (ItemSpawningCrystal) player.inventory.mainInventory[i].getItem();
 				
 				if (crystal.getInstanceOfPet() != null) {
 
-					crystal.getInstanceOfPet().setDead();
+					crystal.getInstanceOfPet().setLocationAndAngles(0, 0, 0, 0, 0);
+					crystal.getInstanceOfPet().attackEntityFrom(DamageSource.magic, 9999);
 					PlayerPetProperties.get(player).setPetOut(false);
-					break;
 				}
 			}
 		}
