@@ -74,7 +74,7 @@ public class IconEventHandler {
 
                 default: {
 
-                    return null;
+                    return crystalIcons[0];
                 }
             }
         }

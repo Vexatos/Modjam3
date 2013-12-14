@@ -100,6 +100,11 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 	
 	public static String getType(ItemStack stack) {
 		
+		if (!stack.hasTagCompound()) {
+
+			stack.setTagCompound(new NBTTagCompound());
+		}
+		
 		if (stack.getItem() instanceof ItemSpawningCrystal) {
 
             String type = stack.getTagCompound().getString("Type");

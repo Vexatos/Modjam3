@@ -17,6 +17,8 @@ public class EntityMagicalPet extends EntityTameable {
 	public EntityMagicalPet(World world) {
 		
 		super(world);
+		this.setSize(1.0F, 1.0F);
+		this.noClip = true;
 		this.experienceValue = 0;
 		this.getNavigator().setCanSwim(true);
 		this.tasks.addTask(1, new EntityAISwimming(this));
@@ -28,6 +30,11 @@ public class EntityMagicalPet extends EntityTameable {
 		this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, false));
 		this.setTamed(true);
 	}
+	
+    public boolean isAIEnabled() {
+    	
+        return true;
+    }
 	
 	protected void entityInit() {
 		
@@ -55,6 +62,13 @@ public class EntityMagicalPet extends EntityTameable {
 		this.setLevel(compound.getInteger("Level"));
 		this.setExperience(compound.getInteger("Experience"));	
 	}
+	
+    public void onLivingUpdate() {
+    	
+        super.onLivingUpdate();
+        
+        System.out.println("I am Here " + this.posX + " " + this.posY + " " + this.posZ);
+    }
 	
 	public void setOwner(String owner) {
 		
