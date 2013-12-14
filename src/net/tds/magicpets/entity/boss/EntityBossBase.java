@@ -10,10 +10,6 @@ import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 
-
-/**
- * Author: ShadowChild.
- */
 public abstract class EntityBossBase extends EntityMob implements IBossDisplayData {
 
     public EntityBossBase(World par1World) {
@@ -50,7 +46,4 @@ public abstract class EntityBossBase extends EntityMob implements IBossDisplayDa
 
         BossStatus.setBossStatus(display, par1);
     }
-
-    public abstract EnumCreatureAttribute getCreatureAttribute();
-
 }
