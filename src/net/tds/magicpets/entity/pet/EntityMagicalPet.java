@@ -33,8 +33,8 @@ public class EntityMagicalPet extends EntityTameable {
 		this.tasks.addTask(1, new EntityAISwimming(this));
 		this.tasks.addTask(2, this.aiSit);
 		this.tasks.addTask(3, new EntityAIAttackOnCollide(this, 1.0D, true));
-		this.tasks.addTask(4, new EntityAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
-		this.tasks.addTask(5, new EntityAIWander(this, 1.0d));
+		this.tasks.addTask(4, new EntityAIFollowOwner(this, 0.5D, 10.0F, 2.0F));
+		this.tasks.addTask(5, new EntityAIWander(this, 0.5d));
 		this.tasks.addTask(6, new EntityAILookIdle(this));
 		this.targetTasks.addTask(1, new EntityAIOwnerHurtByTarget(this));
 		this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
