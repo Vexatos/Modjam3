@@ -51,8 +51,8 @@ public class EntityMagicalPet extends EntityTameable {
 	}
 	
 	public void onLivingUpdate() {
-
-		if (!this.worldObj.playerEntities.contains(getPetOwner())) {
+		
+		if (!this.worldObj.playerEntities.toString().contains(getPetOwner())) {
 			
 			this.setDead();
 		}
