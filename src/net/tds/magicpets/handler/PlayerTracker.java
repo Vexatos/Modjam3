@@ -18,6 +18,7 @@ public class PlayerTracker implements IPlayerTracker {
 		
 		if (player.inventory.hasItem(Items.spawnCrystal.itemID)) {
 			
+			getCrystalAndDespawn(player);
 		}
 	}
 
@@ -40,8 +41,8 @@ public class PlayerTracker implements IPlayerTracker {
 				ItemSpawningCrystal crystal = (ItemSpawningCrystal) player.inventory.mainInventory[i].getItem();
 				
 				if (crystal.getInstanceOfPet() != null) {
-					
-					crystal.euthanizePet();
+
+					crystal.getInstanceOfPet().setDead();
 					PlayerPetProperties.get(player).setPetOut(false);
 					break;
 				}

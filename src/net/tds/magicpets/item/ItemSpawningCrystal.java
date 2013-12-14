@@ -66,7 +66,7 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 			if (PlayerPetProperties.get(player).isPetOut()) {
 				
 				PlayerPetProperties.get(player).setPetOut(false);
-				this.currentPet.isDead = true;
+				this.currentPet.setDead();
 			}
 			
 			else {
