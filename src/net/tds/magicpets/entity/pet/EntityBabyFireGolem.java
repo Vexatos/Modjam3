@@ -16,15 +16,5 @@ public class EntityBabyFireGolem extends EntityMagicalPet {
 		this.setSize(1.0f, 1.0f);
 		this.noClip = false;
 		
-		this.experienceValue = 0;
-		this.getNavigator().setCanSwim(true);
-		this.tasks.addTask(1, new EntityAISwimming(this));
-		this.tasks.addTask(2, this.aiSit);
-		this.tasks.addTask(3, new EntityAIAttackOnCollide(this, 1.0D, true));
-		this.tasks.addTask(4, new EntityAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
-		this.targetTasks.addTask(1, new EntityAIOwnerHurtByTarget(this));
-		this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
-		this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, false));
-		this.setTamed(true);
 	}
 }
