@@ -7,6 +7,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.tds.magicpets.ModJam;
+import net.tds.magicpets.entity.pet.EntityBabyFireGolem;
 import net.tds.magicpets.enums.EnumElement;
 import net.tds.magicpets.lib.Format;
 
@@ -57,7 +58,15 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 		
 		else {
 			
-			
+			EntityBabyFireGolem entity = new EntityBabyFireGolem(world);
+			entity.setOwner(getOwner(stack));
+			entity.setName(getName(stack));
+			entity.setLevel(getLevel(stack));
+			entity.setExperience(getExperience(stack));
+			entity.posX = player.posX;
+			entity.posY = player.posY;
+			entity.posZ = player.posZ;
+			world.spawnEntityInWorld(entity);
 		}
 		
 		return stack;	
@@ -125,8 +134,6 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 		return 0;
 	}
 	
-	// For Darkhax:
-	// You should return -1 if it fails
 	public static int getExperience(ItemStack stack) {
 		
 		if (stack.getItem() instanceof ItemSpawningCrystal) {
@@ -134,11 +141,9 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 			return stack.getTagCompound().getInteger("Experience");
 		}
 		
-		return 9999999;
+		return -1;
 	}
-	
-	// For Darkhax:
-	// You should return -1 if it fails
+
 	public static int getMaxExperience(ItemStack stack) {
 		
 		if (stack.getItem() instanceof ItemSpawningCrystal) {
@@ -146,7 +151,7 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 			return getLevel(stack) * 250;
 		}
 		
-		return 9999999;
+		return -1;
 	}
 	
 	public static void setOwner(ItemStack stack, String owner) {
