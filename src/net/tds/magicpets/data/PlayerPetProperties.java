@@ -12,6 +12,7 @@ import net.tds.magicpets.packet.PacketSyncPet;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
+import java.io.IOException;
 
 
 public class PlayerPetProperties implements IExtendedEntityProperties {
@@ -80,9 +81,9 @@ public class PlayerPetProperties implements IExtendedEntityProperties {
             dos.writeBoolean(isPetOut()); // isPetOut
             PacketMP packet = new PacketSyncPet(bos.toByteArray());
             PacketDispatcher.sendPacketToPlayer(packet, (Player)player);
-        } catch(Exception e) {
+        } catch(IOException e) {
 
-            e.getStackTrace();
+            e.printStackTrace();
         }
     }
 }
