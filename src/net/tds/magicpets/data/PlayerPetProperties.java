@@ -1,11 +1,18 @@
 package net.tds.magicpets.data;
 
+import cpw.mods.fml.common.network.PacketDispatcher;
+import cpw.mods.fml.common.network.Player;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IExtendedEntityProperties;
-import net.tds.magicpets.entity.pet.EntityMagicalPet;
+import net.tds.magicpets.packet.PacketMP;
+import net.tds.magicpets.packet.PacketSyncPet;
+
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+
 
 public class PlayerPetProperties implements IExtendedEntityProperties {
 
@@ -56,10 +63,26 @@ public class PlayerPetProperties implements IExtendedEntityProperties {
 	public void setPetOut(boolean petOut) {
 		
 		this.petOut = petOut;
+        this.syncExtendedProperties();
 	}
 
 	public boolean isPetOut() {
 		
 		return this.petOut;
 	}
+
+    public void syncExtendedProperties() {
+
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        DataOutputStream dos = new DataOutputStream(bos);
+        try {
+
+            dos.writeBoolean(isPetOut()); // isPetOut
+            PacketMP packet = new PacketSyncPet(bos.toByteArray());
+            PacketDispatcher.sendPacketToPlayer(packet, (Player)player);
+        } catch(Exception e) {
+
+            e.getStackTrace();
+        }
+    }
 }
