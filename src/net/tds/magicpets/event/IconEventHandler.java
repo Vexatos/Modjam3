@@ -40,7 +40,9 @@ public class IconEventHandler {
             ItemSpawningCrystal crystal = (ItemSpawningCrystal)stack.getItem();
             EnumElement element = EnumElement.getElement(crystal.getType(stack));
 
-            switch(element) {
+            if (element != null) {
+            	
+            	switch(element) {
 
                 case FIRE: {
 
@@ -77,6 +79,7 @@ public class IconEventHandler {
                     return crystalIcons[0];
                 }
             }
+          }     
         }
         return null;
     }

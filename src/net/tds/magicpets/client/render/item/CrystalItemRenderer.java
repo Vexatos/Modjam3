@@ -44,8 +44,11 @@ public class CrystalItemRenderer implements IItemRenderer {
             }
 
             case INVENTORY: {
-
-                RenderHelper.renderIconInInventory(icon, 1f, 1f, 1f);
+            	
+            	if (icon != null) {
+            		
+            		RenderHelper.renderIconInInventory(icon, 1f, 1f, 1f);
+            	}
                 break;
             }
 
