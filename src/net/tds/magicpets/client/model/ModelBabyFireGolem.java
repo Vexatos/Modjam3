@@ -3,9 +3,12 @@ package net.tds.magicpets.client.model;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 
 public class ModelBabyFireGolem extends ModelBase {
 
+	public static float timeIdle;
+	
 	public static ModelRenderer F1;
 	public static ModelRenderer F2;
 	public static ModelRenderer F3;
@@ -441,6 +444,12 @@ public class ModelBabyFireGolem extends ModelBase {
 		model.rotateAngleX = x;
 		model.rotateAngleY = y;
 		model.rotateAngleZ = z;
+	}
+	
+	public void setLivingAnimations(EntityLivingBase par1EntityLivingBase, float par2, float par3, float par4) {
+		
+		timeIdle = par3;
+		super.setLivingAnimations(par1EntityLivingBase, par2, par3, par4);
 	}
 
 	public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity) {

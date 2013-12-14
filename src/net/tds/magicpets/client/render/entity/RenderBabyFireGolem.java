@@ -16,7 +16,6 @@ public class RenderBabyFireGolem extends RenderLiving {
 	
 	private final ModelBabyFireGolem modelGolem;
 	
-	private double height = 0.0d;
 	
 	public RenderBabyFireGolem(ModelBase par1ModelBase, float par2) {
 		
@@ -32,25 +31,7 @@ public class RenderBabyFireGolem extends RenderLiving {
 	
 	public void renderGolem(EntityBabyFireGolem golem, double par2, double par3, double par4, float par5, float par6) {
 		
-		if(height != 0.4d){
-			
-			height = height + 0.01d;
-		}
-		
-		else {
-			
-			if(height <= 0.4d) {
-			
-				height = height - 0.01d;
-			}
-		}
-		
-		if (height >= 0.4) {
-			height = height - 0.01d;
-		}
-
-		System.out.println(height);
-		super.doRenderLiving(golem, par2, par3 + height, par4, par5, par6);
+		super.doRenderLiving(golem, par2, par3 + modelGolem.timeIdle, par4, par5, par6);
 	}
 	
 	public void doRender(Entity entity, double par2, double par3, double par4, float par5, float par6) {
