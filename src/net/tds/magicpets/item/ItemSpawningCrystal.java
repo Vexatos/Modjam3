@@ -65,7 +65,11 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 			entity.setLevel(getLevel(stack));
 			entity.setExperience(getExperience(stack));
 			entity.setLocationAndAngles(player.posX, player.posY, player.posZ, 0, 0);
-			world.spawnEntityInWorld(entity);
+			
+			if (!world.isRemote){
+				world.spawnEntityInWorld(entity);
+			}
+			
 		}
 		
 		return stack;	
