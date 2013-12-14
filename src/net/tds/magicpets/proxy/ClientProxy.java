@@ -11,8 +11,8 @@ import net.tds.magicpets.client.model.ModelBabyFireGolem;
 import net.tds.magicpets.client.render.entity.RenderBabyEarthTurtle;
 import net.tds.magicpets.client.render.entity.RenderBabyFireGolem;
 import net.tds.magicpets.client.render.item.CrystalItemRenderer;
-import net.tds.magicpets.entity.pet.EntityBabyEarthTurtle;
-import net.tds.magicpets.entity.pet.EntityBabyFireGolem;
+import net.tds.magicpets.entity.pet.EntityBabyEatrhPet;
+import net.tds.magicpets.entity.pet.EntityBabyFirePet;
 import net.tds.magicpets.event.IconEventHandler;
 import net.tds.magicpets.item.Items;
 
@@ -29,8 +29,8 @@ public class ClientProxy extends CommonProxy {
 	
 	public void registerRenders() {
 		
-		RenderingRegistry.registerEntityRenderingHandler(EntityBabyFireGolem.class, new RenderBabyFireGolem(new ModelBabyFireGolem(), 0.3F));
-		RenderingRegistry.registerEntityRenderingHandler(EntityBabyEarthTurtle.class, new RenderBabyEarthTurtle(new ModelBabyEarthTurtle(), 1.4F));
+		RenderingRegistry.registerEntityRenderingHandler(EntityBabyFirePet.class, new RenderBabyFireGolem(new ModelBabyFireGolem(), 0.3F));
+		RenderingRegistry.registerEntityRenderingHandler(EntityBabyEatrhPet.class, new RenderBabyEarthTurtle(new ModelBabyEarthTurtle(), 1.4F));
 		
 		MinecraftForgeClient.registerItemRenderer(Items.spawnCrystal.itemID, new CrystalItemRenderer());
 

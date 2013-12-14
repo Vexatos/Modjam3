@@ -10,9 +10,9 @@ import net.minecraft.entity.ai.EntityAIOwnerHurtTarget;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.world.World;
 
-public class EntityBabyFireGolem extends EntityMagicalPet {
+public class EntityBabyFirePet extends EntityMagicalPet {
 
-	public EntityBabyFireGolem(World world) {
+	public EntityBabyFirePet(World world) {
 		
 		super(world);
 		this.setSize(1.0f, 1.0f);

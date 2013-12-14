@@ -8,7 +8,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.tds.magicpets.ModJam;
 import net.tds.magicpets.client.model.ModelBabyFireGolem;
-import net.tds.magicpets.entity.pet.EntityBabyFireGolem;
+import net.tds.magicpets.entity.pet.EntityBabyFirePet;
 
 public class RenderBabyFireGolem extends RenderLiving {
 
@@ -32,7 +32,7 @@ public class RenderBabyFireGolem extends RenderLiving {
 		return texture;
 	}
 	
-	public void renderGolem(EntityBabyFireGolem golem, double par2, double par3, double par4, float par5, float par6) {
+	public void renderGolem(EntityBabyFirePet golem, double par2, double par3, double par4, float par5, float par6) {
 		
 		if (goingUp) {
 			
@@ -68,6 +68,6 @@ public class RenderBabyFireGolem extends RenderLiving {
 	
 	public void doRender(Entity entity, double par2, double par3, double par4, float par5, float par6) {
 		
-		this.renderGolem((EntityBabyFireGolem) entity, par2, par3, par4, par5, par6);
+		this.renderGolem((EntityBabyFirePet) entity, par2, par3, par4, par5, par6);
 	}
 }

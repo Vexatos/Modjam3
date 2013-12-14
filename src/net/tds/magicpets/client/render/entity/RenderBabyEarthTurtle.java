@@ -4,7 +4,7 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
-import net.tds.magicpets.entity.pet.EntityBabyEarthTurtle;
+import net.tds.magicpets.entity.pet.EntityBabyEatrhPet;
 
 public class RenderBabyEarthTurtle extends RenderLiving {
 
@@ -21,13 +21,13 @@ public class RenderBabyEarthTurtle extends RenderLiving {
 		return texture;
 	}
 	
-	public void renderPet(EntityBabyEarthTurtle turtle, double par2, double par3, double par4, float par5, float par6) {
+	public void renderPet(EntityBabyEatrhPet turtle, double par2, double par3, double par4, float par5, float par6) {
 		
 		super.doRenderLiving(turtle, par2, par3, par4, par5, par6);
 	}
 	
 	public void doRender(Entity entity, double par2, double par3, double par4, float par5, float par6) {
 		
-		this.renderPet((EntityBabyEarthTurtle)entity, par2, par3, par4, par5, par6);
+		this.renderPet((EntityBabyEatrhPet)entity, par2, par3, par4, par5, par6);
 	}
 }

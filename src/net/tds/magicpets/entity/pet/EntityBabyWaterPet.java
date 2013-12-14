@@ -2,9 +2,9 @@ package net.tds.magicpets.entity.pet;
 
 import net.minecraft.world.World;
 
-public class EntityBabyWaterFish extends EntityMagicalPet{
+public class EntityBabyWaterPet extends EntityMagicalPet{
 
-	public EntityBabyWaterFish(World world) {
+	public EntityBabyWaterPet(World world) {
 		
 		super(world);
 		this.setSize(1.0f, 2.0f);

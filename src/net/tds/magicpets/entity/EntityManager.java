@@ -3,9 +3,9 @@ package net.tds.magicpets.entity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityEggInfo;
 import net.minecraft.entity.EntityList;
-import net.tds.magicpets.entity.pet.EntityBabyEarthTurtle;
-import net.tds.magicpets.entity.pet.EntityBabyFireGolem;
-import net.tds.magicpets.entity.pet.EntityBabyWaterFish;
+import net.tds.magicpets.entity.pet.EntityBabyEatrhPet;
+import net.tds.magicpets.entity.pet.EntityBabyFirePet;
+import net.tds.magicpets.entity.pet.EntityBabyWaterPet;
 import cpw.mods.fml.common.registry.EntityRegistry;
 
 public class EntityManager {
@@ -17,9 +17,9 @@ public class EntityManager {
 		this.mod = mod;
 		
 		//pets
-		registerEntity(EntityBabyFireGolem.class, "baby.fireGolem", 1, 0xF03330);
-		registerEntity(EntityBabyEarthTurtle.class, "baby.earthTurtle", 2, 0x298A17);
-		registerEntity(EntityBabyWaterFish.class, "baby.waterfish", 3, 0x2EAADB);
+		registerEntity(EntityBabyFirePet.class, "baby.fireGolem", 1, 0xF03330);
+		registerEntity(EntityBabyEatrhPet.class, "baby.earthTurtle", 2, 0x298A17);
+		registerEntity(EntityBabyWaterPet.class, "baby.waterfish", 3, 0x2EAADB);
 		//4
 		//5
 		//6
