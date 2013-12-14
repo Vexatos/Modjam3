@@ -8,7 +8,7 @@ import net.tds.magicpets.entity.pet.EntityBabyFireGolem;
 
 public class RenderBabyFireGolem extends RenderLiving {
 
-	private static final ResourceLocation texture = new ResourceLocation("magicpets", "textures/entity/petBabyFireGolem.png");
+	private static final ResourceLocation texture = new ResourceLocation("magicpets", "textures/entity/fireElement.png");
 	
 	public RenderBabyFireGolem(ModelBase par1ModelBase, float par2) {
 		

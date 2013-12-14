@@ -8,7 +8,7 @@ import net.tds.magicpets.entity.pet.EntityBabyEarthTurtle;
 
 public class RenderBabyEarthTurtle extends RenderLiving {
 
-	private static final ResourceLocation texture = new ResourceLocation("magicpets", "textures/entity/petBabyEarthTurtke.png");
+	private static final ResourceLocation texture = new ResourceLocation("magicpets", "textures/entity/earthElement.png");
 	
 	public RenderBabyEarthTurtle(ModelBase par1ModelBase, float par2) {
 		

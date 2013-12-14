@@ -7,6 +7,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.tds.magicpets.ModJam;
+import net.tds.magicpets.entity.pet.EntityBabyEarthTurtle;
 import net.tds.magicpets.entity.pet.EntityBabyFireGolem;
 import net.tds.magicpets.enums.EnumElement;
 import net.tds.magicpets.lib.Format;
@@ -58,7 +59,7 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 		
 		else {
 			
-			EntityBabyFireGolem entity = new EntityBabyFireGolem(world);
+			EntityBabyEarthTurtle entity = new EntityBabyEarthTurtle(world);
 			entity.setOwner(getOwner(stack));
 			entity.setName(getName(stack));
 			entity.setLevel(getLevel(stack));
