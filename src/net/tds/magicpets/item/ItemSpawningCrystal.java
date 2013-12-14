@@ -59,7 +59,7 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 		
 		else {
 			
-			EntityBabyEarthTurtle entity = new EntityBabyEarthTurtle(world);
+			EntityBabyFireGolem entity = new EntityBabyFireGolem(world);
 			entity.setOwner(getOwner(stack));
 			entity.setName(getName(stack));
 			entity.setLevel(getLevel(stack));

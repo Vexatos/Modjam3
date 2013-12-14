@@ -68,13 +68,6 @@ public class EntityMagicalPet extends EntityTameable {
 		this.setExperience(compound.getInteger("Experience"));	
 	}
 	
-    public void onLivingUpdate() {
-    	
-        super.onLivingUpdate();
-        
-        System.out.println("I am Here " + this.posX + " " + this.posY + " " + this.posZ);
-    }
-	
 	public void setOwner(String owner) {
 		
 		this.dataWatcher.updateObject(dataOwner, owner);
