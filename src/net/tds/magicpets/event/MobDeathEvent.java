@@ -48,7 +48,7 @@ public class MobDeathEvent {
 						
 						if(this.correctCrystal != null) {
 							
-							addExpToPet(15, this.correctCrystal, pet.worldObj);
+							addExpToPet(15, this.correctCrystal);
 						}
 					}
 				}
@@ -61,7 +61,7 @@ public class MobDeathEvent {
 					
 					if(this.correctCrystal != null) {
 						
-						addExpToPet(15, this.correctCrystal, pet.worldObj);						
+						addExpToPet(15, this.correctCrystal);						
 					}
 				}
 			}
@@ -73,7 +73,7 @@ public class MobDeathEvent {
 	 * @param exp: The amount of exp to add.
 	 * @param stack: The stack of the crystal.
 	 */
-	public void addExpToPet(int exp, ItemStack stack, World world) {
+	public void addExpToPet(int exp, ItemStack stack) {
 		
 		if (stack != null && stack.getItem() instanceof ItemSpawningCrystal) {
 			
@@ -88,9 +88,7 @@ public class MobDeathEvent {
 			else {
 				
 				crystal.setLevel(stack, crystal.getLevel(stack) + 1);
-				EntityMagicalPet pet = (EntityMagicalPet) crystal.getEntityByUUID(stack, world);
-				pet.levelUp(pet);
-				addExpToPet(crystal.getExperience(stack) + exp - crystal.getMaxExperience(stack), stack, world);
+				addExpToPet(crystal.getExperience(stack) + exp - crystal.getMaxExperience(stack), stack);
 			}
 		}
 	}
