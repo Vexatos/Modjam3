@@ -49,7 +49,7 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 		if (!stack.getTagCompound().hasKey("Owner")) {
 			
 			setOwner(stack, player.username);
-			setType(stack, element.name);
+			setType(stack, element.type);
 			setName(stack, "Fire Elemental");
 			setLevel(stack, 1);
 			setExperience(stack, 0);
@@ -84,11 +84,11 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 				if (!world.isRemote){
 					
 					world.spawnEntityInWorld(entity);
-					setUUID(stack, entity);
+					setUUIDToStack(stack, entity);
 					PlayerPetProperties.get(player).setPetOut(true);
+					PlayerPetProperties.get(player).setCurrentPet(getUUIDFromStack(stack).getMostSignificantBits(), getUUIDFromStack(stack).getLeastSignificantBits());
 				}	
-			}	
-			
+			}		
 		}
 		
 		return stack;	
@@ -130,11 +130,11 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 		if (stack.getItem() instanceof ItemSpawningCrystal) {
 
             String type = stack.getTagCompound().getString("Type");
-            EnumElement element = EnumElement.getElement(type);
+            EnumElement element = EnumElement.getType(type);
 
             if(element != null) {
 
-                return element.name;
+                return element.type;
             }
 		}
 		
@@ -186,7 +186,7 @@ public class ItemSpawningCrystal extends ItemModjamBase {
         return element;
     }
     
-    public UUID getUUID(ItemStack stack) {
+    public UUID getUUIDFromStack(ItemStack stack) {
     	
 		return new UUID(stack.stackTagCompound.getLong("MostID"), stack.stackTagCompound.getLong("LeastID"));	
     }
@@ -199,7 +199,7 @@ public class ItemSpawningCrystal extends ItemModjamBase {
     			
     			Entity currentEntity = (Entity) world.loadedEntityList.get(i);
     			
-    			if (currentEntity.getUniqueID().equals(this.getUUID(stack))) {
+    			if (currentEntity.getUniqueID().equals(this.getUUIDFromStack(stack))) {
     				
     				return currentEntity;
     			}
@@ -207,6 +207,11 @@ public class ItemSpawningCrystal extends ItemModjamBase {
     	}
     	
     	return null;
+    }
+    
+    public UUID getUUIDFropPlayer(EntityPlayer player) {
+    	
+    	return PlayerPetProperties.get(player).getCurrentPet();
     }
 	
 	public static void setOwner(ItemStack stack, String owner) {
@@ -254,12 +259,17 @@ public class ItemSpawningCrystal extends ItemModjamBase {
         this.element = element;
     }
     
-    public void setUUID(ItemStack stack, EntityMagicalPet pet) {
+    public void setUUIDToStack(ItemStack stack, EntityMagicalPet pet) {
     	
     	if (stack.getItem() instanceof ItemSpawningCrystal) {
     		
     		stack.stackTagCompound.setLong("LeastID", pet.getUniqueID().getLeastSignificantBits());
     		stack.stackTagCompound.setLong("MostID", pet.getUniqueID().getMostSignificantBits());
     	}
+    }
+    
+    public void setUUIDToPlayer(EntityPlayer player, EntityMagicalPet pet) {
+    	
+    	PlayerPetProperties.get(player).setCurrentPet(pet.getUniqueID().getMostSignificantBits(), pet.getUniqueID().getLeastSignificantBits());
     }
 }

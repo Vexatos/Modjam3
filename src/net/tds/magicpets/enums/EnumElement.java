@@ -1,8 +1,5 @@
 package net.tds.magicpets.enums;
 
-/**
- * Author: ShadowChild.
- */
 public enum EnumElement {
 
     FIRE("fire", 0x680000),
@@ -10,22 +7,22 @@ public enum EnumElement {
     EARTH("earth", 0x336600),
     AIR("air", 0x66CCFF),
     LIGHT("light", 0xFFFF33),
-    UNDEAD("undead", 0x606060);
+    UNDEAD("undead", 0x606060); //Iluminati
 
-    private EnumElement(String name, int colour) {
+    private EnumElement(String type, int colour) {
 
-        this.name = name;
+    	this.type = type;
         this.colour = colour;
     }
 
-    public String name;
+    public String type;
     public int colour;
 
-    public static EnumElement getElement(String name) {
+    public static EnumElement getType(String type) {
 
         for(EnumElement element : values()) {
 
-            if(element.name.equalsIgnoreCase(name)) {
+            if(element.type.equalsIgnoreCase(type)) {
 
                 return element;
             }
@@ -34,9 +31,10 @@ public enum EnumElement {
         return null;
     }
 
-    public static int getColour(String name) {
+    public static int getColour(String type) {
 
-        EnumElement element = getElement(name);
+        EnumElement element = getType(type);
+        
         if(element != null) {
 
             return element.colour;

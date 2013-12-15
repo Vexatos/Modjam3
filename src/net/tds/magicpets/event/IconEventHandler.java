@@ -34,7 +34,7 @@ public class IconEventHandler {
         if(stack.getItem() instanceof ItemSpawningCrystal) {
 
             ItemSpawningCrystal crystal = (ItemSpawningCrystal)stack.getItem();
-            EnumElement element = EnumElement.getElement(crystal.getType(stack));
+            EnumElement element = EnumElement.getType(crystal.getType(stack));
 
             if (element != null) {
             	
@@ -77,6 +77,6 @@ public class IconEventHandler {
             }
           }     
         }
-        return null;
+        return crystalIcons[0];
     }
 }
