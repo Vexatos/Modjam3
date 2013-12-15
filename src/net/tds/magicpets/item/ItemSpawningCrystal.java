@@ -41,6 +41,7 @@ public class ItemSpawningCrystal extends ItemModjamBase {
         			EntityMagicalPet pet = (EntityMagicalPet) getEntityByUUID(stack, world);
         			
         			if(pet != null && pet.getPetOwner().equalsIgnoreCase(getOwner(stack))) {
+        				
         				pet.setPetOwner(getOwner(stack));
         				pet.setPetName(getName(stack));
             			pet.setPetLevel(getLevel(stack));
@@ -50,10 +51,6 @@ public class ItemSpawningCrystal extends ItemModjamBase {
         	}
     	}
     	
-        if(getElement() == null) {
-
-            setElement(EnumElement.FIRE);
-        }
         super.onUpdate(stack, world, entity, par4, par5);
     }
 
@@ -62,15 +59,6 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 		if (!stack.hasTagCompound()) {
 		
 			stack.setTagCompound(new NBTTagCompound());
-		}
-		
-		if (!stack.getTagCompound().hasKey("Owner")) {
-			
-			setOwner(stack, player.username);
-			setType(stack, element.type);
-			setName(stack, "Fire Elemental");
-			setLevel(stack, 1);
-			setExperience(stack, 0);
 		}
 		
 		if (!getOwner(stack).equalsIgnoreCase(player.username)) {
@@ -83,7 +71,9 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 			if (PlayerPetProperties.get(player).isPetOut()) {
 				
 				doPetKill(player, world, stack);
-			} else {
+			} 
+			
+			else {
 				
 				doPetSpawn(player, world, stack);
 			}		
@@ -104,7 +94,9 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 
                 Constructor constructor = clazz.getConstructor(World.class);
                 obj = constructor.newInstance(world);
-            } catch(Exception e) {
+            } 
+            
+            catch(Exception e) {
 
                 e.printStackTrace();
             }
