@@ -3,6 +3,7 @@ package net.tds.magicpets.client.model;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraft.util.MathHelper;
 
 public class ModelBabyWaterPet extends ModelBase {
 
@@ -242,18 +243,22 @@ public class ModelBabyWaterPet extends ModelBase {
 		//Right front
 		Leg4.addChild(Leg5);
 		Leg4.addChild(Leg6);
+		Leg4.rotationPointX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 1.4F * f1;
 		
 		//Right back
 		Leg13.addChild(Leg2);
 		Leg13.addChild(Leg3);
+		Leg13.rotateAngleX = MathHelper.cos(f * 0.6662F) * 1.4F * f1;
 		
 		//Left Front
 		Leg7.addChild(Leg8);
 		Leg7.addChild(Leg9);
+		Leg7.rotationPointX = MathHelper.cos(f * 0.6662F) * 1.4F * f1;
 		
 		//Left back
 		Leg1.addChild(Leg11);
 		Leg1.addChild(Leg12);
+		Leg1.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 1.4F * f1;
 		
 		
 		super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
