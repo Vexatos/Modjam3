@@ -10,7 +10,7 @@ import net.tds.magicpets.entity.boss.EntityLightBoss;
 import net.tds.magicpets.entity.boss.EntityUndeadBoss;
 import net.tds.magicpets.entity.boss.EntityWaterBoss;
 import net.tds.magicpets.entity.pet.EntityBabyAirPet;
-import net.tds.magicpets.entity.pet.EntityBabyEatrhPet;
+import net.tds.magicpets.entity.pet.EntityBabyEarthPet;
 import net.tds.magicpets.entity.pet.EntityBabyFirePet;
 import net.tds.magicpets.entity.pet.EntityBabyLightPet;
 import net.tds.magicpets.entity.pet.EntityBabyUndeadPet;
@@ -28,7 +28,7 @@ public class EntityManager {
 
 		//pets
 		registerEntity(EntityBabyAirPet.class, "baby.airPet", Config.airPetID, 0x66CCFF, false);
-		registerEntity(EntityBabyEatrhPet.class, "baby.earthPet", Config.earthPetID, 0x336600, false);
+		registerEntity(EntityBabyEarthPet.class, "baby.earthPet", Config.earthPetID, 0x336600, false);
 		registerEntity(EntityBabyFirePet.class, "baby.firePet", Config.firePetID, 0x680000, false);
 		registerEntity(EntityBabyLightPet.class, "baby.lightPet", Config.lightPetID, 0xFFFF33, false);
 		registerEntity(EntityBabyUndeadPet.class, "baby.undeadPet", Config.undeadPetID, 0x606060, false);

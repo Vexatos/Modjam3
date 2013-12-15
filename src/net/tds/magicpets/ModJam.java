@@ -12,7 +12,7 @@ import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraftforge.common.MinecraftForge;
 import net.tds.magicpets.entity.EntityManager;
-import net.tds.magicpets.entity.pet.EntityBabyEatrhPet;
+import net.tds.magicpets.entity.pet.EntityBabyEarthPet;
 import net.tds.magicpets.entity.pet.EntityBabyFirePet;
 import net.tds.magicpets.event.EntityConstructionEvent;
 import net.tds.magicpets.event.MobDeathEvent;
