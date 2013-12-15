@@ -30,13 +30,15 @@ public class MobDeathEvent {
 					
 					EntityMagicalPet pet = (EntityMagicalPet) PlayerPetProperties.get(player).getEntityByUUID();
 					
-					addExpToPet(15, pet, checkPlayerForCrystal(player, player.getUniqueID()));
+					addExpToPet(15, pet, checkPlayerForCrystal(player, PlayerPetProperties.get(player).getCurrentPet()));
 				}
 			}
 			
 			if (source instanceof EntityMagicalPet) {
 				
 				EntityMagicalPet pet = (EntityMagicalPet) source;
+				
+				addExpToPet(15, pet, checkPlayerForCrystal(pet.getEntityPetOwner(), PlayerPetProperties.get(pet.getEntityPetOwner()).getCurrentPet()));
 			}
 		}
 	}

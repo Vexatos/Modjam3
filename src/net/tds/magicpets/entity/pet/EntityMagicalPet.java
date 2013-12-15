@@ -120,6 +120,31 @@ public class EntityMagicalPet extends EntityTameable {
 		return this.dataWatcher.getWatchableObjectInt(dataExperience);
 	}
 
+	public EntityPlayer getEntityPetOwner() {
+		
+		for(int i = 0; i < this.worldObj.playerEntities.size(); i++) {
+			
+			EntityPlayer player = (EntityPlayer) this.worldObj.playerEntities.get(i); 
+			
+			if (player != null && isPetOwner(player)) {
+				
+				return player;
+			}
+		}
+		
+		return null;
+	}
+	
+	public boolean isPetOwner(EntityPlayer player) {
+		
+		if(getPetOwner().equalsIgnoreCase(player.username)) {
+			
+			return true;
+		}
+		
+		else return false;
+	}
+	
 	@Override
 	public EntityAgeable createChild(EntityAgeable entityageable) {
 		
