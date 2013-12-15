@@ -19,8 +19,6 @@ import java.util.List;
 public class ItemSpawningCrystal extends ItemModjamBase {
 
     public EnumElement element;
-    
-    protected EntityMagicalPet currentPet;
 	
 	public ItemSpawningCrystal(int id) {
 		
@@ -66,7 +64,7 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 			if (PlayerPetProperties.get(player).isPetOut()) {
 				
 				PlayerPetProperties.get(player).setPetOut(false);
-				this.currentPet.setDead();
+				//kill pet here
 			}
 			
 			else {
@@ -82,7 +80,7 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 				if (!world.isRemote){
 					
 					world.spawnEntityInWorld(entity);
-					this.currentPet = entity;
+					//set  pet here
 					PlayerPetProperties.get(player).setPetOut(true);
 				}	
 			}	
@@ -179,6 +177,11 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 		return -1;
 	}
 	
+    public EnumElement getElement() {
+
+        return element;
+    }
+	
 	public static void setOwner(ItemStack stack, String owner) {
 
 		if (stack.getItem() instanceof ItemSpawningCrystal) {
@@ -219,23 +222,8 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 		}
 	}
 
-    public EnumElement getElement() {
-
-        return element;
-    }
-
     public void setElement(EnumElement element) {
 
         this.element = element;
-    }
-    
-    public EntityMagicalPet getInstanceOfPet() {
-    	
-		return currentPet;
-    }
-    
-    public void euthanizePet() {
-    	
-    	this.currentPet.setDead();
     }
 }
