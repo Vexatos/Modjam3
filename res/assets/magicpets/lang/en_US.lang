@@ -3,3 +3,17 @@
 #Items
 item.magicpets.spawnCrystal.name=Spawning Crystal
 item.magicpets.essence.name=Soul Essence
+
+#Entity
+entity.TDS_MP.baby.airPet.name=
+entity.TDS_MP.baby.earthPet.name=Earth Turtle
+entity.TDS_MP.baby.firePet.name=Fire Elemental
+entity.TDS_MP.baby.lightPet.name=Fairy
+entity.TDS_MP.baby.undeadPet.name=
+entity.TDS_MP.baby.waterPet.name=Something Amphibious
+entity.TDS_MP.boss.airBoss.name=
+entity.TDS_MP.boss.earthBoss.name=
+entity.TDS_MP.boss.fireBoss.name=Fire Golem Boss
+entity.TDS_MP.boss.lightBoss.name=
+entity.TDS_MP.boss.undeadBoss.name=
+entity.TDS_MP.boss.waterBoss.name=Leviathan Boss

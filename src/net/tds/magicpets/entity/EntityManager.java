@@ -35,12 +35,12 @@ public class EntityManager {
 		registerEntity(EntityBabyWaterPet.class, "baby.waterPet", Config.waterPetID, 0x0066FF, false);
 		
 		//elementals
-		registerEntity(EntityAirBoss.class, "boss.airPet", Config.airBossID, 0x66CCFF, true);
-		registerEntity(EntityEarthBoss.class, "boss.earthPet", Config.earthBossID, 0x336600, true);
-		registerEntity(EntityFireBoss.class, "boss.firePet", Config.fireBossID, 0x680000, true);
-		registerEntity(EntityLightBoss.class, "boss.lightPet", Config.lightBossID, 0xFFFF33, true);
-		registerEntity(EntityUndeadBoss.class, "boss.undeadPet", Config.undeadBossID, 0x606060, true);
-		registerEntity(EntityWaterBoss.class, "boss.waterPet", Config.waterBossID, 0x0066FF, true);
+		registerEntity(EntityAirBoss.class, "boss.airBoss", Config.airBossID, 0x66CCFF, true);
+		registerEntity(EntityEarthBoss.class, "boss.earthBoss", Config.earthBossID, 0x336600, true);
+		registerEntity(EntityFireBoss.class, "boss.fireBoss", Config.fireBossID, 0x680000, true);
+		registerEntity(EntityLightBoss.class, "boss.lightBoss", Config.lightBossID, 0xFFFF33, true);
+		registerEntity(EntityUndeadBoss.class, "boss.undeadBoss", Config.undeadBossID, 0x606060, true);
+		registerEntity(EntityWaterBoss.class, "boss.waterBoss", Config.waterBossID, 0x0066FF, true);
 	}
 	
 	public void registerEntity(Class<? extends Entity> entity, String name, int id, int color, boolean boss) {
