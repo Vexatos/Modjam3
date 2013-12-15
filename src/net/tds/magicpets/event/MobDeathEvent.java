@@ -63,7 +63,7 @@ public class MobDeathEvent {
 	 */
 	public void addExpToPet(int exp, ItemStack stack) {
 		
-		if (stack.getItem() != null && stack.getItem() instanceof ItemSpawningCrystal) {
+		if (stack != null && stack.getItem() instanceof ItemSpawningCrystal) {
 			
 			ItemSpawningCrystal crystal = (ItemSpawningCrystal) stack.getItem();
 			
@@ -94,7 +94,7 @@ public class MobDeathEvent {
 			
 			ItemStack stack = player.inventory.mainInventory[i];
 			
-			if (stack.getItem() instanceof ItemSpawningCrystal) {
+			if (stack != null && stack.getItem() instanceof ItemSpawningCrystal) {
 				
 				if(!stack.hasTagCompound()) {
 					

@@ -33,15 +33,21 @@ public class ItemSpawningCrystal extends ItemModjamBase {
     @Override
     public void onUpdate(ItemStack stack, World world, Entity entity, int par4, boolean par5) {
 
-    	if(stack.hasTagCompound()) {
+    	if(stack != null) {
     		
-    		if(stack.stackTagCompound.hasKey("Owner")) {
-    			
-    			EntityMagicalPet pet = (EntityMagicalPet) getEntityByUUID(stack, world);
-    			
-    			pet.setPetLevel(getLevel(stack));
-    			pet.setPetExperience(getExperience(stack));
-    		}
+        	if(stack.hasTagCompound()) {
+        		
+        		if(stack.stackTagCompound.hasKey("Owner")) {
+        			
+        			EntityMagicalPet pet = (EntityMagicalPet) getEntityByUUID(stack, world);
+        			
+        			if(pet != null) {
+        				
+            			pet.setPetLevel(getLevel(stack));
+            			pet.setPetExperience(getExperience(stack));
+        			}
+        		}
+        	}
     	}
     	
         if(getElement() == null) {
