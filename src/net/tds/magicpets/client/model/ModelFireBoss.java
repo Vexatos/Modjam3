@@ -3,6 +3,7 @@ package net.tds.magicpets.client.model;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraft.util.MathHelper;
 
 public class ModelFireBoss extends ModelBase {
 
@@ -154,61 +155,61 @@ public class ModelFireBoss extends ModelBase {
 		setRotation(A1, 0F, 0F, 0F);
 		A2 = new ModelRenderer(this, 16, 69);
 		A2.addBox(6F, -3F, -3F, 3, 3, 5);
-		A2.setRotationPoint(5F, -8F, 1F);
+		A2.setRotationPoint(0F, 0F, 0F);
 		A2.setTextureSize(122, 111);
 		A2.mirror = true;
 		setRotation(A2, 0F, 0F, 0F);
 		A3 = new ModelRenderer(this, 22, 87);
 		A3.addBox(3.4F, -5.7F, -2.5F, 2, 5, 4);
-		A3.setRotationPoint(5F, -8F, 1F);
+		A3.setRotationPoint(0F, 0F, 0F);
 		A3.setTextureSize(122, 111);
 		A3.mirror = true;
 		setRotation(A3, 0F, 0F, 0.5934119F);
 		H1 = new ModelRenderer(this, 0, 71);
 		H1.addBox(4.8F, 19.6F, -3F, 2, 1, 5);
-		H1.setRotationPoint(5F, -8F, 1F);
+		H1.setRotationPoint(0F, 0F, 0F);
 		H1.setTextureSize(122, 111);
 		H1.mirror = true;
 		setRotation(H1, 0F, 0F, 0F);
 		H2 = new ModelRenderer(this, 22, 103);
 		H2.addBox(7F, 16F, -3F, 1, 3, 5);
-		H2.setRotationPoint(5F, -8F, 1F);
+		H2.setRotationPoint(0F, 0F, 0F);
 		H2.setTextureSize(122, 111);
 		H2.mirror = true;
 		setRotation(H2, 0F, 0F, 0F);
 		H3 = new ModelRenderer(this, 22, 96);
 		H3.addBox(17F, 10.1F, -3F, 1, 2, 5);
-		H3.setRotationPoint(5F, -8F, 1F);
+		H3.setRotationPoint(0F, 0F, 0F);
 		H3.setTextureSize(122, 111);
 		H3.mirror = true;
 		setRotation(H3, 0F, 0F, 0.6632251F);
 		A4 = new ModelRenderer(this, 36, 71);
 		A4.addBox(2F, 11F, -4F, 8, 3, 7);
-		A4.setRotationPoint(5F, -8F, 1F);
+		A4.setRotationPoint(0F, 0F, 0F);
 		A4.setTextureSize(122, 111);
 		A4.mirror = true;
 		setRotation(A4, 0F, 0F, 0F);
 		A5 = new ModelRenderer(this, 40, 67);
 		A5.addBox(10F, 11.5F, -1.5F, 2, 2, 2);
-		A5.setRotationPoint(5F, -8F, 1F);
+		A5.setRotationPoint(0F, 0F, 0F);
 		A5.setTextureSize(122, 111);
 		A5.mirror = true;
 		setRotation(A5, 0F, 0F, 0F);
 		A6 = new ModelRenderer(this, 40, 67);
 		A6.addBox(5F, 11.5F, 3F, 2, 2, 2);
-		A6.setRotationPoint(5F, -8F, 1F);
+		A6.setRotationPoint(0F, 0F, 0F);
 		A6.setTextureSize(122, 111);
 		A6.mirror = true;
 		setRotation(A6, 0F, 0F, 0F);
 		A7 = new ModelRenderer(this, 40, 67);
 		A7.addBox(0F, 11.5F, -1.5F, 2, 2, 2);
-		A7.setRotationPoint(5F, -8F, 1F);
+		A7.setRotationPoint(0F, 0F, 0F);
 		A7.setTextureSize(122, 111);
 		A7.mirror = true;
 		setRotation(A7, 0F, 0F, 0F);
 		A8 = new ModelRenderer(this, 40, 67);
 		A8.addBox(5F, 11.5F, -6F, 2, 2, 2);
-		A8.setRotationPoint(5F, -8F, 1F);
+		A8.setRotationPoint(0F, 0F, 0F);
 		A8.setTextureSize(122, 111);
 		A8.mirror = true;
 		setRotation(A8, 0F, 0F, 0F);
@@ -431,7 +432,7 @@ public class ModelFireBoss extends ModelBase {
 		A1.addChild(A7);
 		A1.addChild(A8);
 		
-		A1.rotateAngleX = f1;
+		A1.rotateAngleX = MathHelper.cos((float) ((-f1 * -0.6662)* -f2));
 		super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 	}
 }
