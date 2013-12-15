@@ -7,10 +7,6 @@ import net.minecraftforge.event.ForgeSubscribe;
 import net.tds.magicpets.enums.EnumElement;
 import net.tds.magicpets.item.ItemSpawningCrystal;
 
-
-/**
- * Author: ShadowChild.
- */
 public class IconEventHandler {
 
     private String[] element_types = new String[] {"fire", "water", "earth", "air", "light", "undead"};

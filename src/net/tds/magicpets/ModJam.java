@@ -27,15 +27,9 @@ import java.util.Arrays;
 
 //99% of these commits are for dev discussion and notification.
 
-//I edited the image thing. Crashes everywhere if a null crystal was shown.
-
-//We need a way for the mob do instantly die when its owner goes offline.
-
 //Generate particles method in the fire pet causes server crash.
 
 //Fire Pet generating a 50% to many particles.
-
-//We need to work on the data sync. More info on skype.
 
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION)
 @NetworkMod(clientSideRequired = true, serverSideRequired = true, channels = "maigcpets", packetHandler = PacketHandler.class)

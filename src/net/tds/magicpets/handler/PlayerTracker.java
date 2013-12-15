@@ -10,6 +10,7 @@ import net.tds.magicpets.item.ItemSpawningCrystal;
 import net.tds.magicpets.item.Items;
 import cpw.mods.fml.common.IPlayerTracker;
 
+@Deprecated
 public class PlayerTracker implements IPlayerTracker {
 
 	@Override
@@ -41,9 +42,7 @@ public class PlayerTracker implements IPlayerTracker {
 		for(int i = 0; i < player.inventory.mainInventory.length; i++) {
 			
 			if (player.inventory.mainInventory[i] != null && player.inventory.mainInventory[i].getItem()  instanceof ItemSpawningCrystal) {
-				
-				ItemSpawningCrystal crystal = (ItemSpawningCrystal) player.inventory.mainInventory[i].getItem();
-				PlayerPetProperties.get(player).setPetOut(false);
+
 			}
 		}
 	}
