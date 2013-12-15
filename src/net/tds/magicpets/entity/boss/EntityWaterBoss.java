@@ -5,9 +5,10 @@ import net.minecraft.world.World;
 
 public class EntityWaterBoss extends EntityMagicalBoss {
 
-	public EntityWaterBoss(World par1World) {
+	public EntityWaterBoss(World world) {
 		
-		super(par1World);
+		super(world);
+		//this.getNavigator().setCanSwim(true);
 	}
 
     public boolean isInWater() {
@@ -17,9 +18,7 @@ public class EntityWaterBoss extends EntityMagicalBoss {
     
     public void onLivingUpdate() {
     	
+    	this.setAir(20);
     	super.onLivingUpdate();
-    	if (this.inWater) {
-    		
-    	}
     }
 }
