@@ -78,7 +78,7 @@ public class PlayerPetProperties implements IExtendedEntityProperties {
 	public void setPetOut(boolean petOut) {
 		
 		this.petOut = petOut;
-        //this.syncExtendedProperties();
+        this.syncExtendedProperties();
 	}
 	
 	/**
@@ -129,8 +129,6 @@ public class PlayerPetProperties implements IExtendedEntityProperties {
 		return this.petOut;
 	}
 
-	/*
-	 * I don't think this is needed. Commented out just incase.
     public void syncExtendedProperties() {
 
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
@@ -145,5 +143,5 @@ public class PlayerPetProperties implements IExtendedEntityProperties {
             e.printStackTrace();
         }
         
-    } */
+    } 
 }
