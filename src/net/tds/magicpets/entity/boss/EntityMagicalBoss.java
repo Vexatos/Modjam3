@@ -10,13 +10,13 @@ import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 
-public abstract class EntityBossBase extends EntityMob implements IBossDisplayData {
+public abstract class EntityMagicalBoss extends EntityMob implements IBossDisplayData {
 
-    public EntityBossBase(World par1World) {
+    public EntityMagicalBoss(World par1World) {
 
         super(par1World);
 
-        this.setSize(1.5F, 2.0F);
+        this.setSize(1.0F, 1.0F);
 
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, new EntityAIAttackOnCollide(this, EntityPlayer.class, 0.4D, false));
@@ -25,7 +25,7 @@ public abstract class EntityBossBase extends EntityMob implements IBossDisplayDa
         this.tasks.addTask(3, new EntityAILookIdle(this));
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
-        this.experienceValue = 380;
+        this.experienceValue = 120;
     }
 
     protected boolean isAIEnabled() {
