@@ -432,7 +432,7 @@ public class ModelFireBoss extends ModelBase {
 		A1.addChild(A7);
 		A1.addChild(A8);
 		
-		A1.rotateAngleX = MathHelper.cos((float) ((-f1 * -0.6662)* -f2));
+		A1.rotateAngleX = MathHelper.cos((float) (f + Math.PI / 5.0) );
 		super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 	}
 }
