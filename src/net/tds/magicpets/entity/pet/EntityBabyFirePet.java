@@ -18,9 +18,4 @@ public class EntityBabyFirePet extends EntityMagicalPet {
 		this.setSize(1.0f, 1.0f);
 		this.noClip = false;
 	}
-	
-	public void onLivingUpdate() {
-
-		super.onLivingUpdate();
-	}
 }
