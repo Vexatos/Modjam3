@@ -41,8 +41,9 @@ public class ItemSpawningCrystal extends ItemModjamBase {
         			
         			EntityMagicalPet pet = (EntityMagicalPet) getEntityByUUID(stack, world);
         			
-        			if(pet != null) {
-        				
+        			if(pet != null && pet.getPetOwner().equalsIgnoreCase(getOwner(stack))) {
+        				pet.setPetOwner(getOwner(stack));
+        				pet.setPetName(getName(stack));
             			pet.setPetLevel(getLevel(stack));
             			pet.setPetExperience(getExperience(stack));
         			}

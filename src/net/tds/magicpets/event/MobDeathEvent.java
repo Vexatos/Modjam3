@@ -32,6 +32,7 @@ public class MobDeathEvent {
 					EntityMagicalPet pet = (EntityMagicalPet) event.entity;
 					
 					PlayerPetProperties.get(pet.getEntityPetOwner()).setCurrentPet(0, 0);
+					PlayerPetProperties.get(pet.getEntityPetOwner()).setPetOut(false);
 				}
 				
 				if (source instanceof EntityPlayer) {
