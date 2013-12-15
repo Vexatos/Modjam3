@@ -19,38 +19,47 @@ public class MobDeathEvent {
 	@ForgeSubscribe
 	public void onMobDeath(LivingDeathEvent event) {
 		
-		if (event.source.getEntity() != null) {
+		if (event.entity instanceof EntityLiving && !(event.entity instanceof EntityMagicalPet)) {
 			
-			Entity source = event.source.getEntity();
-			
-			if (event.entity instanceof EntityMagicalPet) {
+			if (event.source.getEntity() != null) {
 				
-				EntityMagicalPet pet = (EntityMagicalPet) event.entity;
+				Entity source = event.source.getEntity();
 				
-				PlayerPetProperties.get(pet.getEntityPetOwner()).setCurrentPet(0, 0);
-			}
-			
-			if (source instanceof EntityPlayer) {
-				
-				EntityPlayer player = (EntityPlayer) source;
-				
-				if (!(PlayerPetProperties.get(player).getCurrentPet().equals(new UUID(0,0)))) {
+				if (event.entity instanceof EntityMagicalPet) {
 					
-					EntityMagicalPet pet = (EntityMagicalPet) PlayerPetProperties.get(player).getEntityByUUID();
+					EntityMagicalPet pet = (EntityMagicalPet) event.entity;
 					
-					addExpToPet(15, pet, checkPlayerForCrystal(player));
+					PlayerPetProperties.get(pet.getEntityPetOwner()).setCurrentPet(0, 0);
 				}
-			}
-			
-			if (source instanceof EntityMagicalPet) {
 				
-				EntityMagicalPet pet = (EntityMagicalPet) source;
+				if (source instanceof EntityPlayer) {
+					
+					EntityPlayer player = (EntityPlayer) source;
+					
+					if (!(PlayerPetProperties.get(player).getCurrentPet().equals(new UUID(0,0)))) {
+						
+						EntityMagicalPet pet = (EntityMagicalPet) PlayerPetProperties.get(player).getEntityByUUID();
+						
+						addExpToPet(999, pet, checkPlayerForCrystal(player));
+					}
+				}
 				
-				addExpToPet(15, pet, checkPlayerForCrystal(pet.getEntityPetOwner()));
+				if (source instanceof EntityMagicalPet) {
+					
+					EntityMagicalPet pet = (EntityMagicalPet) source;
+					
+					addExpToPet(15, pet, checkPlayerForCrystal(pet.getEntityPetOwner()));
+				}
 			}
 		}
 	}
 	
+	/**
+	 * Attempts to add experience points to the pet mob. 
+	 * @param exp: The ammount of exp to add.
+	 * @param pet: The pet recieving the exp. Likely to be removed as stack should send args to pet.
+	 * @param stack: The stack of the crystal.
+	 */
 	public void addExpToPet(int exp, EntityMagicalPet pet, ItemStack stack) {
 		
 		if (stack.getItem() != null && stack.getItem() instanceof ItemSpawningCrystal) {
@@ -72,13 +81,19 @@ public class MobDeathEvent {
 		}
 	}
 	
+	/**
+	 * Checks a players inventory for a crystal with the same 
+	 * UUID as the pet to receive EXP.
+	 * @param player: Player who should own the pet.
+	 * @return: Correct crystal or gold apple as null.
+	 */
 	public ItemStack checkPlayerForCrystal(EntityPlayer player) {
 		
 		for (int i = 0; i < player.inventory.mainInventory.length; i++) {
 			
 			ItemStack stack = player.inventory.mainInventory[i];
 			
-			if (stack.getItem() != null && stack.getItem() instanceof ItemSpawningCrystal) {
+			if (stack != null && stack.getItem() instanceof ItemSpawningCrystal) {
 				
 				ItemSpawningCrystal crystal = (ItemSpawningCrystal) stack.getItem();
 				
