@@ -8,12 +8,11 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.tds.magicpets.ModJam;
 import net.tds.magicpets.data.PlayerPetProperties;
-import net.tds.magicpets.entity.passive.EntityBabyEarthPet;
-import net.tds.magicpets.entity.passive.EntityBabyFirePet;
 import net.tds.magicpets.entity.passive.EntityMagicalPet;
 import net.tds.magicpets.enums.EnumElement;
 import net.tds.magicpets.lib.Format;
 
+import java.lang.reflect.Constructor;
 import java.util.List;
 import java.util.UUID;
 
@@ -83,37 +82,64 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 			
 			if (PlayerPetProperties.get(player).isPetOut()) {
 				
-				PlayerPetProperties.get(player).setPetOut(false);
+				doPetKill(player, world, stack);
+			} else {
 				
-				if(getEntityByUUID(stack, world) != null) {
-					
-					getEntityByUUID(stack, world).setDead();
-				}
-			}
-			
-			else {
-				
-				EntityBabyFirePet entity = new EntityBabyFirePet(world);
-				entity.setPetOwner(getOwner(stack));
-				entity.setPetName(getName(stack));
-				entity.setPetLevel(getLevel(stack));
-				entity.setPetExperience(getExperience(stack));
-				entity.setLocationAndAngles(player.posX, player.posY, player.posZ, 0, 0);
-				
-				if (!world.isRemote){
-					
-					world.spawnEntityInWorld(entity);
-					entity.setOwner(getOwner(stack));
-					entity.setPetOwner(getOwner(stack));
-					setUUIDToStack(stack, entity);
-					PlayerPetProperties.get(player).setPetOut(true);
-					PlayerPetProperties.get(player).setCurrentPet(getUUIDFromStack(stack).getMostSignificantBits(), getUUIDFromStack(stack).getLeastSignificantBits());
-				}	
+				doPetSpawn(player, world, stack);
 			}		
 		}
 		
 		return stack;	
 	}
+
+    public void doPetSpawn(EntityPlayer player, World world, ItemStack stack) {
+
+        if(this.getElement() != null) {
+
+            Class<? extends EntityMagicalPet> clazz = this.getElement().pet;
+
+            Object obj = null;
+
+            try {
+
+                Constructor constructor = clazz.getConstructor(World.class);
+                obj = constructor.newInstance(world);
+            } catch(Exception e) {
+
+                e.printStackTrace();
+            }
+
+            if(obj != null) {
+
+                EntityMagicalPet pet = (EntityMagicalPet)obj;
+                pet.setPetOwner(getOwner(stack));
+                pet.setPetName(getName(stack));
+                pet.setPetLevel(getLevel(stack));
+                pet.setPetExperience(getExperience(stack));
+                pet.setLocationAndAngles(player.posX, player.posY, player.posZ, 0, 0);
+
+                if (!world.isRemote){
+
+                    world.spawnEntityInWorld(pet);
+                    pet.setOwner(getOwner(stack));
+                    pet.setPetOwner(getOwner(stack));
+                    setUUIDToStack(stack, pet);
+                    PlayerPetProperties.get(player).setPetOut(true);
+                    PlayerPetProperties.get(player).setCurrentPet(getUUIDFromStack(stack).getMostSignificantBits(), getUUIDFromStack(stack).getLeastSignificantBits());
+                }
+            }
+        }
+    }
+
+    public void doPetKill(EntityPlayer player, World world, ItemStack stack) {
+
+        PlayerPetProperties.get(player).setPetOut(false);
+
+        if(getEntityByUUID(stack, world) != null) {
+
+            getEntityByUUID(stack, world).setDead();
+        }
+    }
 	
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean smt) {
 		
@@ -127,7 +153,7 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 			list.add("Type: " + getType(stack));
 			list.add("Name: " + getName(stack));
 			list.add("Level: " + getLevel(stack));
-			list.add("Experience: " + getExperience(stack) + "/" +  getMaxExperience(stack));
+			list.add("Experience: " + getExperience(stack) + "/" + getMaxExperience(stack));
 		}
 	}
 	
