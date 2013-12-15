@@ -19,8 +19,8 @@ public abstract class EntityBossBase extends EntityMob implements IBossDisplayDa
         this.setSize(1.5F, 2.0F);
 
         this.tasks.addTask(0, new EntityAISwimming(this));
-        this.tasks.addTask(1, new EntityAIAttackOnCollide(this, EntityPlayer.class, 1.0D, false));
-        this.tasks.addTask(2, new EntityAIWander(this, 1.0D));
+        this.tasks.addTask(1, new EntityAIAttackOnCollide(this, EntityPlayer.class, 0.4D, false));
+        this.tasks.addTask(2, new EntityAIWander(this, 0.4D));
         this.tasks.addTask(3, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
         this.tasks.addTask(3, new EntityAILookIdle(this));
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));

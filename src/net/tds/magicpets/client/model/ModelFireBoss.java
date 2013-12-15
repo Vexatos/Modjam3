@@ -383,16 +383,7 @@ public class ModelFireBoss extends ModelBase {
 		B13.render(f5);
 		B14.render(f5);
 		A1.render(f5);
-		A2.render(f5);
-		A3.render(f5);
-		H1.render(f5);
-		H2.render(f5);
-		H3.render(f5);
-		A4.render(f5);
-		A5.render(f5);
-		A6.render(f5);
-		A7.render(f5);
-		A8.render(f5);
+		
 		A9.render(f5);
 		A10.render(f5);
 		A11.render(f5);
@@ -429,6 +420,18 @@ public class ModelFireBoss extends ModelBase {
 
 	public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity) {
 		
+		A1.addChild(A2);
+		A1.addChild(A3);
+		A1.addChild(H1);
+		A1.addChild(H2);
+		A1.addChild(H3);
+		A1.addChild(A4);
+		A1.addChild(A5);
+		A1.addChild(A6);
+		A1.addChild(A7);
+		A1.addChild(A8);
+		
+		A1.rotateAngleX = f1;
 		super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 	}
 }
