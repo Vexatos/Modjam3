@@ -8,6 +8,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.world.World;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.tds.magicpets.data.PlayerPetProperties;
@@ -47,7 +48,7 @@ public class MobDeathEvent {
 						
 						if(this.correctCrystal != null) {
 							
-							addExpToPet(999, this.correctCrystal);
+							addExpToPet(15, this.correctCrystal, pet.worldObj);
 						}
 					}
 				}
@@ -60,7 +61,7 @@ public class MobDeathEvent {
 					
 					if(this.correctCrystal != null) {
 						
-						addExpToPet(15, this.correctCrystal);						
+						addExpToPet(15, this.correctCrystal, pet.worldObj);						
 					}
 				}
 			}
@@ -69,10 +70,10 @@ public class MobDeathEvent {
 	
 	/**
 	 * Attempts to add experience points to the pet mob. 
-	 * @param exp: The ammount of exp to add.
+	 * @param exp: The amount of exp to add.
 	 * @param stack: The stack of the crystal.
 	 */
-	public void addExpToPet(int exp, ItemStack stack) {
+	public void addExpToPet(int exp, ItemStack stack, World world) {
 		
 		if (stack != null && stack.getItem() instanceof ItemSpawningCrystal) {
 			
@@ -82,14 +83,14 @@ public class MobDeathEvent {
 				
 				
 				crystal.setExperience(stack, crystal.getExperience(stack) + exp);
-				System.out.println("It is working" + exp);
 			}
 			
 			else {
 				
 				crystal.setLevel(stack, crystal.getLevel(stack) + 1);
-				addExpToPet(crystal.getExperience(stack) + exp - crystal.getMaxExperience(stack), stack);
-				System.out.println("It is working" + exp);
+				EntityMagicalPet pet = (EntityMagicalPet) crystal.getEntityByUUID(stack, world);
+				pet.levelUp(pet);
+				addExpToPet(crystal.getExperience(stack) + exp - crystal.getMaxExperience(stack), stack, world);
 			}
 		}
 	}
@@ -107,10 +108,8 @@ public class MobDeathEvent {
 		for (int i = 0; i < player.inventory.mainInventory.length; i++) {
 			
 			ItemStack stack = player.inventory.mainInventory[i];
-			System.out.println("1");
+			
 			if (stack != null && stack.getItem() instanceof ItemSpawningCrystal) {
-				
-				System.out.println("2");
 				
 				if(!stack.hasTagCompound()) {
 					
@@ -119,22 +118,17 @@ public class MobDeathEvent {
 				
 				if(stack.stackTagCompound.hasKey("MostID")) {
 					
-					System.out.println("3");
 					if(stack.stackTagCompound.getLong("MostID") == PlayerPetProperties.get(player).getCurrentPet().getMostSignificantBits()) {
 						
-						System.out.println("4");
 						if(stack.stackTagCompound.getLong("LeastID") == PlayerPetProperties.get(player).getCurrentPet().getLeastSignificantBits()) {
 							
 							this.correctCrystal = stack;
-							System.out.println("we has stack");
 							break;
 						}
 					}
 				}
 			}
 		}
-		
-		System.out.println("nope");
 		return null;
 	}
 }

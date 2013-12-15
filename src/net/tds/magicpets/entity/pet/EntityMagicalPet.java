@@ -75,52 +75,82 @@ public class EntityMagicalPet extends EntityTameable {
 		this.setPetExperience(compound.getInteger("Experience"));	
 	}
 	
-	public void onLivingUpdate() {
-		
-		this.setCustomNameTag(getPetOwner() + "'s " + getPetName() + " LV:" + getPetLevel());
-		super.onLivingUpdate();
-	}
-	
+	/**
+	 * Sets the owner of the pet.
+	 * @param owner: name of the owner being set.
+	 */
 	public void setPetOwner(String owner) {
 		
 		this.dataWatcher.updateObject(dataOwner, owner);
 	}
 	
+	/**
+	 * Sets the name of the pet name.
+	 * @param name: name of the pet being set.
+	 */
 	public void setPetName(String name) {
 		
 		this.dataWatcher.updateObject(dataName, name);
 	}
 	
+	/**
+	 * Sets the pets current level.
+	 * @param level: level being set.
+	 */
 	public void setPetLevel(int level) {
 		
 		this.dataWatcher.updateObject(dataLevel, level);
 	}
 	
+	/**
+	 * Sets the pets current experience
+	 * @param experience: amount experience being set.
+	 */
 	public void setPetExperience(int experience) {
 		
 		this.dataWatcher.updateObject(dataExperience, experience);
 	}
 	
+	/**
+	 * Gets the pets owner.
+	 * @return: name of pets owner.
+	 */
 	public String getPetOwner() {
 		
 		return this.dataWatcher.getWatchableObjectString(dataOwner);
 	}
 	
+	/**
+	 * Gets the pets name.
+	 * @return: name of pet.
+	 */
 	public String getPetName() {
 		
 		return this.dataWatcher.getWatchableObjectString(dataName);
 	}
 	
+	/**
+	 * Gets the level of the pet.
+	 * @return: the pets level.
+	 */
 	public int getPetLevel() {
 		
 		return this.dataWatcher.getWatchableObjectInt(dataLevel);
 	}
 	
+	/**
+	 * Gets the pets current experience.
+	 * @return: amount of exp the pet has.
+	 */
 	public int getPetExperience() {
 		
 		return this.dataWatcher.getWatchableObjectInt(dataExperience);
 	}
 
+	/**
+	 * Attempts to get an entity instance for the pets owner.
+	 * @return: entity instance of the pets owner.
+	 */
 	public EntityPlayer getEntityPetOwner() {
 		
 		for(int i = 0; i < this.worldObj.playerEntities.size(); i++) {
@@ -136,6 +166,11 @@ public class EntityMagicalPet extends EntityTameable {
 		return null;
 	}
 	
+	/**
+	 * Checks if someone is the pets owner.
+	 * @param player: player being checked.
+	 * @return: if the person is the pets owner or not.
+	 */
 	public boolean isPetOwner(EntityPlayer player) {
 		
 		if(getPetOwner().equalsIgnoreCase(player.username)) {
@@ -144,6 +179,15 @@ public class EntityMagicalPet extends EntityTameable {
 		}
 		
 		else return false;
+	}
+	
+	/**
+	 * Special method called on level up. Can be overridden.
+	 * @param pet: pet being leveled.
+	 */
+	public void levelUp(EntityMagicalPet pet) {
+		
+		pet.setCustomNameTag(getPetOwner() + "'s " + getPetName() + " LV:" + getPetLevel());
 	}
 	
 	@Override
