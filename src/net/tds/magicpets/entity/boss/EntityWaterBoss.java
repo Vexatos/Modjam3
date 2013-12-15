@@ -23,7 +23,6 @@ public class EntityWaterBoss extends EntityMagicalBoss {
     	if (!this.worldObj.isRemote) {
         
     		if (this.inWater) {
-    			
                 if (this.getEntityToAttack() != null && this.getEntityToAttack().posY > this.posY) {
                 	
                     this.motionY = (0.40000001192092896D - this.motionY) * 0.40000001192092896D;

@@ -367,10 +367,10 @@ public class ModelWaterBoss extends ModelBase {
 		H9.addChild(H4);
 		T6.addChild(T7);
 		H9.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 1.4F * (f1 /2);
-		T3.rotateAngleY = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 1.4F * (f1 /2);
-		T4.rotateAngleY = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 1.4F * (f1 /2);
-		T5.rotateAngleY = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 1.4F * (f1 /2);
-		T6.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 1.4F * (f1 /2);
+		T3.rotateAngleY = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 1.4F * (f1 /3);
+		T4.rotateAngleY = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 1.4F * (f1 /4);
+		T5.rotateAngleY = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 1.4F * (f1 /5);
+		T6.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 1.4F * (f1 /6);
 		
 		
 		super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
