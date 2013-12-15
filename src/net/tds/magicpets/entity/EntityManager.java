@@ -9,12 +9,12 @@ import net.tds.magicpets.entity.boss.EntityFireBoss;
 import net.tds.magicpets.entity.boss.EntityLightBoss;
 import net.tds.magicpets.entity.boss.EntityUndeadBoss;
 import net.tds.magicpets.entity.boss.EntityWaterBoss;
-import net.tds.magicpets.entity.pet.EntityBabyAirPet;
-import net.tds.magicpets.entity.pet.EntityBabyEarthPet;
-import net.tds.magicpets.entity.pet.EntityBabyFirePet;
-import net.tds.magicpets.entity.pet.EntityBabyLightPet;
-import net.tds.magicpets.entity.pet.EntityBabyUndeadPet;
-import net.tds.magicpets.entity.pet.EntityBabyWaterPet;
+import net.tds.magicpets.entity.passive.EntityBabyAirPet;
+import net.tds.magicpets.entity.passive.EntityBabyEarthPet;
+import net.tds.magicpets.entity.passive.EntityBabyFirePet;
+import net.tds.magicpets.entity.passive.EntityBabyLightPet;
+import net.tds.magicpets.entity.passive.EntityBabyUndeadPet;
+import net.tds.magicpets.entity.passive.EntityBabyWaterPet;
 import net.tds.magicpets.lib.Config;
 import cpw.mods.fml.common.registry.EntityRegistry;
 

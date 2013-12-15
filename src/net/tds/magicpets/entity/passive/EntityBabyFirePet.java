@@ -1,4 +1,4 @@
-package net.tds.magicpets.entity.pet;
+package net.tds.magicpets.entity.passive;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

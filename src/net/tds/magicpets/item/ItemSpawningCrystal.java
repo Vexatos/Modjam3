@@ -8,9 +8,9 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.tds.magicpets.ModJam;
 import net.tds.magicpets.data.PlayerPetProperties;
-import net.tds.magicpets.entity.pet.EntityBabyEarthPet;
-import net.tds.magicpets.entity.pet.EntityBabyFirePet;
-import net.tds.magicpets.entity.pet.EntityMagicalPet;
+import net.tds.magicpets.entity.passive.EntityBabyEarthPet;
+import net.tds.magicpets.entity.passive.EntityBabyFirePet;
+import net.tds.magicpets.entity.passive.EntityMagicalPet;
 import net.tds.magicpets.enums.EnumElement;
 import net.tds.magicpets.lib.Format;
 

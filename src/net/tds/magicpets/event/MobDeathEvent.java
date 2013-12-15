@@ -12,7 +12,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.tds.magicpets.data.PlayerPetProperties;
-import net.tds.magicpets.entity.pet.EntityMagicalPet;
+import net.tds.magicpets.entity.passive.EntityMagicalPet;
 import net.tds.magicpets.item.ItemSpawningCrystal;
 
 public class MobDeathEvent {

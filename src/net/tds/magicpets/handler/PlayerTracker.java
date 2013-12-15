@@ -5,7 +5,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.tds.magicpets.data.PlayerPetProperties;
-import net.tds.magicpets.entity.pet.EntityMagicalPet;
+import net.tds.magicpets.entity.passive.EntityMagicalPet;
 import net.tds.magicpets.item.ItemSpawningCrystal;
 import net.tds.magicpets.item.Items;
 import cpw.mods.fml.common.IPlayerTracker;

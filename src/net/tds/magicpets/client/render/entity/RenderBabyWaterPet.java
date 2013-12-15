@@ -4,7 +4,7 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
-import net.tds.magicpets.entity.pet.EntityBabyWaterPet;
+import net.tds.magicpets.entity.passive.EntityBabyWaterPet;
 
 public class RenderBabyWaterPet extends RenderLiving {
 

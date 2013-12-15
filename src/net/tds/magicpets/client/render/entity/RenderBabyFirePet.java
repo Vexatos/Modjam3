@@ -8,7 +8,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.tds.magicpets.ModJam;
 import net.tds.magicpets.client.model.ModelBabyFirePet;
-import net.tds.magicpets.entity.pet.EntityBabyFirePet;
+import net.tds.magicpets.entity.passive.EntityBabyFirePet;
 
 public class RenderBabyFirePet extends RenderLiving {
 

@@ -19,9 +19,9 @@ import net.tds.magicpets.client.render.entity.RenderWaterBoss;
 import net.tds.magicpets.client.render.item.CrystalItemRenderer;
 import net.tds.magicpets.entity.boss.EntityFireBoss;
 import net.tds.magicpets.entity.boss.EntityWaterBoss;
-import net.tds.magicpets.entity.pet.EntityBabyEarthPet;
-import net.tds.magicpets.entity.pet.EntityBabyFirePet;
-import net.tds.magicpets.entity.pet.EntityBabyWaterPet;
+import net.tds.magicpets.entity.passive.EntityBabyEarthPet;
+import net.tds.magicpets.entity.passive.EntityBabyFirePet;
+import net.tds.magicpets.entity.passive.EntityBabyWaterPet;
 import net.tds.magicpets.event.IconEventHandler;
 import net.tds.magicpets.item.Items;
 

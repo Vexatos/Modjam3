@@ -1,4 +1,4 @@
-package net.tds.magicpets.entity.pet;
+package net.tds.magicpets.entity.passive;
 
 import net.minecraft.world.World;
 
