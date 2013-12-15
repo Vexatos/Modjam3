@@ -10,12 +10,15 @@ import net.tds.magicpets.client.model.ModelBabyEarthPet;
 import net.tds.magicpets.client.model.ModelBabyFirePet;
 import net.tds.magicpets.client.model.ModelBabyWaterPet;
 import net.tds.magicpets.client.model.ModelFireBoss;
+import net.tds.magicpets.client.model.ModelWaterBoss;
 import net.tds.magicpets.client.render.entity.RenderBabyEarthPet;
 import net.tds.magicpets.client.render.entity.RenderBabyFirePet;
 import net.tds.magicpets.client.render.entity.RenderBabyWaterPet;
 import net.tds.magicpets.client.render.entity.RenderFireBoss;
+import net.tds.magicpets.client.render.entity.RenderWaterBoss;
 import net.tds.magicpets.client.render.item.CrystalItemRenderer;
 import net.tds.magicpets.entity.boss.EntityFireBoss;
+import net.tds.magicpets.entity.boss.EntityWaterBoss;
 import net.tds.magicpets.entity.pet.EntityBabyEarthPet;
 import net.tds.magicpets.entity.pet.EntityBabyFirePet;
 import net.tds.magicpets.entity.pet.EntityBabyWaterPet;
@@ -40,6 +43,7 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityBabyWaterPet.class, new RenderBabyWaterPet(new ModelBabyWaterPet(), 0.8F));
 		
 		RenderingRegistry.registerEntityRenderingHandler(EntityFireBoss.class, new RenderFireBoss(new ModelFireBoss(), 0.7f));
+		RenderingRegistry.registerEntityRenderingHandler(EntityWaterBoss.class, new RenderWaterBoss(new ModelWaterBoss(), 0.5f));
 		
 		MinecraftForgeClient.registerItemRenderer(Items.spawnCrystal.itemID, new CrystalItemRenderer());
 
