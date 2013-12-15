@@ -77,7 +77,8 @@ public class MobDeathEvent {
 			
 			ItemSpawningCrystal crystal = (ItemSpawningCrystal) stack.getItem();
 			
-			if (crystal.getExperience(stack) + exp > crystal.getMaxExperience(stack)) {
+			if (!((crystal.getExperience(stack) + exp) > crystal.getMaxExperience(stack))) {
+				
 				
 				crystal.setExperience(stack, crystal.getExperience(stack) + exp);
 				System.out.println("It is working" + exp);
@@ -105,19 +106,23 @@ public class MobDeathEvent {
 		for (int i = 0; i < player.inventory.mainInventory.length; i++) {
 			
 			ItemStack stack = player.inventory.mainInventory[i];
-			
+			System.out.println("1");
 			if (stack != null && stack.getItem() instanceof ItemSpawningCrystal) {
+				
+				System.out.println("2");
 				
 				if(!stack.hasTagCompound()) {
 					
 					stack.setTagCompound(new NBTTagCompound());
 				}
 				
-				if(stack.stackTagCompound.hasKey("Most")) {
+				if(stack.stackTagCompound.hasKey("MostID")) {
 					
-					if(stack.stackTagCompound.getLong("Most") == PlayerPetProperties.get(player).getCurrentPet().getMostSignificantBits()) {
+					System.out.println("3");
+					if(stack.stackTagCompound.getLong("MostID") == PlayerPetProperties.get(player).getCurrentPet().getMostSignificantBits()) {
 						
-						if(stack.stackTagCompound.getLong("Least") == PlayerPetProperties.get(player).getCurrentPet().getLeastSignificantBits()) {
+						System.out.println("4");
+						if(stack.stackTagCompound.getLong("LeastID") == PlayerPetProperties.get(player).getCurrentPet().getLeastSignificantBits()) {
 							
 							this.correctCrystal = stack;
 							System.out.println("we has stack");
