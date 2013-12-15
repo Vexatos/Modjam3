@@ -196,11 +196,11 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 		
     	for(int i = 0; i < world.loadedEntityList.size(); i++) {
     		
-    		if (world.loadedEntityList.get(i) instanceof Entity) {
+    		if (world.loadedEntityList.get(i) != null && world.loadedEntityList.get(i) instanceof Entity) {
     			
     			Entity currentEntity = (Entity) world.loadedEntityList.get(i);
     			
-    			if (currentEntity.getUniqueID() == this.getUUID(stack)) {
+    			if (currentEntity.getUniqueID().equals(this.getUUID(stack))) {
     				
     				return currentEntity;
     			}
