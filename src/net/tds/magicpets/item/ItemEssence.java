@@ -11,12 +11,7 @@ public class ItemEssence extends ItemModjamBase {
     public ItemEssence(int id) {
 
         super(id);
-    }
-    
-    //test method planned for spawning the bosses and other mobs.
-    public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
-    	
-		return stack;
+        this.setUnlocalizedName("essence");
     }
     
     @SideOnly(Side.CLIENT)
