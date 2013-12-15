@@ -5,6 +5,7 @@ import java.util.UUID;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.event.ForgeSubscribe;
@@ -22,6 +23,13 @@ public class MobDeathEvent {
 			
 			Entity source = event.source.getEntity();
 			
+			if (event.entity instanceof EntityMagicalPet) {
+				
+				EntityMagicalPet pet = (EntityMagicalPet) event.entity;
+				
+				PlayerPetProperties.get(pet.getEntityPetOwner()).setCurrentPet(0, 0);
+			}
+			
 			if (source instanceof EntityPlayer) {
 				
 				EntityPlayer player = (EntityPlayer) source;
@@ -30,7 +38,7 @@ public class MobDeathEvent {
 					
 					EntityMagicalPet pet = (EntityMagicalPet) PlayerPetProperties.get(player).getEntityByUUID();
 					
-					addExpToPet(15, pet, checkPlayerForCrystal(player, PlayerPetProperties.get(player).getCurrentPet()));
+					addExpToPet(15, pet, checkPlayerForCrystal(player));
 				}
 			}
 			
@@ -38,7 +46,7 @@ public class MobDeathEvent {
 				
 				EntityMagicalPet pet = (EntityMagicalPet) source;
 				
-				addExpToPet(15, pet, checkPlayerForCrystal(pet.getEntityPetOwner(), PlayerPetProperties.get(pet.getEntityPetOwner()).getCurrentPet()));
+				addExpToPet(15, pet, checkPlayerForCrystal(pet.getEntityPetOwner()));
 			}
 		}
 	}
@@ -64,13 +72,15 @@ public class MobDeathEvent {
 		}
 	}
 	
-	public ItemStack checkPlayerForCrystal(EntityPlayer player, UUID uuid) {
+	public ItemStack checkPlayerForCrystal(EntityPlayer player) {
 		
 		for (int i = 0; i < player.inventory.mainInventory.length; i++) {
 			
 			ItemStack stack = player.inventory.mainInventory[i];
 			
 			if (stack.getItem() != null && stack.getItem() instanceof ItemSpawningCrystal) {
+				
+				ItemSpawningCrystal crystal = (ItemSpawningCrystal) stack.getItem();
 				
 				if (!stack.hasTagCompound()) {
 					
@@ -79,7 +89,7 @@ public class MobDeathEvent {
 				
 				if (stack.stackTagCompound.hasKey("Most") && stack.stackTagCompound.hasKey("Least")) {
 					
-					if (stack.stackTagCompound.getLong("Most") == uuid.getMostSignificantBits() && stack.stackTagCompound.getLong("Least") == uuid.getLeastSignificantBits()) {
+					if(crystal.getUUIDFromStack(stack).equals(PlayerPetProperties.get(player).getCurrentPet())) {
 						
 						return stack;
 					}
@@ -87,6 +97,6 @@ public class MobDeathEvent {
 			}
 		}
 		
-		return null;
+		return new ItemStack(Item.appleGold); //basically null
 	}
 }
