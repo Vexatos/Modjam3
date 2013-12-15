@@ -62,6 +62,8 @@ public class PlayerPetProperties implements IExtendedEntityProperties {
 		NBTTagCompound properties = (NBTTagCompound) compound.getTag(PET_PROPS);
 		
 		this.petOut = properties.getBoolean("PetSummoned");
+		this.petLeast = properties.getLong("Least");
+		this.petMost = properties.getLong("Most");
 	}
 
 	@Override
@@ -69,23 +71,38 @@ public class PlayerPetProperties implements IExtendedEntityProperties {
 
 	}
 	
+	/**
+	 * Sets a pet as being out.
+	 * @param petOut: the status of the pets position.
+	 */
 	public void setPetOut(boolean petOut) {
 		
 		this.petOut = petOut;
         //this.syncExtendedProperties();
 	}
 	
+	/**
+	 * Uses two longs to save the current pet's uuid into the players nbt.
+	 * @param most: UUID Most Significant.
+	 * @param least UUID Least Significant.
+	 */
 	public void setCurrentPet(long most, long least) {
 		
 		this.petMost = most;
 		this.petLeast = least;
 	}
 	
+	/**
+	 * @return: returns the UUID of the current pet sent out.
+	 */
 	public UUID getCurrentPet() {
 		
 		return new UUID(this.petMost, this.petLeast);
 	}
 
+	/**
+	 * @return: Entity instance based on lookup in a list of loaded entities.
+	 */
     public Entity getEntityByUUID() {
 		
     	for(int i = 0; i < player.worldObj.loadedEntityList.size(); i++) {
@@ -104,6 +121,9 @@ public class PlayerPetProperties implements IExtendedEntityProperties {
     	return null;
     }
 
+    /**
+     * @return: true if player has a pet out.
+     */
 	public boolean isPetOut() {
 		
 		return this.petOut;

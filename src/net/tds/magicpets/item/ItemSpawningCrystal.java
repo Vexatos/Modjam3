@@ -107,9 +107,15 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 			list.add("Name: " + getName(stack));
 			list.add("Level: " + getLevel(stack));
 			list.add("Experience: " + getExperience(stack) + "/" +  getMaxExperience(stack));
+			list.add(player.posX);
 		}
 	}
 	
+	/**
+	 * Get the owner of the pet from item nbt.
+	 * @param stack: Stack to check nbt of.
+	 * @return the name of the pet's owner.
+	 */
 	public static String getOwner(ItemStack stack) {
 		
 		if (stack.getItem() instanceof ItemSpawningCrystal) {
@@ -120,6 +126,11 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 		return "Failure";
 	}
 	
+	/**
+	 * Get the type of pet this is from an enum using item nbt.
+	 * @param stack: Stack to check nbt of.
+	 * @return: the type of pet this is.
+	 */
 	public static String getType(ItemStack stack) {
 		
 		if (!stack.hasTagCompound()) {
@@ -141,6 +152,11 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 		return "Failure";
 	}
 	
+	/**
+	 * Get the name of the pet from item nbt. 
+	 * @param stack: stack to check nbt of.
+	 * @return: the name of the pet.
+	 */
 	public static String getName(ItemStack stack) {
 		
 		if (stack.getItem() instanceof ItemSpawningCrystal) {
@@ -151,6 +167,11 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 		return "Failure";
 	}
 	
+	/**
+	 * Get the current level of the pet from item nbt.
+	 * @param stack: the stack to check nbt of.
+	 * @return: the pets level in int form.
+	 */
 	public static int getLevel(ItemStack stack) {
 		
 		if (stack.getItem() instanceof ItemSpawningCrystal) {
@@ -161,6 +182,11 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 		return 0;
 	}
 	
+	/**
+	 * Get the pets current amount experience points from item nbt.
+	 * @param stack: stack to check nbt of.
+	 * @return: the pets current amount of experience.
+	 */
 	public static int getExperience(ItemStack stack) {
 		
 		if (stack.getItem() instanceof ItemSpawningCrystal) {
@@ -171,6 +197,11 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 		return -1;
 	}
 
+	/**
+	 * Get the max amount of experience points based on level from item nbt.
+	 * @param stack: stack to check nbt of.
+	 * @return: the current max amount of experience points.
+	 */
 	public static int getMaxExperience(ItemStack stack) {
 		
 		if (stack.getItem() instanceof ItemSpawningCrystal) {
@@ -181,16 +212,31 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 		return -1;
 	}
 	
+	/**
+	 * Get the pets enum type.
+	 * @return: the pets enum.
+	 */
     public EnumElement getElement() {
 
         return element;
     }
     
+    /**
+     * Get the uuid of the syncronized mob from item stack.
+     * @param stack: stack to check nbt of.
+     * @return: the uuid for the syncronized mob.
+     */
     public UUID getUUIDFromStack(ItemStack stack) {
     	
 		return new UUID(stack.stackTagCompound.getLong("MostID"), stack.stackTagCompound.getLong("LeastID"));	
     }
     
+    /**
+     * Get the entity associated with teh uuid by checking the worlds loaded entities.
+     * @param stack: stack to check nbt of.
+     * @param world: world to get entities from.
+     * @return: the entity synced with the crystal.
+     */
     public Entity getEntityByUUID(ItemStack stack, World world) {
 		
     	for(int i = 0; i < world.loadedEntityList.size(); i++) {
@@ -209,11 +255,21 @@ public class ItemSpawningCrystal extends ItemModjamBase {
     	return null;
     }
     
-    public UUID getUUIDFropPlayer(EntityPlayer player) {
+    /**
+     * Gets the uuid of an entity from the players properties.
+     * @param player: player to check properties of.
+     * @return: uuid of the players current synced mob.
+     */
+    public UUID getUUIDFromPlayer(EntityPlayer player) {
     	
     	return PlayerPetProperties.get(player).getCurrentPet();
     }
 	
+    /**
+     * Sets the owner of the pet in items nbt.
+     * @param stack: stack to set nbt to.
+     * @param owner: the owner to add.
+     */
 	public static void setOwner(ItemStack stack, String owner) {
 
 		if (stack.getItem() instanceof ItemSpawningCrystal) {
@@ -222,6 +278,11 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 		}
 	}
 	
+	/**
+	 * Set the mobs type in the items nbt.
+	 * @param stack: stack to set nbt to.
+	 * @param type: the type to set.
+	 */
 	public static void setType(ItemStack stack, String type) {
 		
 		if (stack.getItem() instanceof ItemSpawningCrystal) {
@@ -230,6 +291,11 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 		}
 	}
 	
+	/**
+	 * Set the name of the mob in items nbt.
+	 * @param stack: stack to set nbt to.
+	 * @param name: the name to set.
+	 */
 	public static void setName(ItemStack stack, String name) {
 		
 		if (stack.getItem() instanceof ItemSpawningCrystal) {
@@ -238,6 +304,11 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 		}
 	}
 	
+	/**
+	 * Set the mobs current level.
+	 * @param stack: stack to set nbt to.
+	 * @param level: level to set the value to.
+	 */
 	public static void setLevel(ItemStack stack, int level) {
 
 		if (stack.getItem() instanceof ItemSpawningCrystal) {
@@ -246,6 +317,11 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 		}
 	}
 	
+	/**
+	 * Sets the mobs current experience in item nbt.
+	 * @param stack: stack to set the nbt to.
+	 * @param exp: the value of exp being set.
+	 */
 	public static void setExperience(ItemStack stack, int exp) {
 		
 		if (stack.getItem() instanceof ItemSpawningCrystal) {
@@ -254,11 +330,21 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 		}
 	}
 
+	/**
+	 * Sets the mobs enum type.
+	 * @param element: enum type to set mob to.
+	 */
     public void setElement(EnumElement element) {
 
         this.element = element;
     }
     
+    /**
+     * Saves the instance of the synced mob to the item by
+     * splitting the uuid into longs and saving them in nbt.
+     * @param stack: stact to save the uuid to.
+     * @param pet: Pet to get the uuid of.
+     */
     public void setUUIDToStack(ItemStack stack, EntityMagicalPet pet) {
     	
     	if (stack.getItem() instanceof ItemSpawningCrystal) {
@@ -268,6 +354,12 @@ public class ItemSpawningCrystal extends ItemModjamBase {
     	}
     }
     
+    /**
+     * Saves the instance of the synced mob to the player properties
+     * by splitting it into longs and saving them to the nbt.
+     * @param player: player to save the uuid to.
+     * @param pet: Pet to get the uuid of.
+     */
     public void setUUIDToPlayer(EntityPlayer player, EntityMagicalPet pet) {
     	
     	PlayerPetProperties.get(player).setCurrentPet(pet.getUniqueID().getMostSignificantBits(), pet.getUniqueID().getLeastSignificantBits());
