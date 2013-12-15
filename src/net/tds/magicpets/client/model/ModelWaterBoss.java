@@ -134,10 +134,10 @@ public class ModelWaterBoss extends ModelBase {
 		setRotation(H3, 0.418879F, 0F, 0F);
 		H4 = new ModelRenderer(this, 0, 55);
 		H4.addBox(-4F, 2F, -8.2F, 8, 2, 3);
-		H4.setRotationPoint(0F, 18F, -21F);
+		H4.setRotationPoint(0F, 0F, 0F);
 		H4.setTextureSize(83, 254);
 		H4.mirror = true;
-		setRotation(H4, 0F, 0F, 0F);
+		setRotation(H4, -0.2443461F, 0F, 0F);
 		H5 = new ModelRenderer(this, 44, 0);
 		H5.addBox(2.7F, -5F, -7F, 1, 2, 5);
 		H5.setRotationPoint(0F, 19F, -21F);
@@ -325,7 +325,6 @@ public class ModelWaterBoss extends ModelBase {
 		H1.render(f5);
 		H2.render(f5);
 		H3.render(f5);
-		H4.render(f5);
 		H5.render(f5);
 		H6.render(f5);
 		H7.render(f5);
@@ -365,6 +364,7 @@ public class ModelWaterBoss extends ModelBase {
 
 	public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity) {
 		
+		H9.addChild(H4);
 		super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 	}
 
