@@ -76,9 +76,10 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 				
 				EntityBabyFirePet entity = new EntityBabyFirePet(world);
 				entity.setOwner(getOwner(stack));
-				entity.setName(getName(stack));
-				entity.setLevel(getLevel(stack));
-				entity.setExperience(getExperience(stack));
+				entity.setPetOwner(getOwner(stack));
+				entity.setPetName(getName(stack));
+				entity.setPetLevel(getLevel(stack));
+				entity.setPetExperience(getExperience(stack));
 				entity.setLocationAndAngles(player.posX, player.posY, player.posZ, 0, 0);
 				entity.setCustomNameTag(getName(stack) + " LV: " + getLevel(stack));
 				

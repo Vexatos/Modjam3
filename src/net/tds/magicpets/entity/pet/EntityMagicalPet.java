@@ -61,18 +61,18 @@ public class EntityMagicalPet extends EntityTameable {
 		
 		super.writeEntityToNBT(compound);
 		compound.setString("Owner", this.getPetOwner());
-		compound.setString("Name", this.getName());
-		compound.setInteger("Level", this.getLevel());
-		compound.setInteger("Experience", this.getExperience());
+		compound.setString("Name", this.getPetName());
+		compound.setInteger("Level", this.getPetLevel());
+		compound.setInteger("Experience", this.getPetExperience());
 	}
 	
 	public void readEntityFromNBT(NBTTagCompound compound) {
 		
 		super.readEntityFromNBT(compound);
 		this.setOwner(compound.getString("Owner"));
-		this.setName(compound.getString("Name"));
-		this.setLevel(compound.getInteger("Level"));
-		this.setExperience(compound.getInteger("Experience"));	
+		this.setPetName(compound.getString("Name"));
+		this.setPetLevel(compound.getInteger("Level"));
+		this.setPetExperience(compound.getInteger("Experience"));	
 	}
 	
 	public void setPetOwner(String owner) {
@@ -80,17 +80,17 @@ public class EntityMagicalPet extends EntityTameable {
 		this.dataWatcher.updateObject(dataOwner, owner);
 	}
 	
-	public void setName(String name) {
+	public void setPetName(String name) {
 		
 		this.dataWatcher.updateObject(dataName, name);
 	}
 	
-	public void setLevel(int level) {
+	public void setPetLevel(int level) {
 		
 		this.dataWatcher.updateObject(dataLevel, level);
 	}
 	
-	public void setExperience(int experience) {
+	public void setPetExperience(int experience) {
 		
 		this.dataWatcher.updateObject(dataExperience, experience);
 	}
@@ -100,17 +100,17 @@ public class EntityMagicalPet extends EntityTameable {
 		return this.dataWatcher.getWatchableObjectString(dataOwner);
 	}
 	
-	public String getName() {
+	public String getPetName() {
 		
 		return this.dataWatcher.getWatchableObjectString(dataName);
 	}
 	
-	public int getLevel() {
+	public int getPetLevel() {
 		
 		return this.dataWatcher.getWatchableObjectInt(dataLevel);
 	}
 	
-	public int getExperience() {
+	public int getPetExperience() {
 		
 		return this.dataWatcher.getWatchableObjectInt(dataExperience);
 	}
