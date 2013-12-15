@@ -9,7 +9,7 @@ import net.tds.magicpets.item.ItemSpawningCrystal;
 
 public class IconEventHandler {
 
-    private String[] element_types = new String[] {"fire", "water", "earth", "air", "light", "undead"};
+    private String[] element_types = new String[] {"fire", "water", "earth", "air", "light", "undead", "empty"};
     public static Icon[] crystalIcons = new Icon[8]; // limit to 8 so we don't use too much memory
 
     @ForgeSubscribe
@@ -72,11 +72,11 @@ public class IconEventHandler {
 
                 default: {
 
-                    return crystalIcons[0];
+                    return crystalIcons[6];
                 }
             }
           }     
         }
-        return crystalIcons[0];
+        return crystalIcons[6];
     }
 }

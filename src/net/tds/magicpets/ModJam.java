@@ -30,8 +30,6 @@ import java.util.Arrays;
 
 //Generate particles method in the fire pet causes server crash.
 
-//Fire Pet generating a 50% to many particles.
-
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION)
 @NetworkMod(clientSideRequired = true, serverSideRequired = true, channels = "maigcpets", packetHandler = PacketHandler.class)
 public class ModJam {

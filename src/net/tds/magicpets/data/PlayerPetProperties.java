@@ -4,6 +4,7 @@ import cpw.mods.fml.common.network.PacketDispatcher;
 import cpw.mods.fml.common.network.Player;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IExtendedEntityProperties;
@@ -84,6 +85,24 @@ public class PlayerPetProperties implements IExtendedEntityProperties {
 		
 		return new UUID(this.petMost, this.petLeast);
 	}
+
+    public Entity getEntityByUUID() {
+		
+    	for(int i = 0; i < player.worldObj.loadedEntityList.size(); i++) {
+    		
+    		if (player.worldObj.loadedEntityList.get(i) != null && player.worldObj.loadedEntityList.get(i) instanceof Entity) {
+    			
+    			Entity currentEntity = (Entity) player.worldObj.loadedEntityList.get(i);
+    			
+    			if (currentEntity.getUniqueID().equals(this.getCurrentPet())) {
+    				
+    				return currentEntity;
+    			}
+    		}
+    	}
+    	
+    	return null;
+    }
 
 	public boolean isPetOut() {
 		
