@@ -7,11 +7,10 @@ import net.minecraft.entity.ai.*;
 import net.minecraft.entity.boss.BossStatus;
 import net.minecraft.entity.boss.IBossDisplayData;
 import net.minecraft.entity.monster.EntityMob;
-import net.minecraft.entity.passive.EntityWaterMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 
-public abstract class EntityMagicalBoss extends EntityWaterMob implements IBossDisplayData {
+public abstract class EntityMagicalBoss extends EntityMob implements IBossDisplayData {
 
     public EntityMagicalBoss(World par1World) {
 
