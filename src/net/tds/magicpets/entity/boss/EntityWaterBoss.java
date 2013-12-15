@@ -20,10 +20,12 @@ public class EntityWaterBoss extends EntityMagicalBoss {
     	
     	if (!this.worldObj.isRemote) {
         
-            if (this.getLastAttacker() != null && this.getEntityToAttack().getEyeHeight() > this.getEyeHeight()) {
+            if (this.getEntityToAttack() != null && this.getEntityToAttack().posY > this.posY) {
             	
-            	this.motionY = 10;
-            	System.out.println("ok");
+                this.motionY = (0.40000001192092896D - this.motionY) * 0.40000001192092896D;
+                this.motionX = this.getEntityToAttack().motionX;
+                this.motionZ = this.getEntityToAttack().motionZ;
+                System.out.println(this.getEntityToAttack().getEyeHeight() + " : " + this.getEyeHeight());
             }
     	}
         
