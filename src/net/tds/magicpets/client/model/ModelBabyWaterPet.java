@@ -74,7 +74,7 @@ public class ModelBabyWaterPet extends ModelBase {
 		Leg1.setRotationPoint(2.3F, 17F, 3F);
 		Leg1.setTextureSize(58, 59);
 		Leg1.mirror = true;
-		setRotation(Leg1, 0F, 0F, -0.7853982F);
+		setRotation(Leg1, 0F, 0F, 0.7853982F);
 		Leg2 = new ModelRenderer(this, 0, 39);
 		Leg2.addBox(-2.8F, 2.9F, -1F, 2, 4, 3);
 		Leg2.setRotationPoint(0F, 0F, 0F);
@@ -87,6 +87,7 @@ public class ModelBabyWaterPet extends ModelBase {
 		Leg3.setTextureSize(58, 59);
 		Leg3.mirror = true;
 		setRotation(Leg3, 0F, 0F, -0.7679449F);
+		
 		Leg4 = new ModelRenderer(this, 37, 16);
 		Leg4.addBox(0F, 0F, -2F, 2, 5, 3);
 		Leg4.setRotationPoint(-2.4F, 15F, -2F);
@@ -101,16 +102,17 @@ public class ModelBabyWaterPet extends ModelBase {
 		setRotation(Leg5, 0F, 0F, -0.7679449F);
 		Leg6 = new ModelRenderer(this, 0, 46);
 		Leg6.addBox(-3.5F, 8F, -3F, 2, 1, 4);
-		Leg6.setRotationPoint(0F, 15F, -2F);
+		Leg6.setRotationPoint(0F, 0F, -2F);
 		Leg6.setTextureSize(58, 59);
 		Leg6.mirror = true;
 		setRotation(Leg6, 0F, 0F, -0.7679449F);
+		
 		Leg7 = new ModelRenderer(this, 37, 16);
 		Leg7.addBox(-2.1F, 0F, -2F, 2, 5, 3);
 		Leg7.setRotationPoint(2.6F, 15F, -2F);
 		Leg7.setTextureSize(58, 59);
 		Leg7.mirror = true;
-		setRotation(Leg7, 0F, 0F, -0.7679449F);
+		setRotation(Leg7, 0F, 0F, 0.7679449F);
 		Leg8 = new ModelRenderer(this, 0, 51);
 		Leg8.addBox(1.4F, 3.7F, -1F, 2, 5, 3);
 		Leg8.setRotationPoint(0F, 0F, 0F);
@@ -128,7 +130,7 @@ public class ModelBabyWaterPet extends ModelBase {
 		Leg11.setRotationPoint(0F, 0F, 0F);
 		Leg11.setTextureSize(58, 59);
 		Leg11.mirror = true;
-		setRotation(Leg11, 0F, 0F, 0F);
+		setRotation(Leg11, 0F, 0F, -0.7679449F);
 		Leg12 = new ModelRenderer(this, 0, 46);
 		Leg12.addBox(0.9F, 6F, -2F, 2, 1, 4);
 		Leg12.setRotationPoint(0F, 0F, 0F);
@@ -200,7 +202,7 @@ public class ModelBabyWaterPet extends ModelBase {
 		Leg13.setRotationPoint(-2.4F, 17F, 3F);
 		Leg13.setTextureSize(58, 59);
 		Leg13.mirror = true;
-		setRotation(Leg1, 0F, 0F, 0.7679449F);
+		setRotation(Leg13, 0F, 0F, 0.7679449F);
 	}
 
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
@@ -226,7 +228,6 @@ public class ModelBabyWaterPet extends ModelBase {
 		Neck.render(f5);
 		Body.render(f5);
 		Fin.render(f5);
-		Leg1.render(f5);
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z) {
