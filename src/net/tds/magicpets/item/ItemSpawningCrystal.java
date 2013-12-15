@@ -103,6 +103,8 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 				if (!world.isRemote){
 					
 					world.spawnEntityInWorld(entity);
+					entity.setOwner(getOwner(stack));
+					entity.setPetOwner(getOwner(stack));
 					setUUIDToStack(stack, entity);
 					PlayerPetProperties.get(player).setPetOut(true);
 					PlayerPetProperties.get(player).setCurrentPet(getUUIDFromStack(stack).getMostSignificantBits(), getUUIDFromStack(stack).getLeastSignificantBits());

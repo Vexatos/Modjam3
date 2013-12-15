@@ -40,7 +40,6 @@ public class EntityMagicalPet extends EntityTameable {
 		this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
 		this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, false));
 		this.setTamed(true);
-		this.setOwner(getPetOwner());
 	}
 	
     public boolean isAIEnabled() {
@@ -73,6 +72,12 @@ public class EntityMagicalPet extends EntityTameable {
 		this.setPetName(compound.getString("Name"));
 		this.setPetLevel(compound.getInteger("Level"));
 		this.setPetExperience(compound.getInteger("Experience"));	
+	}
+	
+	public void onLivingUpdate() {
+		
+		super.onLivingUpdate();
+		this.setCustomNameTag(getPetOwner() + "'s " + getPetName() + " LV:" + getPetLevel());
 	}
 	
 	/**
@@ -187,7 +192,6 @@ public class EntityMagicalPet extends EntityTameable {
 	 */
 	public void levelUp(EntityMagicalPet pet) {
 		
-		pet.setCustomNameTag(getPetOwner() + "'s " + getPetName() + " LV:" + getPetLevel());
 	}
 	
 	@Override

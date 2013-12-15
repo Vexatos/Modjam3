@@ -5,7 +5,7 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 
-public class ModelBabyFireGolem extends ModelBase {
+public class ModelBabyFirePet extends ModelBase {
 	
 	public static ModelRenderer F1;
 	public static ModelRenderer F2;
@@ -60,7 +60,7 @@ public class ModelBabyFireGolem extends ModelBase {
 	public static ModelRenderer F51;
 	public static ModelRenderer F52;
 	
-	public ModelBabyFireGolem() {
+	public ModelBabyFirePet() {
 		
 		textureWidth = 20;
 		textureHeight = 28;

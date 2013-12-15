@@ -4,7 +4,7 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
-public class ModelBabyEarthTurtle extends ModelBase {
+public class ModelBabyEarthPet extends ModelBase {
 
 	public static ModelRenderer R1;
 	public static ModelRenderer R2;
@@ -86,7 +86,7 @@ public class ModelBabyEarthTurtle extends ModelBase {
 	public static ModelRenderer R77;
 	public static ModelRenderer R78;
 
-	public ModelBabyEarthTurtle() {
+	public ModelBabyEarthPet() {
 		textureWidth = 26;
 		textureHeight = 26;
 

@@ -6,11 +6,11 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.tds.magicpets.entity.pet.EntityBabyEatrhPet;
 
-public class RenderBabyEarthTurtle extends RenderLiving {
+public class RenderFireBoss extends RenderLiving {
 
-	private static final ResourceLocation texture = new ResourceLocation("magicpets", "textures/entity/earthElement.png");
+	private static final ResourceLocation texture = new ResourceLocation("magicpets", "textures/entity/fireBoss.png");
 	
-	public RenderBabyEarthTurtle(ModelBase par1ModelBase, float par2) {
+	public RenderFireBoss(ModelBase par1ModelBase, float par2) {
 		
 		super(par1ModelBase, par2);
 	}
@@ -21,13 +21,13 @@ public class RenderBabyEarthTurtle extends RenderLiving {
 		return texture;
 	}
 	
-	public void renderPet(EntityBabyEatrhPet turtle, double par2, double par3, double par4, float par5, float par6) {
+	public void renderBoss(EntityBabyEatrhPet turtle, double par2, double par3, double par4, float par5, float par6) {
 		
 		super.doRenderLiving(turtle, par2, par3, par4, par5, par6);
 	}
 	
 	public void doRender(Entity entity, double par2, double par3, double par4, float par5, float par6) {
 		
-		this.renderPet((EntityBabyEatrhPet)entity, par2, par3, par4, par5, par6);
+		this.renderBoss((EntityBabyEatrhPet)entity, par2, par3, par4, par5, par6);
 	}
 }
