@@ -16,6 +16,8 @@ import net.tds.magicpets.item.ItemSpawningCrystal;
 
 public class MobDeathEvent {
 	
+	ItemStack correctCrystal;
+	
 	@ForgeSubscribe
 	public void onMobDeath(LivingDeathEvent event) {
 		
@@ -40,7 +42,7 @@ public class MobDeathEvent {
 						
 						EntityMagicalPet pet = (EntityMagicalPet) PlayerPetProperties.get(player).getEntityByUUID();
 						
-						addExpToPet(999, pet, checkPlayerForCrystal(player));
+						addExpToPet(999, checkPlayerForCrystal(player));
 					}
 				}
 				
@@ -48,7 +50,7 @@ public class MobDeathEvent {
 					
 					EntityMagicalPet pet = (EntityMagicalPet) source;
 					
-					addExpToPet(15, pet, checkPlayerForCrystal(pet.getEntityPetOwner()));
+					addExpToPet(15, checkPlayerForCrystal(pet.getEntityPetOwner()));
 				}
 			}
 		}
@@ -57,26 +59,23 @@ public class MobDeathEvent {
 	/**
 	 * Attempts to add experience points to the pet mob. 
 	 * @param exp: The ammount of exp to add.
-	 * @param pet: The pet recieving the exp. Likely to be removed as stack should send args to pet.
 	 * @param stack: The stack of the crystal.
 	 */
-	public void addExpToPet(int exp, EntityMagicalPet pet, ItemStack stack) {
+	public void addExpToPet(int exp, ItemStack stack) {
 		
 		if (stack.getItem() != null && stack.getItem() instanceof ItemSpawningCrystal) {
 			
 			ItemSpawningCrystal crystal = (ItemSpawningCrystal) stack.getItem();
 			
-			if (pet.getPetExperience() + exp > crystal.getMaxExperience(stack)) {
+			if (crystal.getExperience(stack) + exp > crystal.getMaxExperience(stack)) {
 				
-				pet.setPetExperience(pet.getPetExperience() + exp);
 				crystal.setExperience(stack, crystal.getExperience(stack) + exp);
 			}
 			
 			else {
 				
 				crystal.setLevel(stack, crystal.getLevel(stack) + 1);
-				pet.setPetLevel(pet.getPetLevel() + 1);
-				addExpToPet(crystal.getExperience(stack) + exp - crystal.getMaxExperience(stack), pet, stack);
+				addExpToPet(crystal.getExperience(stack) + exp - crystal.getMaxExperience(stack), stack);
 			}
 		}
 	}
@@ -89,29 +88,33 @@ public class MobDeathEvent {
 	 */
 	public ItemStack checkPlayerForCrystal(EntityPlayer player) {
 		
+		this.correctCrystal = null;
+		
 		for (int i = 0; i < player.inventory.mainInventory.length; i++) {
 			
 			ItemStack stack = player.inventory.mainInventory[i];
 			
-			if (stack != null && stack.getItem() instanceof ItemSpawningCrystal) {
+			if (stack.getItem() instanceof ItemSpawningCrystal) {
 				
-				ItemSpawningCrystal crystal = (ItemSpawningCrystal) stack.getItem();
-				
-				if (!stack.hasTagCompound()) {
+				if(!stack.hasTagCompound()) {
 					
-					stack.stackTagCompound = new NBTTagCompound();
+					stack.setTagCompound(new NBTTagCompound());
 				}
 				
-				if (stack.stackTagCompound.hasKey("Most") && stack.stackTagCompound.hasKey("Least")) {
+				if(stack.stackTagCompound.hasKey("Most")) {
 					
-					if(crystal.getUUIDFromStack(stack).equals(PlayerPetProperties.get(player).getCurrentPet())) {
+					if(stack.stackTagCompound.getLong("Most") == PlayerPetProperties.get(player).getCurrentPet().getMostSignificantBits()) {
 						
-						return stack;
+						if(stack.stackTagCompound.getLong("Least") == PlayerPetProperties.get(player).getCurrentPet().getLeastSignificantBits()) {
+							
+							this.correctCrystal = stack;
+							break;
+						}
 					}
-				}			
+				}
 			}
 		}
 		
-		return new ItemStack(Item.appleGold); //basically null
+		return null;
 	}
 }

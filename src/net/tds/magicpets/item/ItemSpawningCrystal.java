@@ -31,12 +31,24 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 	}
 
     @Override
-    public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5) {
+    public void onUpdate(ItemStack stack, World world, Entity entity, int par4, boolean par5) {
 
+    	if(stack.hasTagCompound()) {
+    		
+    		if(stack.stackTagCompound.hasKey("Owner")) {
+    			
+    			EntityMagicalPet pet = (EntityMagicalPet) getEntityByUUID(stack, world);
+    			
+    			pet.setPetLevel(getLevel(stack));
+    			pet.setPetExperience(getExperience(stack));
+    		}
+    	}
+    	
         if(getElement() == null) {
 
             setElement(EnumElement.FIRE);
         }
+        super.onUpdate(stack, world, entity, par4, par5);
     }
 
     public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
@@ -107,7 +119,6 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 			list.add("Name: " + getName(stack));
 			list.add("Level: " + getLevel(stack));
 			list.add("Experience: " + getExperience(stack) + "/" +  getMaxExperience(stack));
-			list.add("lol" + player.posX);
 		}
 	}
 	
