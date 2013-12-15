@@ -107,7 +107,7 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 			list.add("Name: " + getName(stack));
 			list.add("Level: " + getLevel(stack));
 			list.add("Experience: " + getExperience(stack) + "/" +  getMaxExperience(stack));
-			list.add(player.posX);
+			list.add("lol" + player.posX);
 		}
 	}
 	
