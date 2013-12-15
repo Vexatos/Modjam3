@@ -4,9 +4,6 @@ import net.minecraft.block.material.Material;
 import net.minecraft.world.World;
 
 public class EntityWaterBoss extends EntityMagicalBoss {
-
-	private float heightOffset = 0.5f;
-	private int heightUpdate;
 	
 	public EntityWaterBoss(World world) {
 		
@@ -21,19 +18,12 @@ public class EntityWaterBoss extends EntityMagicalBoss {
     
     public void onLivingUpdate() {
     	
-    	if (this.worldObj.isRemote) {
-    		
-    		--this.heightUpdate;
-
-            if (this.heightUpdate <= 0)
-            {
-                this.heightUpdate = 100;
-                this.heightOffset = 0.5F + (float)this.rand.nextGaussian() * 3.0F;
-            }
-            
-            if (this.getEntityToAttack() != null && this.getEntityToAttack().posY + (double)this.getEntityToAttack().getEyeHeight() > this.posY + (double)this.getEyeHeight() + (double)this.heightOffset)
-            {
-                this.motionY += (0.30000001192092896D - this.motionY) * 0.30000001192092896D;
+    	if (!this.worldObj.isRemote) {
+        
+            if (this.getLastAttacker() != null && this.getEntityToAttack().getEyeHeight() > this.getEyeHeight()) {
+            	
+            	this.motionY = 10;
+            	System.out.println("ok");
             }
     	}
         
