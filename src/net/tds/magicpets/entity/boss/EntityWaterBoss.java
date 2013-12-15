@@ -17,14 +17,18 @@ public class EntityWaterBoss extends EntityMagicalBoss {
         return this.worldObj.handleMaterialAcceleration(this.boundingBox.expand(0.0D, -0.6000000238418579D, 0.0D), Material.water, this);
     }
     
+    
     public void onLivingUpdate() {
     	
     	if (!this.worldObj.isRemote) {
         
-            if (this.getEntityToAttack() != null && this.getEntityToAttack().posY > this.posY) {
-            	
-                this.motionY = (0.40000001192092896D - this.motionY) * 0.40000001192092896D;
-            }
+    		if (this.inWater) {
+    			
+                if (this.getEntityToAttack() != null && this.getEntityToAttack().posY > this.posY) {
+                	
+                    this.motionY = (0.40000001192092896D - this.motionY) * 0.40000001192092896D;
+                }
+    		}
     	}
         
     	this.setAir(20);

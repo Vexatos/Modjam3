@@ -3,6 +3,7 @@ package net.tds.magicpets.client.model;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraft.util.MathHelper;
 
 public class ModelWaterBoss extends ModelBase {
 
@@ -218,10 +219,10 @@ public class ModelWaterBoss extends ModelBase {
 		setRotation(S6, -0.1745329F, 0F, 0F);
 		S7 = new ModelRenderer(this, 57, 41);
 		S7.addBox(1.5F, -6F, 1F, 1, 3, 5);
-		S7.setRotationPoint(-0.5F, 17.5F, 32F);
+		S7.setRotationPoint(-0.5F, 1F, 16F);
 		S7.setTextureSize(83, 254);
 		S7.mirror = true;
-		setRotation(S7, -0.1745329F, 0F, 0F);
+		setRotation(S7, 0F, 0F, 0F);
 		S8 = new ModelRenderer(this, 57, 41);
 		S8.addBox(-1.5F, -6F, 1F, 1, 3, 5);
 		S8.setRotationPoint(-0.5F, 17.5F, 32F);
@@ -338,7 +339,6 @@ public class ModelWaterBoss extends ModelBase {
 		S4.render(f5);
 		S5.render(f5);
 		S6.render(f5);
-		S7.render(f5);
 		S8.render(f5);
 		S9.render(f5);
 		S10.render(f5);
@@ -365,6 +365,14 @@ public class ModelWaterBoss extends ModelBase {
 	public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity) {
 		
 		H9.addChild(H4);
+		T6.addChild(T7);
+		H9.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 1.4F * (f1 /2);
+		T3.rotateAngleY = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 1.4F * (f1 /2);
+		T4.rotateAngleY = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 1.4F * (f1 /2);
+		T5.rotateAngleY = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 1.4F * (f1 /2);
+		T6.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 1.4F * (f1 /2);
+		
+		
 		super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 	}
 
