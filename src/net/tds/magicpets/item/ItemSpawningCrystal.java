@@ -15,6 +15,7 @@ import net.tds.magicpets.enums.EnumElement;
 import net.tds.magicpets.lib.Format;
 
 import java.util.List;
+import java.util.UUID;
 
 public class ItemSpawningCrystal extends ItemModjamBase {
 
@@ -64,7 +65,11 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 			if (PlayerPetProperties.get(player).isPetOut()) {
 				
 				PlayerPetProperties.get(player).setPetOut(false);
-				//kill pet here
+				
+				if(getEntityByUUID(stack, world) != null) {
+					
+					getEntityByUUID(stack, world).setDead();
+				}
 			}
 			
 			else {
@@ -80,7 +85,7 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 				if (!world.isRemote){
 					
 					world.spawnEntityInWorld(entity);
-					//set  pet here
+					setUUID(stack, entity);
 					PlayerPetProperties.get(player).setPetOut(true);
 				}	
 			}	
@@ -181,6 +186,29 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 
         return element;
     }
+    
+    public UUID getUUID(ItemStack stack) {
+    	
+		return new UUID(stack.stackTagCompound.getLong("MostID"), stack.stackTagCompound.getLong("LeastID"));	
+    }
+    
+    public Entity getEntityByUUID(ItemStack stack, World world) {
+		
+    	for(int i = 0; i < world.loadedEntityList.size(); i++) {
+    		
+    		if (world.loadedEntityList.get(i) instanceof Entity) {
+    			
+    			Entity currentEntity = (Entity) world.loadedEntityList.get(i);
+    			
+    			if (currentEntity.getUniqueID() == this.getUUID(stack)) {
+    				
+    				return currentEntity;
+    			}
+    		}
+    	}
+    	
+    	return null;
+    }
 	
 	public static void setOwner(ItemStack stack, String owner) {
 
@@ -225,5 +253,14 @@ public class ItemSpawningCrystal extends ItemModjamBase {
     public void setElement(EnumElement element) {
 
         this.element = element;
+    }
+    
+    public void setUUID(ItemStack stack, EntityMagicalPet pet) {
+    	
+    	if (stack.getItem() instanceof ItemSpawningCrystal) {
+    		
+    		stack.stackTagCompound.setLong("LeastID", pet.getUniqueID().getLeastSignificantBits());
+    		stack.stackTagCompound.setLong("MostID", pet.getUniqueID().getMostSignificantBits());
+    	}
     }
 }

@@ -43,14 +43,7 @@ public class PlayerTracker implements IPlayerTracker {
 			if (player.inventory.mainInventory[i] != null && player.inventory.mainInventory[i].getItem()  instanceof ItemSpawningCrystal) {
 				
 				ItemSpawningCrystal crystal = (ItemSpawningCrystal) player.inventory.mainInventory[i].getItem();
-				
-				if (crystal.getInstanceOfPet() != null) {
-
-					EntityMagicalPet pet = crystal.getInstanceOfPet();
-					pet.addPotionEffect(new PotionEffect(Potion.harm.id, 100, 100, false));
-					pet.setDead();
-					PlayerPetProperties.get(player).setPetOut(false);
-				}
+				PlayerPetProperties.get(player).setPetOut(false);
 			}
 		}
 	}
