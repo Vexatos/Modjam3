@@ -31,8 +31,7 @@ public class EntityMagicalPet extends EntityTameable {
 		this.ignoreFrustumCheck = true;
 		this.getNavigator().setCanSwim(true);
 		this.tasks.addTask(1, new EntityAISwimming(this));
-		this.tasks.addTask(2, this.aiSit);
-		this.tasks.addTask(3, new EntityAIAttackOnCollide(this, 1.0D, true));
+		this.tasks.addTask(3, new EntityAIAttackOnCollide(this, 0.3D, true));
 		this.tasks.addTask(4, new EntityAIFollowOwner(this, 0.3D, 10.0F, 2.0F));
 		this.tasks.addTask(5, new EntityAIWander(this, 0.3d));
 		this.tasks.addTask(6, new EntityAILookIdle(this));
@@ -73,6 +72,12 @@ public class EntityMagicalPet extends EntityTameable {
 		this.setPetName(compound.getString("Name"));
 		this.setPetLevel(compound.getInteger("Level"));
 		this.setPetExperience(compound.getInteger("Experience"));	
+	}
+	
+	public void onLivingUpdate() {
+		
+		this.setCustomNameTag(getPetOwner() + "'s " + getPetName() + " LV:" + getPetLevel());
+		super.onLivingUpdate();
 	}
 	
 	public void setPetOwner(String owner) {

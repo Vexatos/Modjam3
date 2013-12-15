@@ -50,7 +50,7 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 			
 			setOwner(stack, player.username);
 			setType(stack, element.name);
-			setName(stack, player.username + "'s Secret");
+			setName(stack, "Fire Elemental");
 			setLevel(stack, 1);
 			setExperience(stack, 0);
 		}
@@ -75,13 +75,11 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 			else {
 				
 				EntityBabyFirePet entity = new EntityBabyFirePet(world);
-				entity.setOwner(getOwner(stack));
 				entity.setPetOwner(getOwner(stack));
 				entity.setPetName(getName(stack));
 				entity.setPetLevel(getLevel(stack));
 				entity.setPetExperience(getExperience(stack));
 				entity.setLocationAndAngles(player.posX, player.posY, player.posZ, 0, 0);
-				entity.setCustomNameTag(getName(stack) + " LV: " + getLevel(stack));
 				
 				if (!world.isRemote){
 					
