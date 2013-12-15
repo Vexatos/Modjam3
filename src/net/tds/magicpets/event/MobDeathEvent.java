@@ -38,11 +38,16 @@ public class MobDeathEvent {
 					
 					EntityPlayer player = (EntityPlayer) source;
 					
+					checkPlayerForCrystal(player);
+					
 					if (!(PlayerPetProperties.get(player).getCurrentPet().equals(new UUID(0,0)))) {
 						
 						EntityMagicalPet pet = (EntityMagicalPet) PlayerPetProperties.get(player).getEntityByUUID();
 						
-						addExpToPet(999, checkPlayerForCrystal(player));
+						if(this.correctCrystal != null) {
+							
+							addExpToPet(999, this.correctCrystal);
+						}
 					}
 				}
 				
@@ -50,7 +55,12 @@ public class MobDeathEvent {
 					
 					EntityMagicalPet pet = (EntityMagicalPet) source;
 					
-					addExpToPet(15, checkPlayerForCrystal(pet.getEntityPetOwner()));
+					checkPlayerForCrystal(pet.getEntityPetOwner());
+					
+					if(this.correctCrystal != null) {
+						
+						addExpToPet(15, this.correctCrystal);						
+					}
 				}
 			}
 		}
@@ -70,12 +80,14 @@ public class MobDeathEvent {
 			if (crystal.getExperience(stack) + exp > crystal.getMaxExperience(stack)) {
 				
 				crystal.setExperience(stack, crystal.getExperience(stack) + exp);
+				System.out.println("It is working" + exp);
 			}
 			
 			else {
 				
 				crystal.setLevel(stack, crystal.getLevel(stack) + 1);
 				addExpToPet(crystal.getExperience(stack) + exp - crystal.getMaxExperience(stack), stack);
+				System.out.println("It is working" + exp);
 			}
 		}
 	}
@@ -108,6 +120,7 @@ public class MobDeathEvent {
 						if(stack.stackTagCompound.getLong("Least") == PlayerPetProperties.get(player).getCurrentPet().getLeastSignificantBits()) {
 							
 							this.correctCrystal = stack;
+							System.out.println("we has stack");
 							break;
 						}
 					}
@@ -115,6 +128,7 @@ public class MobDeathEvent {
 			}
 		}
 		
+		System.out.println("nope");
 		return null;
 	}
 }
