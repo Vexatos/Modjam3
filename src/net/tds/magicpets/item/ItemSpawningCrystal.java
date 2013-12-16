@@ -116,6 +116,7 @@ public class ItemSpawningCrystal extends ItemModjamBase {
         }
         
         else {
+        	
         	ModJam.proxy.sendChatToPlayer(player, Format.DARK_RED + "Summoning failed. Is it possible that you already have a pet out?");
         }
     }
