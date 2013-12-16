@@ -1,5 +1,7 @@
 package net.tds.magicpets.proxy;
 
+import java.util.Arrays;
+
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import net.minecraft.client.model.ModelPig;
 import net.minecraft.entity.player.EntityPlayer;
@@ -23,6 +25,7 @@ import net.tds.magicpets.entity.passive.EntityBabyEarthPet;
 import net.tds.magicpets.entity.passive.EntityBabyFirePet;
 import net.tds.magicpets.entity.passive.EntityBabyWaterPet;
 import net.tds.magicpets.event.IconEventHandler;
+import net.tds.magicpets.handler.CapeHandler;
 import net.tds.magicpets.item.Items;
 
 
@@ -48,5 +51,12 @@ public class ClientProxy extends CommonProxy {
 		MinecraftForgeClient.registerItemRenderer(Items.spawnCrystal.itemID, new CrystalItemRenderer());
 
         MinecraftForge.EVENT_BUS.register(new IconEventHandler());
+	}
+	
+	public void registerCapes() {
+		
+		String[] team = {"darkhax", "viper283", "darkhax1"};
+		
+		CapeHandler.registerCapesFromList(team, "http://i.imgur.com/cM5tpAs.png");
 	}
 }
