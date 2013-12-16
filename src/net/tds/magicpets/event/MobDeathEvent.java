@@ -4,6 +4,7 @@ import java.util.UUID;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -12,8 +13,13 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.tds.magicpets.data.PlayerPetProperties;
+import net.tds.magicpets.entity.boss.EntityEarthBoss;
+import net.tds.magicpets.entity.boss.EntityFireBoss;
+import net.tds.magicpets.entity.boss.EntityMagicalBoss;
+import net.tds.magicpets.entity.boss.EntityWaterBoss;
 import net.tds.magicpets.entity.passive.EntityMagicalPet;
 import net.tds.magicpets.item.ItemSpawningCrystal;
+import net.tds.magicpets.item.Items;
 
 public class MobDeathEvent {
 	

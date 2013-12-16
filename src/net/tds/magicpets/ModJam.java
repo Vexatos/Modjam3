@@ -26,22 +26,6 @@ import net.tds.magicpets.proxy.CommonProxy;
 
 import java.util.Arrays;
 
-//99% of these commits are for dev discussion and notification.
-//* = I will do it.
-//** = either of us can do it.
-//*** = I want you to do these ones please :p
-
-//On reload mobs lose the owner tag in their names, this is due to the owner tag not 
-//being saved right. ***
-
-//Mobs need to be specially coded with modifiers. *
-
-//ItemCrystal needs to have some code be replaced.
-//type should be replaced with the enum you made
-//Enum should have a new argument for an entity. This entity should be used for hellping the 
-//item find out what to spawn. ***
-
-//Bosses need to be modeled, animated and coded with special drops and similar properties. *
 
 //Pet needs a way to check if its player is online if not despawn. **
 
@@ -49,8 +33,6 @@ import java.util.Arrays;
 
 //Pets need cooldown **
 
-//Ligh, Dark, Air pet models and renders needed to be set up, Water, Air, Dark, light, earth boss model
-//need to be set up. *
 
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION)
 @NetworkMod(clientSideRequired = true, serverSideRequired = true, channels = "maigcpets", packetHandler = PacketHandler.class)
@@ -71,7 +53,6 @@ public class ModJam {
 		new EntityManager(this);
 		MinecraftForge.EVENT_BUS.register(new EntityConstructionEvent());	
 		MinecraftForge.EVENT_BUS.register(new MobDeathEvent());
-		GameRegistry.registerPlayerTracker(new PlayerTracker());
 		proxy.registerRenders();
 	}
 	
