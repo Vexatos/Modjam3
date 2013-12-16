@@ -56,6 +56,7 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 
     public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
 		
+    	System.out.println("1");
 		if (!stack.hasTagCompound()) {
 		
 			stack.setTagCompound(new NBTTagCompound());
@@ -68,70 +69,22 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 		
 		else {
 			
+			System.out.println("2");
 			if (PlayerPetProperties.get(player).isPetOut()) {
 				
-				doPetKill(player, world, stack);
+				System.out.println("3");
+				killPetByUUID(player, world, stack);
 			} 
 			
 			else {
-				
-				doPetSpawn(player, world, stack);
+				System.out.println("4");
+				int id = EnumElement.getID(getType(stack));
+				spawnPetByID(player, stack, id);
 			}		
 		}
 		
 		return stack;	
 	}
-
-    public void doPetSpawn(EntityPlayer player, World world, ItemStack stack) {
-
-        if(this.getElement() != null) {
-
-            Class<? extends EntityMagicalPet> clazz = this.getElement().pet;
-
-            Object obj = null;
-
-            try {
-
-                Constructor constructor = clazz.getConstructor(World.class);
-                obj = constructor.newInstance(world);
-            } 
-            
-            catch(Exception e) {
-
-                e.printStackTrace();
-            }
-
-            if(obj != null) {
-
-                EntityMagicalPet pet = (EntityMagicalPet)obj;
-                pet.setPetOwner(getOwner(stack));
-                pet.setPetName(getName(stack));
-                pet.setPetLevel(getLevel(stack));
-                pet.setPetExperience(getExperience(stack));
-                pet.setLocationAndAngles(player.posX, player.posY, player.posZ, 0, 0);
-
-                if (!world.isRemote){
-
-                    world.spawnEntityInWorld(pet);
-                    pet.setOwner(getOwner(stack));
-                    pet.setPetOwner(getOwner(stack));
-                    setUUIDToStack(stack, pet);
-                    PlayerPetProperties.get(player).setPetOut(true);
-                    PlayerPetProperties.get(player).setCurrentPet(getUUIDFromStack(stack).getMostSignificantBits(), getUUIDFromStack(stack).getLeastSignificantBits());
-                }
-            }
-        }
-    }
-
-    public void doPetKill(EntityPlayer player, World world, ItemStack stack) {
-
-        PlayerPetProperties.get(player).setPetOut(false);
-
-        if(getEntityByUUID(stack, world) != null) {
-
-            getEntityByUUID(stack, world).setDead();
-        }
-    }
 	
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean smt) {
 		
@@ -148,6 +101,54 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 			list.add("Experience: " + getExperience(stack) + "/" + getMaxExperience(stack));
 		}
 	}
+	
+	/**
+	 * gets a pet by uuid and kills it.
+	 * @param player: player to get the pet from.
+	 * @param world: world to get the pet from.
+	 * @param stack: stack to get a specific uuid
+	 */
+    public void killPetByUUID(EntityPlayer player, World world, ItemStack stack) {
+
+        PlayerPetProperties.get(player).setPetOut(false);
+
+        if(getEntityByUUID(stack, world) != null) {
+
+            getEntityByUUID(stack, world).setDead();
+        }
+    }
+    
+    /**
+     * Spawns a pet into the world based on an entity ID.
+     * @param player: Player summoning the pet.
+     * @param stack: Stack being used to summon pet.
+     * @param id: Id of the pet being spawned.
+     */
+    public void spawnPetByID(EntityPlayer player, ItemStack stack, int id) {
+    	
+    	World world = player.worldObj;   	
+    	Entity entity = world.getEntityByID(id);
+    	
+    	if(entity != null && entity instanceof EntityMagicalPet) {
+    		
+    		EntityMagicalPet pet = (EntityMagicalPet) world.getEntityByID(id);
+            pet.setPetOwner(getOwner(stack));
+            pet.setPetName(getName(stack));
+            pet.setPetLevel(getLevel(stack));
+            pet.setPetExperience(getExperience(stack));
+            pet.setLocationAndAngles(player.posX, player.posY, player.posZ, 0, 0);
+
+            if (!world.isRemote){
+
+                world.spawnEntityInWorld(pet);
+                pet.setOwner(getOwner(stack));
+                pet.setPetOwner(getOwner(stack));
+                setUUIDToStack(stack, pet);
+                PlayerPetProperties.get(player).setPetOut(true);
+                PlayerPetProperties.get(player).setCurrentPet(getUUIDFromStack(stack).getMostSignificantBits(), getUUIDFromStack(stack).getLeastSignificantBits());
+            }
+    	}
+    }
 	
 	/**
 	 * Get the owner of the pet from item nbt.
