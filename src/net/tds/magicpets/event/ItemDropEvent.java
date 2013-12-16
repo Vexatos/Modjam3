@@ -54,7 +54,6 @@ public class ItemDropEvent {
 			
 			event.drops.add(item);
 			boss.dropItem(Item.emerald.itemID, 5);
-			stack = null;
 		}
 	}
 }

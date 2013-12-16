@@ -57,30 +57,30 @@ public class ItemSpawningCrystal extends ItemModjamBase {
     	if(!world.isRemote) {
     		
     		if (!stack.hasTagCompound()) {
-    			
+    			System.out.println("s1");
     			stack.setTagCompound(new NBTTagCompound());
     		}
     		
     		if (!stack.stackTagCompound.hasKey("Owner")) {
-    			
+    			System.out.println("s2");
     			stack.stackTagCompound.setString("Owner", player.username);
     			return stack;
     		}
     		
     		if (!getOwner(stack).equalsIgnoreCase(player.username)) {
-    			
+    			System.out.println("s3");
     			ModJam.proxy.sendChatToPlayer(player, Format.RED + "[Warning]: This is not your crystal");
     		}
     		
     		else {
-    			
+    			System.out.println("s4");
     			if (PlayerPetProperties.get(player).isPetOut()) {
     				
     				killPetByUUID(player, world, stack);
     			} 
     			
     			else {
-    				
+    				System.out.println("s5");
     				doPetSpawn(player, world, stack);
     			}		
     		}

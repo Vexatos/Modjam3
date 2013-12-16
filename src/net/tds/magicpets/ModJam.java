@@ -27,16 +27,41 @@ import net.tds.magicpets.proxy.CommonProxy;
 
 import java.util.Arrays;
 
-//Pet crystals are dropped by the boss however they don't work. This NEEDS to be fixed
-//Before the event ends. 
+//Pets don't seem to be syncing data correctly with the item. I assume this is a packet
+//issue like you were saying. If this is the case please look at it. I have noticed that 
+//most of the get/set methods in the entity class don not work and will often return null
+//or the default values. This needs to be fixed before the end of the jam. If it's not a 
+//packet issue perhaps we should recode the entity class and all of its methods to use a 
+//uuid system similar to that of how the item works. I intend to make the switch at a later
+//date anyhow but since I believe the current system may be of issue we may need to replace it
+//right now. uuid are easy to work with and are basically two longs. they can be saved in nbt and
+//allow to get a direct instance of the specific mob linked through any instance of the world.
+//this change will be beneficial overall.
 
+//Pets can be damaged and killed by their owners. As of now the recall code is a bit broken and 
+//locks the player out if the pet dies rather than gets recalled. This is likely due to the 
+//sync issues mentioned above. 
 
-//Pet needs a way to check if its player is online if not despawn. **
+//As mentioned above pets can be hurt by their owners. I have made an event to prevent this but 
+//since the pet isn't returning any data just yet due to sync issues it will have to wait. once the
+//sync issues have been resolved I would like a pet to become undamageable by its owner through the
+//help of the living hurt method. 
 
-//Pet needs a way to check if its player has its spawn item in its inv. if not despawn. **
+//Pet needs a way to check if its player is online. this will be used to check on update if their 
+//player is logged in. If not the pet should despawn to prevent any issues with the pet while its
+//owner is offline. This obviously won't have an effect in single player.
 
-//Pets need cooldown **
+//Pet needs a way to check if its player has its spawn item in its inv. This will be used on update 
+//to make sure that the player did not just stuff the item away in a chest somewhere. If the owner does
+//not have the correct item the pet should despawn. 
 
+//pets currently don't have a cooldown. Pets need a cooldown to become less overpowered.
+
+//Boss mobs need to be added to the spawn code.
+
+//earth boss needs to have its model and texture be added and have its animation coded.
+
+//Earth and fire bosses need some special attack code added.
 
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION)
 @NetworkMod(clientSideRequired = true, serverSideRequired = true, channels = "maigcpets", packetHandler = PacketHandler.class)
