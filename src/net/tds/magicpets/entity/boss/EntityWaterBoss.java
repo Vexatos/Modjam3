@@ -47,6 +47,6 @@ public class EntityWaterBoss extends EntityMagicalBoss {
     		}
     	}
     	
-		return hasAttacked;	
+		return true;	
     }
 }

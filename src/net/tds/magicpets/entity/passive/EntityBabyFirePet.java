@@ -2,6 +2,7 @@ package net.tds.magicpets.entity.passive;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIFollowOwner;
@@ -29,4 +30,14 @@ public class EntityBabyFirePet extends EntityMagicalPet {
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(10 + (getPetLevel() * this.healthModifier));
 		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(2 + (getPetLevel() * this.damageModifier));
 	}
+	
+    public boolean attackEntityAsMob(Entity entity) {
+    	
+    	if (this.getPetLevel() >= 5) {
+    		
+    		entity.setFire(getPetLevel()/5);
+    	}
+    	
+		return true;	
+    }
 }
