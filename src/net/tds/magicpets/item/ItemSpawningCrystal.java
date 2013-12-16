@@ -109,11 +109,14 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 	 */
     public void killPetByUUID(EntityPlayer player, World world, ItemStack stack) {
 
-        PlayerPetProperties.get(player).setPetOut(false);
-
         if(getEntityByUUID(stack, world) != null) {
 
+        	PlayerPetProperties.get(player).setPetOut(false);
             getEntityByUUID(stack, world).setDead();
+        }
+        
+        else {
+        	ModJam.proxy.sendChatToPlayer(player, Format.DARK_RED + "Summoning failed. Is it possible that you already have a pet out?");
         }
     }
     
