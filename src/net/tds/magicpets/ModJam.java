@@ -17,6 +17,7 @@ import net.tds.magicpets.entity.passive.EntityBabyFirePet;
 import net.tds.magicpets.event.EntityConstructionEvent;
 import net.tds.magicpets.event.ItemDropEvent;
 import net.tds.magicpets.event.MobDeathEvent;
+import net.tds.magicpets.event.MobHurtEvent;
 import net.tds.magicpets.handler.ConnectionHandler;
 import net.tds.magicpets.item.Items;
 import net.tds.magicpets.lib.Config;
@@ -26,16 +27,6 @@ import net.tds.magicpets.proxy.CommonProxy;
 
 import java.util.Arrays;
 
-//Pets don't seem to be syncing data correctly with the item. I assume this is a packet
-//issue like you were saying. If this is the case please look at it. I have noticed that 
-//most of the get/set methods in the entity class don not work and will often return null
-//or the default values. This needs to be fixed before the end of the jam. If it's not a 
-//packet issue perhaps we should recode the entity class and all of its methods to use a 
-//uuid system similar to that of how the item works. I intend to make the switch at a later
-//date anyhow but since I believe the current system may be of issue we may need to replace it
-//right now. uuid are easy to work with and are basically two longs. they can be saved in nbt and
-//allow to get a direct instance of the specific mob linked through any instance of the world.
-//this change will be beneficial overall.
 
 //Pets can be damaged and killed by their owners. As of now the recall code is a bit broken and 
 //locks the player out if the pet dies rather than gets recalled. This is likely due to the 
@@ -82,6 +73,7 @@ public class ModJam {
 		MinecraftForge.EVENT_BUS.register(new EntityConstructionEvent());	
 		MinecraftForge.EVENT_BUS.register(new MobDeathEvent());
 		MinecraftForge.EVENT_BUS.register(new ItemDropEvent());
+		MinecraftForge.EVENT_BUS.register(new MobHurtEvent());
 		proxy.registerRenders();
 		proxy.registerCapes();
 	}

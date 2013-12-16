@@ -54,6 +54,7 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 
     public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
     	
+    	System.out.println();
     	if(!world.isRemote) {
     		
     		if (!stack.hasTagCompound()) {
