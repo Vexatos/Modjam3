@@ -55,8 +55,8 @@ public class EntityMagicalPet extends EntityTameable {
 	protected void entityInit() {
 		
 		super.entityInit();
-		this.dataWatcher.addObject(dataOwner, "");
-		this.dataWatcher.addObject(dataName, "");
+		this.dataWatcher.addObject(dataOwner, "defaultOwner");
+		this.dataWatcher.addObject(dataName, "defaultName");
 		this.dataWatcher.addObject(dataLevel, 0);
 		this.dataWatcher.addObject(dataExperience, 0);
 	}
@@ -73,7 +73,7 @@ public class EntityMagicalPet extends EntityTameable {
 	public void readEntityFromNBT(NBTTagCompound compound) {
 		
 		super.readEntityFromNBT(compound);
-		this.setOwner(compound.getString("Owner"));
+		this.setPetOwner(compound.getString("Owner"));
 		this.setPetName(compound.getString("Name"));
 		this.setPetLevel(compound.getInteger("Level"));
 		this.setPetExperience(compound.getInteger("Experience"));	
@@ -82,7 +82,7 @@ public class EntityMagicalPet extends EntityTameable {
 	public void onLivingUpdate() {
 		
 		super.onLivingUpdate();
-		this.setCustomNameTag(getPetName() + " LV:" + getPetLevel());
+		this.setCustomNameTag(getPetOwner() + "'s " + getPetName() + " LV:" + getPetLevel());
 	}
 	
 	/**
