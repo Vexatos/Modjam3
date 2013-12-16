@@ -27,6 +27,9 @@ import net.tds.magicpets.proxy.CommonProxy;
 
 import java.util.Arrays;
 
+//Pet crystals are dropped by the boss however they don't work. This NEEDS to be fixed
+//Before the event ends. 
+
 
 //Pet needs a way to check if its player is online if not despawn. **
 
