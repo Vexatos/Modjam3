@@ -15,6 +15,7 @@ import net.tds.magicpets.entity.EntityManager;
 import net.tds.magicpets.entity.passive.EntityBabyEarthPet;
 import net.tds.magicpets.entity.passive.EntityBabyFirePet;
 import net.tds.magicpets.event.EntityConstructionEvent;
+import net.tds.magicpets.event.ItemDropEvent;
 import net.tds.magicpets.event.MobDeathEvent;
 import net.tds.magicpets.handler.ConnectionHandler;
 import net.tds.magicpets.handler.PlayerTracker;
@@ -53,6 +54,7 @@ public class ModJam {
 		new EntityManager(this);
 		MinecraftForge.EVENT_BUS.register(new EntityConstructionEvent());	
 		MinecraftForge.EVENT_BUS.register(new MobDeathEvent());
+		MinecraftForge.EVENT_BUS.register(new ItemDropEvent());
 		proxy.registerRenders();
 	}
 	

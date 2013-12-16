@@ -28,6 +28,8 @@ public class ItemDropEvent {
 				stack.setTagCompound(new NBTTagCompound());
 				stack.stackTagCompound.setString("Name", "Land Shark");
 				stack.stackTagCompound.setString("Type", "Water");
+				stack.stackTagCompound.setInteger("Level", 0);
+				stack.stackTagCompound.setInteger("Experience", 0);
 			}
 			
 			if (boss instanceof EntityFireBoss) {
@@ -35,6 +37,8 @@ public class ItemDropEvent {
 				stack.setTagCompound(new NBTTagCompound());
 				stack.stackTagCompound.setString("Name", "Fire Elemental");
 				stack.stackTagCompound.setString("Type", "Fire");
+				stack.stackTagCompound.setInteger("Level", 0);
+				stack.stackTagCompound.setInteger("Experience", 0);
 			}
 			
 			if (boss instanceof EntityEarthBoss) {
@@ -42,6 +46,8 @@ public class ItemDropEvent {
 				stack.setTagCompound(new NBTTagCompound());
 				stack.stackTagCompound.setString("Name", "Earth Turtle");
 				stack.stackTagCompound.setString("Type", "Earth");
+				stack.stackTagCompound.setInteger("Level", 0);
+				stack.stackTagCompound.setInteger("Experience", 0);
 			}
 			
 			EntityItem item = new EntityItem(boss.worldObj, boss.posX, boss.posY, boss.posZ, stack);

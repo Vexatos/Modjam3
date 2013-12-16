@@ -61,6 +61,10 @@ public class ItemSpawningCrystal extends ItemModjamBase {
     			stack.setTagCompound(new NBTTagCompound());
     		}
     		
+    		if (!stack.stackTagCompound.hasKey("Owner")) {
+    			stack.stackTagCompound.setString("Owner", player.username);
+    		}
+    		
     		if (!getOwner(stack).equalsIgnoreCase(player.username)) {
     			
     			ModJam.proxy.sendChatToPlayer(player, Format.RED + "[Warning]: This is not your crystal");
@@ -75,9 +79,7 @@ public class ItemSpawningCrystal extends ItemModjamBase {
     			
     			else {
     				
-    				int id = EnumElement.getID(getType(stack));
     				doPetSpawn(player, world, stack);
-    				spawnPetByID(player, stack, id);
     			}		
     		}
     	}
