@@ -55,33 +55,33 @@ public class ItemSpawningCrystal extends ItemModjamBase {
     }
 
     public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
-		
-    	System.out.println("1");
-		if (!stack.hasTagCompound()) {
-		
-			stack.setTagCompound(new NBTTagCompound());
-		}
-		
-		if (!getOwner(stack).equalsIgnoreCase(player.username)) {
-			
-			ModJam.proxy.sendChatToPlayer(player, Format.RED + "[Warning]: This is not your crystal");
-		}
-		
-		else {
-			
-			System.out.println("2");
-			if (PlayerPetProperties.get(player).isPetOut()) {
-				
-				System.out.println("3");
-				killPetByUUID(player, world, stack);
-			} 
-			
-			else {
-				System.out.println("4");
-				int id = EnumElement.getID(getType(stack));
-				spawnPetByID(player, stack, id);
-			}		
-		}
+    	
+    	if(!world.isRemote) {
+    		
+    		if (!stack.hasTagCompound()) {
+    			
+    			stack.setTagCompound(new NBTTagCompound());
+    		}
+    		
+    		if (!getOwner(stack).equalsIgnoreCase(player.username)) {
+    			
+    			ModJam.proxy.sendChatToPlayer(player, Format.RED + "[Warning]: This is not your crystal");
+    		}
+    		
+    		else {
+    			
+    			if (PlayerPetProperties.get(player).isPetOut()) {
+    				
+    				killPetByUUID(player, world, stack);
+    			} 
+    			
+    			else {
+    				
+    				int id = EnumElement.getID(getType(stack));
+    				spawnPetByID(player, stack, id);
+    			}		
+    		}
+    	}
 		
 		return stack;	
 	}
@@ -126,11 +126,14 @@ public class ItemSpawningCrystal extends ItemModjamBase {
      */
     public void spawnPetByID(EntityPlayer player, ItemStack stack, int id) {
     	
+    	System.out.println("1");
+    	
     	World world = player.worldObj;   	
     	Entity entity = world.getEntityByID(id);
     	
     	if(entity != null && entity instanceof EntityMagicalPet) {
     		
+    		System.out.println("2");
     		EntityMagicalPet pet = (EntityMagicalPet) world.getEntityByID(id);
             pet.setPetOwner(getOwner(stack));
             pet.setPetName(getName(stack));
@@ -140,6 +143,7 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 
             if (!world.isRemote){
 
+            	System.out.println("3");
                 world.spawnEntityInWorld(pet);
                 pet.setOwner(getOwner(stack));
                 pet.setPetOwner(getOwner(stack));
