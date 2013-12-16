@@ -2,6 +2,7 @@ package net.tds.magicpets.entity.passive;
 
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIFollowOwner;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
@@ -21,6 +22,10 @@ public class EntityMagicalPet extends EntityTameable {
 	public static int dataName = 26;
 	public static int dataLevel = 27;
 	public static int dataExperience = 28;
+	
+	public static int damageModifier = 0;
+	public static int healthModifier = 0;
+	public static int SpeedModifier = 0;
 	
 	public EntityMagicalPet(World world) {
 		
@@ -77,7 +82,7 @@ public class EntityMagicalPet extends EntityTameable {
 	public void onLivingUpdate() {
 		
 		super.onLivingUpdate();
-		this.setCustomNameTag(getPetOwner() + "'s " + getPetName() + " LV:" + getPetLevel());
+		this.setCustomNameTag(getPetName() + " LV:" + getPetLevel());
 	}
 	
 	/**
