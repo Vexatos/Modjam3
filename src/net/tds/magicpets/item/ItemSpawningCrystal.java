@@ -62,7 +62,9 @@ public class ItemSpawningCrystal extends ItemModjamBase {
     		}
     		
     		if (!stack.stackTagCompound.hasKey("Owner")) {
+    			
     			stack.stackTagCompound.setString("Owner", player.username);
+    			return stack;
     		}
     		
     		if (!getOwner(stack).equalsIgnoreCase(player.username)) {
