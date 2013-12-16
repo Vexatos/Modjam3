@@ -17,8 +17,6 @@ import java.util.List;
 import java.util.UUID;
 
 public class ItemSpawningCrystal extends ItemModjamBase {
-
-    public EnumElement element;
 	
 	public ItemSpawningCrystal(int id) {
 		
@@ -78,6 +76,7 @@ public class ItemSpawningCrystal extends ItemModjamBase {
     			else {
     				
     				int id = EnumElement.getID(getType(stack));
+    				doPetSpawn(player, world, stack);
     				spawnPetByID(player, stack, id);
     			}		
     		}
@@ -118,6 +117,52 @@ public class ItemSpawningCrystal extends ItemModjamBase {
         }
     }
     
+    public void doPetSpawn(EntityPlayer player, World world, ItemStack stack) {
+
+    	System.out.println("1");
+        if(EnumElement.getType(getType(stack)) != null) {
+        	System.out.println("2");
+            Class<? extends EntityMagicalPet> clazz = EnumElement.getPet(getType(stack));
+
+            Object obj = null;
+
+            try {
+
+            	System.out.println("3");
+                Constructor constructor = clazz.getConstructor(World.class);
+                obj = constructor.newInstance(world);
+            } 
+            
+            catch(Exception e) {
+
+                e.printStackTrace();
+            }
+
+            System.out.println("4");
+            if(obj != null) {
+
+            	System.out.println("5");
+                EntityMagicalPet pet = (EntityMagicalPet)obj;
+                pet.setPetOwner(getOwner(stack));
+                pet.setPetName(getName(stack));
+                pet.setPetLevel(getLevel(stack));
+                pet.setPetExperience(getExperience(stack));
+                pet.setLocationAndAngles(player.posX, player.posY, player.posZ, 0, 0);
+
+                if (!world.isRemote){
+
+                	System.out.println("6");
+                    world.spawnEntityInWorld(pet);
+                    pet.setOwner(getOwner(stack));
+                    pet.setPetOwner(getOwner(stack));
+                    setUUIDToStack(stack, pet);
+                    PlayerPetProperties.get(player).setPetOut(true);
+                    PlayerPetProperties.get(player).setCurrentPet(getUUIDFromStack(stack).getMostSignificantBits(), getUUIDFromStack(stack).getLeastSignificantBits());
+                }
+            }
+        }
+    }
+    
     /**
      * Spawns a pet into the world based on an entity ID.
      * @param player: Player summoning the pet.
@@ -126,14 +171,11 @@ public class ItemSpawningCrystal extends ItemModjamBase {
      */
     public void spawnPetByID(EntityPlayer player, ItemStack stack, int id) {
     	
-    	System.out.println("1");
-    	
     	World world = player.worldObj;   	
     	Entity entity = world.getEntityByID(id);
     	
     	if(entity != null && entity instanceof EntityMagicalPet) {
     		
-    		System.out.println("2");
     		EntityMagicalPet pet = (EntityMagicalPet) world.getEntityByID(id);
             pet.setPetOwner(getOwner(stack));
             pet.setPetName(getName(stack));
@@ -143,7 +185,6 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 
             if (!world.isRemote){
 
-            	System.out.println("3");
                 world.spawnEntityInWorld(pet);
                 pet.setOwner(getOwner(stack));
                 pet.setPetOwner(getOwner(stack));
@@ -254,15 +295,6 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 		
 		return -1;
 	}
-	
-	/**
-	 * Get the pets enum type.
-	 * @return: the pets enum.
-	 */
-    public EnumElement getElement() {
-
-        return element;
-    }
     
     /**
      * Get the uuid of the syncronized mob from item stack.
@@ -372,15 +404,6 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 			stack.getTagCompound().setInteger("Experience", exp);
 		}
 	}
-
-	/**
-	 * Sets the mobs enum type.
-	 * @param element: enum type to set mob to.
-	 */
-    public void setElement(EnumElement element) {
-
-        this.element = element;
-    }
     
     /**
      * Saves the instance of the synced mob to the item by

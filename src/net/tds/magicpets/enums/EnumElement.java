@@ -59,8 +59,19 @@ public enum EnumElement {
 
             return element.colour;
         }
-
         return -1;
+    }
+    
+    public static Class<? extends EntityMagicalPet> getPet(String type) {
+    	
+    	EnumElement element = getType(type);
+    	
+    	if(element != null) {
+    		
+    		return element.pet;
+    	}
+    	
+    	return null;
     }
     
     /**
