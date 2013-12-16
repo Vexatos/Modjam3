@@ -6,7 +6,7 @@ import net.tds.magicpets.lib.Reference;
 
 public class CommonProxy {
 
-	public void sendChatToPlayer(EntityPlayer Player, String message) {
+	public static void sendChatToPlayer(EntityPlayer Player, String message) {
 		
 		if (Config.playerMessage) {
 			

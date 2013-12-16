@@ -31,7 +31,7 @@ import net.tds.magicpets.item.Items;
 
 public class ClientProxy extends CommonProxy {
 
-	public void sendChatToPlayer(EntityPlayer player, String message) {
+	public static void sendChatToPlayer(EntityPlayer player, String message) {
 		
 		if (player.worldObj.isRemote) {
 			

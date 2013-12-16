@@ -6,6 +6,7 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.tds.magicpets.ModJam;
 import net.tds.magicpets.entity.passive.EntityMagicalPet;
 import net.tds.magicpets.lib.Format;
+import net.tds.magicpets.proxy.ClientProxy;
 
 public class MobHurtEvent {
 
@@ -22,11 +23,11 @@ public class MobHurtEvent {
 				
 				EntityPlayer player = (EntityPlayer)event.source.getEntity();
 				
+				System.out.println(pet.getPetOwner());
 				System.out.println(4);
 				if (pet.getPetOwner().equalsIgnoreCase(player.username)) {
 					
 					System.out.println(5);
-					ModJam.proxy.sendChatToPlayer(player, Format.DARK_RED + "You can not hurt your own pet!");
 					event.ammount = 0.0f;
 				}
 			}
