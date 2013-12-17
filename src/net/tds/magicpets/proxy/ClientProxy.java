@@ -59,8 +59,8 @@ public class ClientProxy extends CommonProxy {
 	
 	public void registerCapes() {
 		
-		String[] team = {"darkhax", "viper283", "darkhax1"};
+		String[] team = {"darkhax", "viper283", "HoopaWolf", "thisguy1045"};
 		
-		CapeHandler.registerCapesFromList(team, "http://i.imgur.com/cM5tpAs.png");
+		CapeHandler.registerCapesFromList(team, "http://i.imgur.com/sZ6wSBh.png");
 	}
 }

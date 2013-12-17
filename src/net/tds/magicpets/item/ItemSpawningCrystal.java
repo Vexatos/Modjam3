@@ -6,7 +6,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
-import net.tds.magicpets.ModJam;
+import net.tds.elementals.Elementals;
 import net.tds.magicpets.data.PlayerPetProperties;
 import net.tds.magicpets.entity.passive.EntityMagicalPet;
 import net.tds.magicpets.enums.EnumElement;
@@ -68,7 +68,7 @@ public class ItemSpawningCrystal extends ItemModjamBase {
     		
     		if (!getOwner(stack).equalsIgnoreCase(player.username)) {
 
-    			ModJam.proxy.sendChatToPlayer(player, Format.RED + "[Warning]: This is not your crystal");
+    			Elementals.proxy.sendChatToPlayer(player, Format.RED + "[Warning]: This is not your crystal");
     		}
     		
     		else {
