@@ -1,5 +1,6 @@
 package net.tds.magicpets.entity.boss;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.world.World;
 
@@ -9,4 +10,19 @@ public class EntityFireBoss extends EntityMagicalBoss {
 
 		super(par1World);
 	}
+	
+    public boolean attackEntityAsMob(Entity entity) {
+    	
+    	if(super.attackEntityAsMob(entity)){
+    		
+    		double rand = Math.random();
+    		
+    		if(rand < 0.13D) {
+    			
+    			entity.setFire(3);
+    		}
+    	}
+    	
+		return true;	
+    }
 }

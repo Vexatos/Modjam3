@@ -3,6 +3,7 @@ package net.tds.magicpets.entity.boss;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.EnumCreatureAttribute;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.boss.BossStatus;
 import net.minecraft.entity.boss.IBossDisplayData;
@@ -43,4 +44,11 @@ public abstract class EntityMagicalBoss extends EntityMob implements IBossDispla
 
         BossStatus.setBossStatus(display, par1);
     }
+    
+	protected void applyEntityAttributes() {
+		super.applyEntityAttributes();
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(240);
+		this.getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(40.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(6.0D);
+	}
 }
