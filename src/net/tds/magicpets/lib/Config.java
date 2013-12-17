@@ -28,6 +28,10 @@ public class Config {
     public static int lightBossID;
     public static int undeadBossID;
     public static int waterBossID;
+    
+    public static int fireSpawn;
+    public static int waterSpawn;
+    public static int earthSpawn;
 
     public Config(File file) {
 		
@@ -54,6 +58,10 @@ public class Config {
         lightBossID = conf.get(CATEGORY_MODID, "Light Boss ID", 353).getInt();
         undeadBossID = conf.get(CATEGORY_MODID, "Undead Boss ID", 354).getInt();
         waterBossID = conf.get(CATEGORY_MODID, "Water Boss ID", 355).getInt();
+        
+        fireSpawn = conf.get(conf.CATEGORY_GENERAL, "Spawnrate of Fire Boss", 3).getInt();
+        waterSpawn = conf.get(conf.CATEGORY_GENERAL, "Spawnrate of Water Boss", 3).getInt();
+        earthSpawn = conf.get(conf.CATEGORY_GENERAL, "Spawnrate of Eath Boss", 3).getInt();
 		
 		conf.save();
 	}

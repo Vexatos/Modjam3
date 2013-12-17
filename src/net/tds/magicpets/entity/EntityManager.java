@@ -43,9 +43,9 @@ public class EntityManager {
 		registerEntity(EntityLightBoss.class, "boss.lightBoss", Config.lightBossID, 0xFFFF33, true);
 		registerEntity(EntityUndeadBoss.class, "boss.undeadBoss", Config.undeadBossID, 0x606060, true);
 		registerEntity(EntityWaterBoss.class, "boss.waterBoss", Config.waterBossID, 0x0066FF, true);
-		EntityRegistry.addSpawn(EntityEarthBoss.class, 1, 1, 1, EnumCreatureType.monster, BiomeGenBase.forest, BiomeGenBase.forestHills, BiomeGenBase.taiga, BiomeGenBase.taigaHills);
-		EntityRegistry.addSpawn(EntityFireBoss.class, 1, 1, 1, EnumCreatureType.monster, BiomeGenBase.forest, BiomeGenBase.forestHills, BiomeGenBase.taiga, BiomeGenBase.taigaHills, BiomeGenBase.hell);
-		EntityRegistry.addSpawn(EntityWaterBoss.class, 1, 1, 1, EnumCreatureType.waterCreature, BiomeGenBase.ocean, BiomeGenBase.beach, BiomeGenBase.river);
+		EntityRegistry.addSpawn(EntityEarthBoss.class, Config.earthSpawn, 1, 1, EnumCreatureType.monster, BiomeGenBase.forest, BiomeGenBase.forestHills, BiomeGenBase.taiga, BiomeGenBase.taigaHills);
+		EntityRegistry.addSpawn(EntityFireBoss.class, Config.fireSpawn, 1, 1, EnumCreatureType.monster, BiomeGenBase.forest, BiomeGenBase.forestHills, BiomeGenBase.taiga, BiomeGenBase.taigaHills, BiomeGenBase.hell);
+		EntityRegistry.addSpawn(EntityWaterBoss.class, Config.waterSpawn, 1, 1, EnumCreatureType.monster, BiomeGenBase.ocean, BiomeGenBase.beach, BiomeGenBase.river);
 	}
 	
 	public void registerEntity(Class<? extends Entity> entity, String name, int id, int color, boolean boss) {
