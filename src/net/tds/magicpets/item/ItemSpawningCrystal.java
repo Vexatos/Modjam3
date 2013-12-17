@@ -74,13 +74,14 @@ public class ItemSpawningCrystal extends ItemModjamBase {
     		}
     		
     		else {
+    			
     			System.out.println("s4");
     			if (PlayerPetProperties.get(player).isPetOut()) {
     				
     				killPetByUUID(player, world, stack);
     			} 
     			
-    			else {
+    			if (!PlayerPetProperties.get(player).isPetOut()) {
     				System.out.println("s5");
     				doPetSpawn(player, world, stack);
     			}		
@@ -114,16 +115,13 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 	 */
     public void killPetByUUID(EntityPlayer player, World world, ItemStack stack) {
 
+    	PlayerPetProperties.get(player).setPetOut(false);
+    	
         if(getEntityByUUID(stack, world) != null) {
 
-        	PlayerPetProperties.get(player).setPetOut(false);
             getEntityByUUID(stack, world).setDead();
         }
         
-        else {
-        	
-        	ModJam.proxy.sendChatToPlayer(player, Format.DARK_RED + "Summoning failed. Is it possible that you already have a pet out?");
-        }
     }
     
     public void doPetSpawn(EntityPlayer player, World world, ItemStack stack) {

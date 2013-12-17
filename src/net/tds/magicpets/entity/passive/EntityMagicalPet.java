@@ -83,6 +83,7 @@ public class EntityMagicalPet extends EntityTameable {
 		
 		super.onLivingUpdate();
 		this.setCustomNameTag(getPetOwner() + "'s " + getPetName() + " LV:" + getPetLevel());
+		
 	}
 	
 	/**
