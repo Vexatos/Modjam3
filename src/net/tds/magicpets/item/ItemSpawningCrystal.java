@@ -81,7 +81,7 @@ public class ItemSpawningCrystal extends ItemModjamBase {
     				killPetByUUID(player, world, stack);
     			} 
     			
-    			if (!PlayerPetProperties.get(player).isPetOut()) {
+    			else {
     				System.out.println("s5");
     				doPetSpawn(player, world, stack);
     			}		
@@ -114,12 +114,11 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 	 * @param stack: stack to get a specific uuid
 	 */
     public void killPetByUUID(EntityPlayer player, World world, ItemStack stack) {
-
-    	PlayerPetProperties.get(player).setPetOut(false);
     	
         if(getEntityByUUID(stack, world) != null) {
 
             getEntityByUUID(stack, world).setDead();
+            PlayerPetProperties.get(player).setPetOut(false);
         }
         
     }
