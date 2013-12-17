@@ -78,7 +78,7 @@ public class PlayerPetProperties implements IExtendedEntityProperties {
 	public void setPetOut(boolean petOut) {
 		
 		this.petOut = petOut;
-        this.syncExtendedProperties();
+        //this.syncExtendedProperties();
 	}
 	
 	/**
