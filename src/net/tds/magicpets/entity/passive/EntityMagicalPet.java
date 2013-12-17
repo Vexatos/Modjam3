@@ -45,6 +45,8 @@ public class EntityMagicalPet extends EntityTameable {
 		this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
 		this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, false));
 		this.setTamed(true);
+		this.healthModifier = 0;
+		this.damageModifier = 0;
 	}
 	
     public boolean isAIEnabled() {
@@ -77,13 +79,6 @@ public class EntityMagicalPet extends EntityTameable {
 		this.setPetName(compound.getString("Name"));
 		this.setPetLevel(compound.getInteger("Level"));
 		this.setPetExperience(compound.getInteger("Experience"));	
-	}
-	
-	protected void applyEntityAttributes() {
-		
-		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(10.0f + (getPetLevel() * this.healthModifier));
-		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(2.0D + (getPetLevel() * this.damageModifier));
 	}
 	
 	public void onLivingUpdate() {

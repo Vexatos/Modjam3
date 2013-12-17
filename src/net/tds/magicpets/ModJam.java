@@ -28,15 +28,6 @@ import net.tds.magicpets.proxy.CommonProxy;
 import java.util.Arrays;
 
 
-//Pets can be damaged and killed by their owners. As of now the recall code is a bit broken and 
-//locks the player out if the pet dies rather than gets recalled. This is likely due to the 
-//sync issues mentioned above. 
-
-//As mentioned above pets can be hurt by their owners. I have made an event to prevent this but 
-//since the pet isn't returning any data just yet due to sync issues it will have to wait. once the
-//sync issues have been resolved I would like a pet to become undamageable by its owner through the
-//help of the living hurt method. 
-
 //Pet needs a way to check if its player is online. this will be used to check on update if their 
 //player is logged in. If not the pet should despawn to prevent any issues with the pet while its
 //owner is offline. This obviously won't have an effect in single player.
@@ -48,10 +39,6 @@ import java.util.Arrays;
 //pets currently don't have a cooldown. Pets need a cooldown to become less overpowered.
 
 //Boss mobs need to be added to the spawn code.
-
-//earth boss needs to have its model and texture be added and have its animation coded.
-
-//Earth and fire bosses need some special attack code added.
 
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION)
 @NetworkMod(clientSideRequired = true, serverSideRequired = true, channels = "maigcpets", packetHandler = PacketHandler.class)
