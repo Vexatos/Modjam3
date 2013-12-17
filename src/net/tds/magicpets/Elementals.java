@@ -1,4 +1,4 @@
-package net.tds.elementals;
+package net.tds.magicpets;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;

@@ -6,7 +6,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
-import net.tds.elementals.Elementals;
+import net.tds.magicpets.Elementals;
 import net.tds.magicpets.data.PlayerPetProperties;
 import net.tds.magicpets.entity.passive.EntityMagicalPet;
 import net.tds.magicpets.enums.EnumElement;
@@ -122,17 +122,15 @@ public class ItemSpawningCrystal extends ItemModjamBase {
     }
     
     public void doPetSpawn(EntityPlayer player, World world, ItemStack stack) {
-
-    	System.out.println("1");
+    	
         if(EnumElement.getType(getType(stack)) != null) {
-        	System.out.println("2");
+
             Class<? extends EntityMagicalPet> clazz = EnumElement.getPet(getType(stack));
 
             Object obj = null;
 
             try {
 
-            	System.out.println("3");
                 Constructor constructor = clazz.getConstructor(World.class);
                 obj = constructor.newInstance(world);
             } 
@@ -142,10 +140,8 @@ public class ItemSpawningCrystal extends ItemModjamBase {
                 e.printStackTrace();
             }
 
-            System.out.println("4");
             if(obj != null) {
 
-            	System.out.println("5");
                 EntityMagicalPet pet = (EntityMagicalPet)obj;
                 pet.setPetOwner(getOwner(stack));
                 pet.setPetName(getName(stack));
@@ -155,7 +151,6 @@ public class ItemSpawningCrystal extends ItemModjamBase {
 
                 if (!world.isRemote){
 
-                	System.out.println("6");
                     world.spawnEntityInWorld(pet);
                     pet.setOwner(getOwner(stack));
                     pet.setPetOwner(getOwner(stack));
