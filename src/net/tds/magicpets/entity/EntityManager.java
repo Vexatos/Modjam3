@@ -3,6 +3,8 @@ package net.tds.magicpets.entity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityEggInfo;
 import net.minecraft.entity.EntityList;
+import net.minecraft.entity.EnumCreatureType;
+import net.minecraft.world.biome.BiomeGenBase;
 import net.tds.magicpets.entity.boss.EntityAirBoss;
 import net.tds.magicpets.entity.boss.EntityEarthBoss;
 import net.tds.magicpets.entity.boss.EntityFireBoss;
@@ -41,6 +43,9 @@ public class EntityManager {
 		registerEntity(EntityLightBoss.class, "boss.lightBoss", Config.lightBossID, 0xFFFF33, true);
 		registerEntity(EntityUndeadBoss.class, "boss.undeadBoss", Config.undeadBossID, 0x606060, true);
 		registerEntity(EntityWaterBoss.class, "boss.waterBoss", Config.waterBossID, 0x0066FF, true);
+		EntityRegistry.addSpawn(EntityEarthBoss.class, 1, 1, 1, EnumCreatureType.monster, BiomeGenBase.forest, BiomeGenBase.forestHills, BiomeGenBase.taiga, BiomeGenBase.taigaHills);
+		EntityRegistry.addSpawn(EntityFireBoss.class, 1, 1, 1, EnumCreatureType.monster, BiomeGenBase.forest, BiomeGenBase.forestHills, BiomeGenBase.taiga, BiomeGenBase.taigaHills, BiomeGenBase.hell);
+		EntityRegistry.addSpawn(EntityWaterBoss.class, 1, 1, 1, EnumCreatureType.waterCreature, BiomeGenBase.ocean, BiomeGenBase.beach, BiomeGenBase.river);
 	}
 	
 	public void registerEntity(Class<? extends Entity> entity, String name, int id, int color, boolean boss) {
