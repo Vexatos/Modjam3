@@ -12,7 +12,7 @@ public class EntityBabyWaterPet extends EntityMagicalPet{
 	public EntityBabyWaterPet(World world) {
 		
 		super(world);
-		this.setSize(1.0f, 2.0f);
+		this.setSize(1.0f, 1.0f);
 		this.noClip = false;
 		this.healthModifier = 1;
 		this.damageModifier = (int) 1;

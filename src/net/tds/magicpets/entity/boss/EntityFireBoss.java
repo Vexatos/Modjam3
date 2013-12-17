@@ -9,6 +9,7 @@ public class EntityFireBoss extends EntityMagicalBoss {
 	public EntityFireBoss(World par1World) {
 
 		super(par1World);
+		this.setSize(2.0f, 2.7f);
 	}
 	
     public boolean attackEntityAsMob(Entity entity) {
