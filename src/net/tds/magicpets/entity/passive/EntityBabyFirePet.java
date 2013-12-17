@@ -10,6 +10,7 @@ import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAIOwnerHurtByTarget;
 import net.minecraft.entity.ai.EntityAIOwnerHurtTarget;
 import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
 public class EntityBabyFirePet extends EntityMagicalPet {
@@ -28,7 +29,6 @@ public class EntityBabyFirePet extends EntityMagicalPet {
 		
 		super.applyEntityAttributes();
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(10 + (getPetLevel() * this.healthModifier));
-		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(2.0D + (getPetLevel() * this.damageModifier));
 	}
 	
     public boolean attackEntityAsMob(Entity entity) {
@@ -38,6 +38,6 @@ public class EntityBabyFirePet extends EntityMagicalPet {
     		entity.setFire(getPetLevel()/5);
     	}
     	
-		return true;	
+    	return entity.attackEntityFrom(DamageSource.causeMobDamage(this), 2.0F + (getPetLevel() * this.damageModifier));
     }
 }

@@ -5,6 +5,7 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
 public class EntityBabyWaterPet extends EntityMagicalPet{
@@ -23,7 +24,6 @@ public class EntityBabyWaterPet extends EntityMagicalPet{
 		
 		super.applyEntityAttributes();
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(10 + (getPetLevel() * this.healthModifier));
-		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(2.0D + (getPetLevel() * this.damageModifier));
 	}
 	
     public boolean attackEntityAsMob(Entity entity) {
@@ -43,6 +43,6 @@ public class EntityBabyWaterPet extends EntityMagicalPet{
     		}
     	}
     	
-		return true;	
+    	return entity.attackEntityFrom(DamageSource.causeMobDamage(this), 2.0F + (getPetLevel() * this.damageModifier));
     }
 }
